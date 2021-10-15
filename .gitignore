@@ -27,3 +27,4 @@ node_modules/
 /emails/themes/blank/*
 /emails/themes/simple/*
 /emails/themes/default/*
+*.zip
