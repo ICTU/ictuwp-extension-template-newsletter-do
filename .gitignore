@@ -21,3 +21,9 @@ node_modules/
 *.log
 *.sql
 *.sqlite
+
+/emails/themes/vimeo-like/*
+/emails/themes/theme-3/*
+/emails/themes/blank/*
+/emails/themes/simple/*
+/emails/themes/default/*
