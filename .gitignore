@@ -27,4 +27,7 @@ node_modules/
 /emails/themes/blank/*
 /emails/themes/simple/*
 /emails/themes/default/*
+/emails/themes/.idea/*
 *.zip
+/emails/themes/digitaleoverheid/newsletter_template/*
+

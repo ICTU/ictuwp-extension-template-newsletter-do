@@ -83,7 +83,7 @@ $theme_piwiktrackercode   = isset( $theme_options['theme_piwiktrackercode'] ) ? 
 
 /**
  * Accepts a post or a post ID.
- * 
+ *
  * @param WP_Post $post
  */
 function rhswp_newsletter_the_excerpt($post, $words = 80) {
@@ -101,43 +101,7 @@ function rhswp_newsletter_the_excerpt($post, $words = 80) {
 ?>
 <!DOCTYPE html>
 <html>
-<head>
-<style type="text/css" media="screen">
-table {
-  font: 12px verdana, sans-serif;
-  background-color: #fff;
-}
-.header a, .text .colofon a {
-  text-decoration: underline;
-  color: #000;
-}
-.header a:hover, .colofon a:hover, .text a:hover {
-  color: #010101;
-  text-decoration: underline;
-}
-.text p, .disclaimer p, p {
-  margin-bottom: 1em !important;
-}
-.text a {
-  color: #154273;
-  text-decoration: none;
-}
-.text a:hover {
-  text-decoration: underline;
-}
-.text a.up {
-  display: block;
-  font-size: 11px;
-  color: #555;
-}
-.text a.head {
-  color: #000;
-}
-.text a.head:hover {
-  color: #154273;
-}
-</style>
-</head>
+
 <body style="background-color: #fff;">
 <table style="width: 100%; border: none;background-color: #fff">
   <tr>
@@ -153,22 +117,23 @@ table {
             <table class="text" style="background-color: #fff; border-collapse: collapse">
               <tr>
                 <td style="padding: 30px 20px 0 20px">
-                  <div style="font: normal 20px arial, sans-serif; margin: 0; color: #000"><?php echo $theme_nieuwsbrieftitel ?></div>
-                  
-              </tr>
+					<div
+						style="font: normal 20px arial, sans-serif; margin: 0; color: #000"><?php echo $theme_nieuwsbrieftitel ?></div>
+
+			  </tr>
               <tr>
                 <td style="padding: 30px 20px 0px 20px"><table style="width: 568px; border-collapse:collapse">
 
                     <tr>
                       <td style="width: 372px; padding-right: 20px; vertical-align: top"><!-- Items -->
-                        
+
                         <table style="width: 372px; border-collapse: collapse;  font: 12px/17px verdana, sans-serif; color: #000">
                           <?php
                                 foreach ($posts as $post) {
                                     setup_postdata($post);
-                                    
+
                                     $defaultwidth = '264px';
-                                    
+
                                     if ( $theme_show_featuredimage ) {
                                       $defaultwidth = '264px';
                                       $image = nt_post_image(get_the_ID(), 'thumbnail');
@@ -183,7 +148,7 @@ table {
                               <?php rhswp_newsletter_the_excerpt($post); ?><br><a href="<?php echo get_permalink() . $theme_piwiktrackercode; ?>" style="font-size: 11px"><?php echo $theme_options['theme_read_more']; ?></a> </div></td>
 
                             <?php
-                              if ( $theme_show_featuredimage ) { 
+                              if ( $theme_show_featuredimage ) {
                               // idealiter is dit plaatje 88px breed
                                 if ( $image ) {
                                   // er is een plaatje gevonden
@@ -191,16 +156,16 @@ table {
                                   <td style="text-align: right; vertical-align: top;  padding-top: 12px; border-bottom: 1px solid #dcdcdc;">
                                     <a target="_tab" href="<?php echo get_permalink() . $theme_piwiktrackercode; ?>" target="_blank"><img src="<?php echo $image; ?>" alt="" width="100" border="0" height="100"></a>
                                   </td>
-                                    <?php 
+                                    <?php
                                 }
                                 else {
                                   // er zou een plaatje moeten zijn, maar dat is er niet
                                   ?>
                                   <td style="text-align: right; vertical-align: top;">&nbsp;</td>
-                                    <?php 
+                                    <?php
                                 }
                               }
-                              ?>                              
+                              ?>
                           </tr>
                           <?php
                                 }
@@ -211,7 +176,7 @@ table {
 
 <div style="font: bold 14px arial, sans-serif; border-bottom: 1px solid #dcdcdc; padding-bottom: 2px; display:block; color: #000">Agenda</div>
 
-                        
+
                         <?php
 if (class_exists('EM_Events')) {
 
@@ -221,11 +186,11 @@ if (class_exists('EM_Events')) {
       <div style="border-bottom: 1px solid #DCDCDC">#_EVENTDATES {has_location}(#_LOCATIONTOWN){/has_location}<br>&nbsp;
       </div>',
       'limit'       =>  $filters['theme_max_agenda'] ) );
-  
-  
+
+
   // tricky dick!
   $agendablok = str_replace( '/">', '/' . $theme_piwiktrackercode  .'">', $agendablok );
-  
+
   echo $agendablok;
 
 }
@@ -241,7 +206,7 @@ else {
               </tr>
               <tr>
                 <td style="padding: 30px 20px 20px 20px"><!-- Colofon -->
-                  
+
                   <div style="display: block; border-bottom: 1px solid #dcdcdc; font: bold 14px arial, sans-serif; padding-bottom: 2px; color: #000">Colofon</div>
                   <table style="width: 568px; border-collapse: collapse; color: #555; line-height: 15px; font-size: 11px">
                     <tr>
@@ -253,9 +218,9 @@ else {
                   <p class="colofon" style="color: #555; line-height: 15px; font-size: 11px; margin-bottom: 0 !important;">Wilt u deze nieuwsbrief niet meer ontvangen? <a href="{unsubscription_url}">Meld u dan hier af.</a></p></td>
               </tr>
             </table>
-            
+
             <!-- Footer ribbon -->
-            
+
             <table style="border-collapse: collapse; width: 100%">
               <tr>
                 <td colspan="3" style="background-color: #275937; height: 25px">&nbsp;</td>
@@ -265,12 +230,12 @@ else {
                 <td style="background-color: #275937; width: 282px"></td>
               </tr>
             </table>
-            
+
             <!-- Disclaimer -->
-            
+
             <table class="disclaimer" style="border-collapse:collapse; background-color: #efefef; color: #555; font-size: 10px; line-height: 13px">
               <tr>
-                <td style="padding: 30px 20px;"><p style="margin-top: 0"> Dit bericht kan informatie bevatten die niet voor u is bestemd. Indien u niet de geadresse erde bent of dit bericht abusievelijk aan u is toegezonden, wordt u verzocht dat aan de afzender te melden en het bericht te verwijderen. 
+                <td style="padding: 30px 20px;"><p style="margin-top: 0"> Dit bericht kan informatie bevatten die niet voor u is bestemd. Indien u niet de geadresse erde bent of dit bericht abusievelijk aan u is toegezonden, wordt u verzocht dat aan de afzender te melden en het bericht te verwijderen.
                     De Staat aanvaardt geen aansprakelijkheid voor schade, van welke aard ook, die verband houdt met risico's verbonden aan het elektronisch verzenden van berichten. </p>
                   <p> This message may contain information that is not intended for you. If you are not the addressee or if this message was sent to you by mistake, you are requested to inform the sender and delete the message.
                     The State accepts no liability for damage of any kind resulting from the risks inherent in the electronic transmission of messages. </p></td>
