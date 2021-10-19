@@ -28,7 +28,7 @@ $filters = array();
 // Maximum number of post to retrieve
 $filters['posts_per_page'] = 5;
 if ( isset( $theme_options['theme_max_posts'] ) ) {
-	$filters['posts_per_page'] = (int) $theme_options['theme_max_posts'];
+	$filters['posts_per_page'] = ( int ) $theme_options['theme_max_posts'];
 }
 if ( $filters['posts_per_page'] == 0 ) {
 	$filters['posts_per_page'] = 5;
@@ -39,10 +39,22 @@ if ( ! empty( $theme_options['theme_tags'] ) ) {
 }
 
 
+$uitgelicht = 0;
+
+
+if ( ! empty( $theme_options['theme_select_uitgelicht'] ) ) {
+
+	$uitgelicht = get_post( $theme_options['theme_select_uitgelicht'] );
+
+	// uitgelicht niet mee nemen in andere berichten
+	$filters['exclude'] = array( $uitgelicht->ID );
+
+}
+
 // Maximum number of events to retrieve
 $filters['theme_max_agenda'] = 5;
 if ( isset( $theme_options['theme_max_agenda'] ) ) {
-	$filters['theme_max_agenda'] = (int) $theme_options['theme_max_agenda'];
+	$filters['theme_max_agenda'] = ( int ) $theme_options['theme_max_agenda'];
 }
 if ( $filters['theme_max_agenda'] == 0 ) {
 	$filters['theme_max_agenda'] = 5;
@@ -61,30 +73,57 @@ if ( isset( $theme_options['theme_categories'] ) ) {
 // Retrieve the posts asking them to WordPress
 $posts = get_posts( $filters );
 
+$counter       = count( $posts );
+$linkeraantal  = round( ( $counter / 2 ), 0 );
+$rechteraantal = ( $counter - $linkeraantal );
+
+
 // Styles
 $color = isset( $theme_options['theme_color'] ) ? $theme_options['theme_color'] : '#777';
 if ( empty( $color ) ) {
 	$color = '#777';
 }
 
-$font      = isset( $theme_options['theme_font'] ) ? $theme_options['theme_font'] : '';
-$font_size = isset( $theme_options['theme_font_size'] ) ? $theme_options['theme_font_size'] : '';
+
+$font                            = isset( $theme_options['theme_font'] ) ? $theme_options['theme_font'] : '';
+$font_size                       = isset( $theme_options['theme_font_size'] ) ? $theme_options['theme_font_size'] : '';
+$theme_nieuwsbrieftitel          = isset( $theme_options['theme_nieuwsbrieftitel'] ) ? $theme_options['theme_nieuwsbrieftitel'] : 'Digitale Overheid - {date}';
+$colofon_blok1                   = isset( $theme_options['theme_colofon_block_1'] ) ? $theme_options['theme_colofon_block_1'] : 'Dit is een publicatie van de ministeries van Binnenlandse Zaken en Koninkrijksrelaties en van Economische Zaken.';
+$colofon_blok2                   = isset( $theme_options['theme_colofon_block_2'] ) ? $theme_options['theme_colofon_block_2'] : 'Heeft u tips of leuk nieuws voor de nieuwsbrief? Wij horen  graag van u! Stuur een email naar <a href="mailto:redactie@digitaleoverheid.nl">redactie@digitaleoverheid.nl</a>';
+$theme_piwiktrackercode          = isset( $theme_options['theme_piwiktrackercode'] ) ? '?pk_campaign=' . $theme_options['theme_piwiktrackercode'] : '';
+$theme_titel_nieuws              = isset( $theme_options['theme_titel_nieuws'] ) ? $theme_options['theme_titel_nieuws'] : 'Nieuws';
+$theme_titel_events              = isset( $theme_options['theme_titel_events'] ) ? $theme_options['theme_titel_events'] : 'Agenda';
+$theme_titel_socials             = isset( $theme_options['theme_titel_socials'] ) ? $theme_options['theme_titel_socials'] : 'Social media';
+$theme_sitetitle                 = isset( $theme_options['theme_sitetitle'] ) ? $theme_options['theme_sitetitle'] : get_bloginfo( 'name' );
+$theme_sitepayoff                = isset( $theme_options['theme_sitepayoff'] ) ? $theme_options['theme_sitepayoff'] : get_bloginfo( 'description' );
+$theme_socials_twitter_url       = isset( $theme_options['theme_socials_twitter_url'] ) ? $theme_options['theme_socials_twitter_url'] : '';
+$theme_socials_twitter_linktext  = isset( $theme_options['theme_socials_twitter_linktext'] ) ? $theme_options['theme_socials_twitter_linktext'] : '';
+$theme_socials_linkedin_url      = isset( $theme_options['theme_socials_linkedin_url'] ) ? $theme_options['theme_socials_linkedin_url'] : '';
+$theme_socials_linkedin_linktext = isset( $theme_options['theme_socials_linkedin_linktext'] ) ? $theme_options['theme_socials_linkedin_linktext'] : '';
+$theme_socials_linkedin_linktext = isset( $theme_options['theme_socials_linkedin_linktext'] ) ? $theme_options['theme_socials_linkedin_linktext'] : '';
+$theme_mail_unsubscribe_text     = isset( $theme_options['theme_mail_unsubscribe_text'] ) ? $theme_options['theme_mail_unsubscribe_text'] : 'Wilt u deze nieuwsbrief niet meer ontvangen?';
+$theme_mail_unsubscribe_linktext = isset( $theme_options['theme_mail_unsubscribe_linktext'] ) ? $theme_options['theme_mail_unsubscribe_linktext'] : 'Meld u zich hier af';
 
 
-$theme_nieuwsbrieftitel   = isset( $theme_options['theme_nieuwsbrieftitel'] ) ? $theme_options['theme_nieuwsbrieftitel'] : 'Digitale Overheid - {date}';
-$colofon_blok1            = isset( $theme_options['theme_colofon_block_1'] ) ? $theme_options['theme_colofon_block_1'] : 'Dit is een publicatie van de ministeries van Binnenlandse Zaken en Koninkrijksrelaties en van Economische Zaken.';
-$colofon_blok2            = isset( $theme_options['theme_colofon_block_2'] ) ? $theme_options['theme_colofon_block_2'] : 'Heeft u tips of leuk nieuws voor de nieuwsbrief? Wij horen  graag van u! Stuur een email naar <a href="mailto:redactie@digitaleoverheid.nl">redactie@digitaleoverheid.nl</a>';
-$colofon_blok3            = isset( $theme_options['theme_colofon_block_3'] ) ? $theme_options['theme_colofon_block_3'] : 'Digitale Overheid is ook te volgen op Twitter: <a href="https://twitter.com/digioverheid">@digioverheid</a>';
-$theme_show_featuredimage = isset( $theme_options['theme_show_featuredimage'] ) ? $theme_options['theme_show_featuredimage'] : '';
-$theme_piwiktrackercode   = isset( $theme_options['theme_piwiktrackercode'] ) ? '?pk_campaign=' . $theme_options['theme_piwiktrackercode'] : '';
+//$asseturl = $_SERVER['HTTPS'] . $_SERVER['SERVER_NAME'] . '/';
 
+$asset_domain = get_theme_root_uri();
+$asseturl     = wp_slash( str_replace( '/themes', '/', $asset_domain ) );
+$asset_folder = dirname( __FILE__ );
+if ( stripos( $asset_folder, 'wp-content' ) ) {
+	$folders  = explode( 'wp-content/', $asset_folder );
+	$asseturl .= $folders[1] . '/';
+}
+
+
+//========================================================================================================
 
 /**
  * Accepts a post or a post ID.
  *
  * @param WP_Post $post
  */
-function rhswp_newsletter_the_excerpt( $post, $words = 80 ) {
+function rhswp_newsletter_get_excerpt( $post, $words = 80 ) {
 	$post    = get_post( $post );
 	$excerpt = $post->post_excerpt;
 	if ( empty( $excerpt ) ) {
@@ -92,8 +131,96 @@ function rhswp_newsletter_the_excerpt( $post, $words = 80 ) {
 		$excerpt = strip_shortcodes( $excerpt );
 		$excerpt = wp_strip_all_tags( $excerpt, true );
 	}
-	echo wp_trim_words( $excerpt, $words );
+
+	return wp_trim_words( $excerpt, $words );
 }
+
+//========================================================================================================
+
+function mail_get_label( $postID = 0 ) {
+	$return = '&nbsp;';
+	if ( ( $postID ) && function_exists( 'rhswp_get_sublabel' ) ) {
+		$return = strtoupper( rhswp_get_sublabel( $postID ) );
+	}
+
+	return $return;
+}
+
+//========================================================================================================
+
+function write_bericht( $postobject ) {
+
+	global $theme_piwiktrackercode;
+	$return = '';
+
+	if ( $postobject ) {
+
+		$uitgelicht_image_size = 'image-5x3-small';
+		$uitgelicht_title      = $postobject->post_title;
+		$uitgelicht_label      = mail_get_label( $postobject->ID );
+		$uitgelicht_date       = get_the_date( get_option( 'date_format' ), $postobject->ID );
+		$uitgelicht_excerpt    = rhswp_newsletter_get_excerpt( $postobject->ID );
+		$uitgelicht_url        = get_permalink( $postobject->ID ) . $theme_piwiktrackercode;
+		$image                 = wp_get_attachment_image_src( get_post_thumbnail_id( $postobject->ID ), $uitgelicht_image_size );
+		if ( $image ) {
+			$alt   = $uitgelicht_title;
+			$image = '<tr><td class="mcnCaptionBottomImageContent" align="center" valign="top" style="padding:0 9px 9px 9px;"><a href="' . $uitgelicht_url . '"><img alt="' . $alt . '" src="' . $image[0] . '" width="264" style="max-width:368px;" class="mcnImage"></a></td></tr>';
+		}
+
+		$return = '<table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnCaptionBlock">
+	<tbody class="mcnCaptionBlockOuter">
+	<tr>
+		<td class="mcnCaptionBlockInner" valign="top" style="padding:9px;">
+			<table align="left" border="0" cellpadding="0"
+				   cellspacing="0" class="mcnCaptionBottomContent">
+				<tbody>' . $image . '
+				<tr> <td class="mcnTextContent" valign="top" style="padding:0 9px 0 9px;" width="264">
+				<p style="font-size:14px"><strong><span style="color:#696969; text-transform:uppercase">' . $uitgelicht_label . '</span></strong></p>
+				<h2 class="null"><a href="' . $uitgelicht_url . '" style="color:#01689B; text-decoration: none"><strong><span style="font-size:24px; margin: 12px 0px; line-height:36px">' . $uitgelicht_title . '</span></strong></a></h2>
+				<p style="font-size:18px"><strong>' . $uitgelicht_date . '</strong></p>
+				<p>' . $uitgelicht_excerpt . '</p></td>
+				</tr>
+				</tbody>
+			</table>
+		</td>
+	</tr>
+	</tbody>
+</table>';
+	}
+
+
+	echo $return;
+
+
+}
+
+//========================================================================================================
+
+function maak_event( $eventobject, $asseturl ) {
+
+//	global $asseturl;
+	global $theme_piwiktrackercode;
+	$return = '';
+	if ( $eventobject ) {
+		$uitgelicht_url = get_permalink( $eventobject->ID ) . $theme_piwiktrackercode;
+		$datum          = $eventobject->output( '#_EVENTDATES' );
+		$tijd           = $eventobject->output( '#_EVENTTIMES' );
+//		$location_town = $eventobject->output( '#_LOCATIONTOWN' );
+
+		$return = '<a href="' . $uitgelicht_url . '" style="text-decoration: none;"><strong><span style="font-size:18px; line-height:24px; color:#01689B">' . get_the_title( $eventobject->ID ) . '</span></span></strong></a><br>';
+		if ( $datum ) {
+			$return .= '<img height="12" src="' . $asseturl . 'icon_calendar.jpeg" style="border: 0px  ; width: 12px; height: 12px; margin: 0px;" width="12">&nbsp;&nbsp;' . $datum . '<br>';
+		}
+		if ( $tijd ) {
+			$return .= '<img height="12" src="' . $asseturl . 'icon_clock.jpeg" style="border: 0px  ; width: 12px; height: 12px; margin: 0px;" width="12">&nbsp;&nbsp;' . $tijd . '<br><br>';
+		}
+
+	}
+
+	return $return;
+}
+
+//========================================================================================================
 
 
 ?>
@@ -113,8 +240,7 @@ function rhswp_newsletter_the_excerpt( $post, $words = 80 ) {
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>*|MC:SUBJECT|*</title>
-
+	<title><?php echo $theme_nieuwsbrieftitel ?></title>
 	<style type="text/css">
 		p {
 			margin: 10px 0;
@@ -223,470 +349,334 @@ function rhswp_newsletter_the_excerpt( $post, $words = 80 ) {
 		}
 
 		/*
-		@tab Page
-		@section Background Style
-		@tip Set the background color and top border for your email. You may want to choose colors that match your company's branding.
-		*/
+				@tab Page
+				@section Background Style
+				@tip Set the background color and top border for your email. You may want to choose colors that match your company's branding.
+				*/
 		body, #bodyTable {
-			/*@editable*/
 			background-color: #FAFAFA;
 		}
 
 		/*
-		@tab Page
-		@section Background Style
-		@tip Set the background color and top border for your email. You may want to choose colors that match your company's branding.
-		*/
+				@tab Page
+				@section Background Style
+				@tip Set the background color and top border for your email. You may want to choose colors that match your company's branding.
+				*/
 		#bodyCell {
-			/*@editable*/
 			border-top: 0;
 		}
 
 		/*
-		@tab Page
-		@section Heading 1
-		@tip Set the styling for all first-level headings in your emails. These should be the largest of your headings.
-		@style heading 1
-		*/
+				@tab Page
+				@section Heading 1
+				@tip Set the styling for all first-level headings in your emails. These should be the largest of your headings.
+				@style heading 1
+				*/
 		h1 {
-			/*@editable*/
 			color: #202020;
-			/*@editable*/
 			font-family: Helvetica;
-			/*@editable*/
 			font-size: 26px;
-			/*@editable*/
 			font-style: normal;
-			/*@editable*/
 			font-weight: bold;
-			/*@editable*/
 			line-height: 125%;
-			/*@editable*/
 			letter-spacing: normal;
-			/*@editable*/
 			text-align: left;
 		}
 
 		/*
-		@tab Page
-		@section Heading 2
-		@tip Set the styling for all second-level headings in your emails.
-		@style heading 2
-		*/
+				@tab Page
+				@section Heading 2
+				@tip Set the styling for all second-level headings in your emails.
+				@style heading 2
+				*/
 		h2 {
-			/*@editable*/
 			color: #202020;
-			/*@editable*/
 			font-family: Helvetica;
-			/*@editable*/
 			font-size: 22px;
-			/*@editable*/
 			font-style: normal;
-			/*@editable*/
 			font-weight: bold;
-			/*@editable*/
 			line-height: 125%;
-			/*@editable*/
 			letter-spacing: normal;
-			/*@editable*/
 			text-align: left;
 		}
 
 		/*
-		@tab Page
-		@section Heading 3
-		@tip Set the styling for all third-level headings in your emails.
-		@style heading 3
-		*/
+				@tab Page
+				@section Heading 3
+				@tip Set the styling for all third-level headings in your emails.
+				@style heading 3
+				*/
 		h3 {
-			/*@editable*/
 			color: #202020;
-			/*@editable*/
 			font-family: Helvetica;
-			/*@editable*/
 			font-size: 20px;
-			/*@editable*/
 			font-style: normal;
-			/*@editable*/
 			font-weight: bold;
-			/*@editable*/
 			line-height: 125%;
-			/*@editable*/
 			letter-spacing: normal;
-			/*@editable*/
 			text-align: left;
 		}
 
 		/*
-		@tab Page
-		@section Heading 4
-		@tip Set the styling for all fourth-level headings in your emails. These should be the smallest of your headings.
-		@style heading 4
-		*/
+				@tab Page
+				@section Heading 4
+				@tip Set the styling for all fourth-level headings in your emails. These should be the smallest of your headings.
+				@style heading 4
+				*/
 		h4 {
-			/*@editable*/
 			color: #202020;
-			/*@editable*/
 			font-family: Helvetica;
-			/*@editable*/
 			font-size: 18px;
-			/*@editable*/
 			font-style: normal;
-			/*@editable*/
 			font-weight: bold;
-			/*@editable*/
 			line-height: 125%;
-			/*@editable*/
 			letter-spacing: normal;
-			/*@editable*/
 			text-align: left;
 		}
 
 		/*
-		@tab Preheader
-		@section Preheader Style
-		@tip Set the background color and borders for your email's preheader area.
-		*/
+				@tab Preheader
+				@section Preheader Style
+				@tip Set the background color and borders for your email's preheader area.
+				*/
 		#templatePreheader {
-			/*@editable*/
 			background-color: #FAFAFA;
-			/*@editable*/
 			background-image: none;
-			/*@editable*/
 			background-repeat: no-repeat;
-			/*@editable*/
 			background-position: center;
-			/*@editable*/
 			background-size: cover;
-			/*@editable*/
 			border-top: 0;
-			/*@editable*/
 			border-bottom: 0;
-			/*@editable*/
 			padding-top: 9px;
-			/*@editable*/
 			padding-bottom: 9px;
 		}
 
 		/*
-		@tab Preheader
-		@section Preheader Text
-		@tip Set the styling for your email's preheader text. Choose a size and color that is easy to read.
-		*/
+				@tab Preheader
+				@section Preheader Text
+				@tip Set the styling for your email's preheader text. Choose a size and color that is easy to read.
+				*/
 		#templatePreheader .mcnTextContent, #templatePreheader .mcnTextContent p {
-			/*@editable*/
 			color: #656565;
-			/*@editable*/
 			font-family: Helvetica;
-			/*@editable*/
 			font-size: 12px;
-			/*@editable*/
 			line-height: 150%;
-			/*@editable*/
 			text-align: left;
 		}
 
 		/*
-		@tab Preheader
-		@section Preheader Link
-		@tip Set the styling for your email's preheader links. Choose a color that helps them stand out from your text.
-		*/
+				@tab Preheader
+				@section Preheader Link
+				@tip Set the styling for your email's preheader links. Choose a color that helps them stand out from your text.
+				*/
 		#templatePreheader .mcnTextContent a, #templatePreheader .mcnTextContent p a {
-			/*@editable*/
 			color: #656565;
-			/*@editable*/
 			font-weight: normal;
-			/*@editable*/
 			text-decoration: underline;
 		}
 
 		/*
-		@tab Header
-		@section Header Style
-		@tip Set the background color and borders for your email's header area.
-		*/
+				@tab Header
+				@section Header Style
+				@tip Set the background color and borders for your email's header area.
+				*/
 		#templateHeader {
-			/*@editable*/
 			background-color: #ffffff;
-			/*@editable*/
 			background-image: none;
-			/*@editable*/
 			background-repeat: no-repeat;
-			/*@editable*/
 			background-position: center;
-			/*@editable*/
 			background-size: cover;
-			/*@editable*/
 			border-top: 0;
-			/*@editable*/
 			border-bottom: 0;
-			/*@editable*/
 			padding-top: 0px;
-			/*@editable*/
 			padding-bottom: 25px;
 		}
 
 		/*
-		@tab Header
-		@section Header Text
-		@tip Set the styling for your email's header text. Choose a size and color that is easy to read.
-		*/
+				@tab Header
+				@section Header Text
+				@tip Set the styling for your email's header text. Choose a size and color that is easy to read.
+				*/
 		#templateHeader .mcnTextContent, #templateHeader .mcnTextContent p {
-			/*@editable*/
 			color: #202020;
-			/*@editable*/
 			font-family: Helvetica;
-			/*@editable*/
 			font-size: 16px;
-			/*@editable*/
 			line-height: 150%;
-			/*@editable*/
 			text-align: center;
 		}
 
 		/*
-		@tab Header
-		@section Header Link
-		@tip Set the styling for your email's header links. Choose a color that helps them stand out from your text.
-		*/
+				@tab Header
+				@section Header Link
+				@tip Set the styling for your email's header links. Choose a color that helps them stand out from your text.
+				*/
 		#templateHeader .mcnTextContent a, #templateHeader .mcnTextContent p a {
-			/*@editable*/
 			color: #007C89;
-			/*@editable*/
 			font-weight: normal;
-			/*@editable*/
 			text-decoration: underline;
 		}
 
 		/*
-		@tab Upper Body
-		@section Upper Body Style
-		@tip Set the background color and borders for your email's upper body area.
-		*/
+				@tab Upper Body
+				@section Upper Body Style
+				@tip Set the background color and borders for your email's upper body area.
+				*/
 		#templateUpperBody {
-			/*@editable*/
 			background-color: #FFFFFF;
-			/*@editable*/
 			background-image: none;
-			/*@editable*/
 			background-repeat: no-repeat;
-			/*@editable*/
 			background-position: center;
-			/*@editable*/
 			background-size: cover;
-			/*@editable*/
 			border-top: 0;
-			/*@editable*/
 			border-bottom: 0;
-			/*@editable*/
 			padding-top: 0;
-			/*@editable*/
 			padding-bottom: 0;
 		}
 
 		/*
-		@tab Upper Body
-		@section Upper Body Text
-		@tip Set the styling for your email's upper body text. Choose a size and color that is easy to read.
-		*/
+				@tab Upper Body
+				@section Upper Body Text
+				@tip Set the styling for your email's upper body text. Choose a size and color that is easy to read.
+				*/
 		#templateUpperBody .mcnTextContent, #templateUpperBody .mcnTextContent p {
-			/*@editable*/
 			color: #202020;
-			/*@editable*/
 			font-family: Helvetica;
-			/*@editable*/
 			font-size: 16px;
-			/*@editable*/
 			line-height: 150%;
-			/*@editable*/
 			text-align: left;
 		}
 
 		/*
-		@tab Upper Body
-		@section Upper Body Link
-		@tip Set the styling for your email's upper body links. Choose a color that helps them stand out from your text.
-		*/
+				@tab Upper Body
+				@section Upper Body Link
+				@tip Set the styling for your email's upper body links. Choose a color that helps them stand out from your text.
+				*/
 		#templateUpperBody .mcnTextContent a, #templateUpperBody .mcnTextContent p a {
-			/*@editable*/
 			color: #007C89;
-			/*@editable*/
 			font-weight: normal;
-			/*@editable*/
 			text-decoration: underline;
 		}
 
 		/*
-		@tab Columns
-		@section Column Style
-		@tip Set the background color and borders for your email's columns.
-		*/
+				@tab Columns
+				@section Column Style
+				@tip Set the background color and borders for your email's columns.
+				*/
 		#templateColumns {
-			/*@editable*/
 			background-color: #ffffff;
-			/*@editable*/
 			background-image: none;
-			/*@editable*/
 			background-repeat: no-repeat;
-			/*@editable*/
 			background-position: center;
-			/*@editable*/
 			background-size: cover;
-			/*@editable*/
 			border-top: 0;
-			/*@editable*/
 			border-bottom: 0;
-			/*@editable*/
 			padding-top: 0;
-			/*@editable*/
 			padding-bottom: 16px;
 		}
 
 		/*
-		@tab Columns
-		@section Column Text
-		@tip Set the styling for your email's column text. Choose a size and color that is easy to read.
-		*/
+				@tab Columns
+				@section Column Text
+				@tip Set the styling for your email's column text. Choose a size and color that is easy to read.
+				*/
 		#templateColumns .columnContainer .mcnTextContent, #templateColumns .columnContainer .mcnTextContent p {
-			/*@editable*/
 			color: #202020;
-			/*@editable*/
 			font-family: Helvetica;
-			/*@editable*/
 			font-size: 16px;
-			/*@editable*/
 			line-height: 150%;
-			/*@editable*/
 			text-align: left;
 		}
 
 		/*
-		@tab Columns
-		@section Column Link
-		@tip Set the styling for your email's column links. Choose a color that helps them stand out from your text.
-		*/
+				@tab Columns
+				@section Column Link
+				@tip Set the styling for your email's column links. Choose a color that helps them stand out from your text.
+				*/
 		#templateColumns .columnContainer .mcnTextContent a, #templateColumns .columnContainer .mcnTextContent p a {
-			/*@editable*/
 			color: #007C89;
-			/*@editable*/
 			font-weight: normal;
-			/*@editable*/
 			text-decoration: underline;
 		}
 
 		/*
-		@tab Lower Body
-		@section Lower Body Style
-		@tip Set the background color and borders for your email's lower body area.
-		*/
+				@tab Lower Body
+				@section Lower Body Style
+				@tip Set the background color and borders for your email's lower body area.
+				*/
 		#templateLowerBody {
-			/*@editable*/
 			background-color: #FFFFFF;
-			/*@editable*/
 			background-image: none;
-			/*@editable*/
 			background-repeat: no-repeat;
-			/*@editable*/
 			background-position: center;
-			/*@editable*/
 			background-size: cover;
-			/*@editable*/
 			border-top: 0;
-			/*@editable*/
 			border-bottom: 2px solid #EAEAEA;
-			/*@editable*/
 			padding-top: 0;
-			/*@editable*/
 			padding-bottom: 9px;
 		}
 
 		/*
-		@tab Lower Body
-		@section Lower Body Text
-		@tip Set the styling for your email's lower body text. Choose a size and color that is easy to read.
-		*/
+				@tab Lower Body
+				@section Lower Body Text
+				@tip Set the styling for your email's lower body text. Choose a size and color that is easy to read.
+				*/
 		#templateLowerBody .mcnTextContent, #templateLowerBody .mcnTextContent p {
-			/*@editable*/
 			color: #202020;
-			/*@editable*/
 			font-family: Helvetica;
-			/*@editable*/
 			font-size: 16px;
-			/*@editable*/
 			line-height: 150%;
-			/*@editable*/
 			text-align: left;
 		}
 
 		/*
-		@tab Lower Body
-		@section Lower Body Link
-		@tip Set the styling for your email's lower body links. Choose a color that helps them stand out from your text.
-		*/
+				@tab Lower Body
+				@section Lower Body Link
+				@tip Set the styling for your email's lower body links. Choose a color that helps them stand out from your text.
+				*/
 		#templateLowerBody .mcnTextContent a, #templateLowperBody .mcnTextContent p a {
-			/*@editable*/
 			color: #007C89;
-			/*@editable*/
 			font-weight: normal;
-			/*@editable*/
 			text-decoration: underline;
 		}
 
 		/*
-		@tab Footer
-		@section Footer Style
-		@tip Set the background color and borders for your email's footer area.
-		*/
+				@tab Footer
+				@section Footer Style
+				@tip Set the background color and borders for your email's footer area.
+				*/
 		#templateFooter {
-			/*@editable*/
 			background-color: #ffffff;
-			/*@editable*/
 			background-image: none;
-			/*@editable*/
 			background-repeat: no-repeat;
-			/*@editable*/
 			background-position: center;
-			/*@editable*/
 			background-size: cover;
-			/*@editable*/
 			border-top: 0;
-			/*@editable*/
 			border-bottom: 0;
-			/*@editable*/
 			padding-top: 9px;
-			/*@editable*/
 			padding-bottom: 9px;
 		}
 
 		/*
-		@tab Footer
-		@section Footer Text
-		@tip Set the styling for your email's footer text. Choose a size and color that is easy to read.
-		*/
+				@tab Footer
+				@section Footer Text
+				@tip Set the styling for your email's footer text. Choose a size and color that is easy to read.
+				*/
 		#templateFooter .mcnTextContent, #templateFooter .mcnTextContent p {
-			/*@editable*/
 			color: #656565;
-			/*@editable*/
 			font-family: Helvetica;
-			/*@editable*/
 			font-size: 12px;
-			/*@editable*/
 			line-height: 150%;
-			/*@editable*/
 			text-align: center;
 		}
 
 		/*
-		@tab Footer
-		@section Footer Link
-		@tip Set the styling for your email's footer links. Choose a color that helps them stand out from your text.
-		*/
+				@tab Footer
+				@section Footer Link
+				@tip Set the styling for your email's footer links. Choose a color that helps them stand out from your text.
+				*/
 		#templateFooter .mcnTextContent a, #templateFooter .mcnTextContent p a {
-			/*@editable*/
 			color: #656565;
-			/*@editable*/
 			font-weight: normal;
-			/*@editable*/
 			text-decoration: underline;
 		}
 
@@ -694,14 +684,12 @@ function rhswp_newsletter_the_excerpt( $post, $words = 80 ) {
 			.templateContainer {
 				width: 600px !important;
 			}
-
 		}
 
 		@media only screen and (max-width: 480px) {
 			body, table, td, p, a, li, blockquote {
 				-webkit-text-size-adjust: none !important;
 			}
-
 		}
 
 		@media only screen and (max-width: 480px) {
@@ -709,7 +697,6 @@ function rhswp_newsletter_the_excerpt( $post, $words = 80 ) {
 				width: 100% !important;
 				min-width: 100% !important;
 			}
-
 		}
 
 		@media only screen and (max-width: 480px) {
@@ -717,21 +704,18 @@ function rhswp_newsletter_the_excerpt( $post, $words = 80 ) {
 				max-width: 100% !important;
 				width: 100% !important;
 			}
-
 		}
 
 		@media only screen and (max-width: 480px) {
 			.mcnRetinaImage {
 				max-width: 100% !important;
 			}
-
 		}
 
 		@media only screen and (max-width: 480px) {
 			.mcnImage {
 				width: 100% !important;
 			}
-
 		}
 
 		@media only screen and (max-width: 480px) {
@@ -739,42 +723,36 @@ function rhswp_newsletter_the_excerpt( $post, $words = 80 ) {
 				max-width: 100% !important;
 				width: 100% !important;
 			}
-
 		}
 
 		@media only screen and (max-width: 480px) {
 			.mcnBoxedTextContentContainer {
 				min-width: 100% !important;
 			}
-
 		}
 
 		@media only screen and (max-width: 480px) {
 			.mcnImageGroupContent {
 				padding: 9px !important;
 			}
-
 		}
 
 		@media only screen and (max-width: 480px) {
 			.mcnCaptionLeftContentOuter .mcnTextContent, .mcnCaptionRightContentOuter .mcnTextContent {
 				padding-top: 9px !important;
 			}
-
 		}
 
 		@media only screen and (max-width: 480px) {
 			.mcnImageCardTopImageContent, .mcnCaptionBottomContent:last-child .mcnCaptionBottomImageContent, .mcnCaptionBlockInner .mcnCaptionTopContent:last-child .mcnTextContent {
 				padding-top: 18px !important;
 			}
-
 		}
 
 		@media only screen and (max-width: 480px) {
 			.mcnImageCardBottomImageContent {
 				padding-bottom: 9px !important;
 			}
-
 		}
 
 		@media only screen and (max-width: 480px) {
@@ -782,7 +760,6 @@ function rhswp_newsletter_the_excerpt( $post, $words = 80 ) {
 				padding-top: 0 !important;
 				padding-bottom: 0 !important;
 			}
-
 		}
 
 		@media only screen and (max-width: 480px) {
@@ -790,7 +767,6 @@ function rhswp_newsletter_the_excerpt( $post, $words = 80 ) {
 				padding-top: 9px !important;
 				padding-bottom: 9px !important;
 			}
-
 		}
 
 		@media only screen and (max-width: 480px) {
@@ -798,7 +774,6 @@ function rhswp_newsletter_the_excerpt( $post, $words = 80 ) {
 				padding-right: 18px !important;
 				padding-left: 18px !important;
 			}
-
 		}
 
 		@media only screen and (max-width: 480px) {
@@ -807,7 +782,6 @@ function rhswp_newsletter_the_excerpt( $post, $words = 80 ) {
 				padding-bottom: 0 !important;
 				padding-left: 18px !important;
 			}
-
 		}
 
 		@media only screen and (max-width: 480px) {
@@ -815,226 +789,151 @@ function rhswp_newsletter_the_excerpt( $post, $words = 80 ) {
 				display: none !important;
 				width: 100% !important;
 			}
-
 		}
 
 		@media only screen and (max-width: 480px) {
 			/*
-			@tab Mobile Styles
-			@section Heading 1
-			@tip Make the first-level headings larger in size for better readability on small screens.
-			*/
+						@tab Mobile Styles
+						@section Heading 1
+						@tip Make the first-level headings larger in size for better readability on small screens.
+						*/
 			h1 {
-				/*@editable*/
 				font-size: 22px !important;
-				/*@editable*/
 				line-height: 125% !important;
 			}
-
 		}
 
 		@media only screen and (max-width: 480px) {
 			/*
-			@tab Mobile Styles
-			@section Heading 2
-			@tip Make the second-level headings larger in size for better readability on small screens.
-			*/
+						@tab Mobile Styles
+						@section Heading 2
+						@tip Make the second-level headings larger in size for better readability on small screens.
+						*/
 			h2 {
-				/*@editable*/
 				font-size: 20px !important;
-				/*@editable*/
 				line-height: 125% !important;
 			}
-
 		}
 
 		@media only screen and (max-width: 480px) {
 			/*
-			@tab Mobile Styles
-			@section Heading 3
-			@tip Make the third-level headings larger in size for better readability on small screens.
-			*/
+						@tab Mobile Styles
+						@section Heading 3
+						@tip Make the third-level headings larger in size for better readability on small screens.
+						*/
 			h3 {
-				/*@editable*/
 				font-size: 18px !important;
-				/*@editable*/
 				line-height: 125% !important;
 			}
-
 		}
 
 		@media only screen and (max-width: 480px) {
 			/*
-			@tab Mobile Styles
-			@section Heading 4
-			@tip Make the fourth-level headings larger in size for better readability on small screens.
-			*/
+						@tab Mobile Styles
+						@section Heading 4
+						@tip Make the fourth-level headings larger in size for better readability on small screens.
+						*/
 			h4 {
-				/*@editable*/
 				font-size: 16px !important;
-				/*@editable*/
 				line-height: 150% !important;
 			}
-
 		}
 
 		@media only screen and (max-width: 480px) {
 			/*
-			@tab Mobile Styles
-			@section Boxed Text
-			@tip Make the boxed text larger in size for better readability on small screens. We recommend a font size of at least 16px.
-			*/
+						@tab Mobile Styles
+						@section Boxed Text
+						@tip Make the boxed text larger in size for better readability on small screens. We recommend a font size of at least 16px.
+						*/
 			.mcnBoxedTextContentContainer .mcnTextContent, .mcnBoxedTextContentContainer .mcnTextContent p {
-				/*@editable*/
 				font-size: 14px !important;
-				/*@editable*/
 				line-height: 150% !important;
 			}
-
 		}
 
 		@media only screen and (max-width: 480px) {
 			/*
-			@tab Mobile Styles
-			@section Preheader Visibility
-			@tip Set the visibility of the email's preheader on small screens. You can hide it to save space.
-			*/
+						@tab Mobile Styles
+						@section Preheader Visibility
+						@tip Set the visibility of the email's preheader on small screens. You can hide it to save space.
+						*/
 			#templatePreheader {
-				/*@editable*/
 				display: block !important;
 			}
-
 		}
 
 		@media only screen and (max-width: 480px) {
 			/*
-			@tab Mobile Styles
-			@section Preheader Text
-			@tip Make the preheader text larger in size for better readability on small screens.
-			*/
+						@tab Mobile Styles
+						@section Preheader Text
+						@tip Make the preheader text larger in size for better readability on small screens.
+						*/
 			#templatePreheader .mcnTextContent, #templatePreheader .mcnTextContent p {
-				/*@editable*/
 				font-size: 14px !important;
-				/*@editable*/
 				line-height: 150% !important;
 			}
-
 		}
 
 		@media only screen and (max-width: 480px) {
 			/*
-			@tab Mobile Styles
-			@section Header Text
-			@tip Make the header text larger in size for better readability on small screens.
-			*/
+						@tab Mobile Styles
+						@section Header Text
+						@tip Make the header text larger in size for better readability on small screens.
+						*/
 			#templateHeader .mcnTextContent, #templateHeader .mcnTextContent p {
-				/*@editable*/
 				font-size: 16px !important;
-				/*@editable*/
 				line-height: 150% !important;
 			}
-
 		}
 
 		@media only screen and (max-width: 480px) {
 			/*
-			@tab Mobile Styles
-			@section Upper Body Text
-			@tip Make the upper body text larger in size for better readability on small screens. We recommend a font size of at least 16px.
-			*/
+						@tab Mobile Styles
+						@section Upper Body Text
+						@tip Make the upper body text larger in size for better readability on small screens. We recommend a font size of at least 16px.
+						*/
 			#templateUpperBody .mcnTextContent, #templateUpperBody .mcnTextContent p {
-				/*@editable*/
 				font-size: 16px !important;
-				/*@editable*/
 				line-height: 150% !important;
 			}
-
 		}
 
 		@media only screen and (max-width: 480px) {
 			/*
-			@tab Mobile Styles
-			@section Column Text
-			@tip Make the column text larger in size for better readability on small screens. We recommend a font size of at least 16px.
-			*/
+						@tab Mobile Styles
+						@section Column Text
+						@tip Make the column text larger in size for better readability on small screens. We recommend a font size of at least 16px.
+						*/
 			#templateColumns .columnContainer .mcnTextContent, #templateColumns .columnContainer .mcnTextContent p {
-				/*@editable*/
 				font-size: 16px !important;
-				/*@editable*/
 				line-height: 150% !important;
 			}
-
 		}
 
 		@media only screen and (max-width: 480px) {
 			/*
-			@tab Mobile Styles
-			@section Lower Body Text
-			@tip Make the lower body text larger in size for better readability on small screens. We recommend a font size of at least 16px.
-			*/
+						@tab Mobile Styles
+						@section Lower Body Text
+						@tip Make the lower body text larger in size for better readability on small screens. We recommend a font size of at least 16px.
+						*/
 			#templateLowerBody .mcnTextContent, #templateLowerBody .mcnTextContent p {
-				/*@editable*/
 				font-size: 16px !important;
-				/*@editable*/
 				line-height: 150% !important;
 			}
-
 		}
 
 		@media only screen and (max-width: 480px) {
 			/*
-			@tab Mobile Styles
-			@section Footer Text
-			@tip Make the footer content text larger in size for better readability on small screens.
-			*/
+						@tab Mobile Styles
+						@section Footer Text
+						@tip Make the footer content text larger in size for better readability on small screens.
+						*/
 			#templateFooter .mcnTextContent, #templateFooter .mcnTextContent p {
-				/*@editable*/
 				font-size: 14px !important;
-				/*@editable*/
 				line-height: 150% !important;
 			}
-
-		}</style>
-	<script>var w = window;
-		if (w.performance || w.mozPerformance || w.msPerformance || w.webkitPerformance) {
-			var d = document;
-			AKSB = w.AKSB || {}, AKSB.q = AKSB.q || [], AKSB.mark = AKSB.mark || function (e, _) {
-				AKSB.q.push(["mark", e, _ || (new Date).getTime()])
-			}, AKSB.measure = AKSB.measure || function (e, _, t) {
-				AKSB.q.push(["measure", e, _, t || (new Date).getTime()])
-			}, AKSB.done = AKSB.done || function (e) {
-				AKSB.q.push(["done", e])
-			}, AKSB.mark("firstbyte", (new Date).getTime()), AKSB.prof = {
-				custid: "90616",
-				ustr: "",
-				originlat: "0",
-				clientrtt: "23",
-				ghostip: "92.123.225.218",
-				ipv6: false,
-				pct: "10",
-				clientip: "213.125.22.122",
-				requestid: "d6447ac0",
-				region: "25168",
-				protocol: "h2",
-				blver: 14,
-				akM: "x",
-				akN: "ae",
-				akTT: "O",
-				akTX: "1",
-				akTI: "d6447ac0",
-				ai: "199322",
-				ra: "false",
-				pmgn: "",
-				pmgi: "",
-				pmp: "",
-				qc: ""
-			}, function (e) {
-				var _ = d.createElement("script");
-				_.async = "async", _.src = e;
-				var t = d.getElementsByTagName("script"), t = t[t.length - 1];
-				t.parentNode.insertBefore(_, t)
-			}(("https:" === d.location.protocol ? "https:" : "http:") + "//ds-aksb-a.akamaihd.net/aksb.min.js")
-		}</script>
+		}
+	</style>
 </head>
 <body>
 <!--*|IF:MC_PREVIEW_TEXT|*-->
@@ -1045,54 +944,50 @@ function rhswp_newsletter_the_excerpt( $post, $words = 80 ) {
 <center>
 	<table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable">
 		<tr>
-			<td align="center" valign="top" id="bodyCell">
-				<!-- BEGIN TEMPLATE // -->
+			<td align="center" valign="top" id="bodyCell"><!-- BEGIN TEMPLATE // -->
+
 				<table border="0" cellpadding="0" cellspacing="0" width="100%">
 					<tr>
-						<td align="center" valign="top" id="templatePreheader">
-							<!--[if (gte mso 9)|(IE)]>
+						<td align="center" valign="top" id="templatePreheader"><!--[if (gte mso 9)|(IE)]>
 							<table align="center" border="0" cellspacing="0" cellpadding="0" width="600"
 								   style="width:600px;">
 								<tr>
 									<td align="center" valign="top" width="600" style="width:600px;">
 							<![endif]-->
+
 							<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%"
 								   class="templateContainer">
 								<tr>
 									<td valign="top" class="preheaderContainer">
 										<table border="0" cellpadding="0" cellspacing="0" width="100%"
-											   class="mcnTextBlock"
-											   style="min-width:100%;">
+											   class="mcnTextBlock" style="min-width:100%;">
 											<tbody class="mcnTextBlockOuter">
 											<tr>
 												<td valign="top" class="mcnTextBlockInner" style="padding-top:9px;">
 													<!--[if mso]>
 													<table align="left" border="0" cellspacing="0" cellpadding="0"
-														   width="100%"
-														   style="width:100%;">
+														   width="100%" style="width:100%;">
 														<tr>
 													<![endif]-->
 
 													<!--[if mso]>
 													<td valign="top" width="600" style="width:600px;">
 													<![endif]-->
+
 													<table align="left" border="0" cellpadding="0" cellspacing="0"
 														   style="max-width:100%; min-width:100%;" width="100%"
 														   class="mcnTextContentContainer">
 														<tbody>
 														<tr>
-
 															<td valign="top" class="mcnTextContent"
 																style="padding: 0px 18px 9px; text-align: center;">
-
-																<div style="text-align: left;">Wordt de nieuwsbrief niet
-																	goed weergegeven? <a
-																		style="color: #01689B">Bekijk in je browser</a>
-																</div>
+																<div style="text-align: left;">Kunt u deze nieuwsbrief niet goed lezen?
+																	<a href="{email_url}" style="color: #01689B">Bekijk dan de online versie</a></div>
 															</td>
 														</tr>
 														</tbody>
 													</table>
+
 													<!--[if mso]>
 													</td>
 													<![endif]-->
@@ -1100,56 +995,49 @@ function rhswp_newsletter_the_excerpt( $post, $words = 80 ) {
 													<!--[if mso]>
 													</tr>
 													</table>
-													<![endif]-->
-												</td>
+													<![endif]--></td>
 											</tr>
 											</tbody>
 										</table>
 									</td>
 								</tr>
 							</table>
+
 							<!--[if (gte mso 9)|(IE)]>
 							</td>
 							</tr>
 							</table>
-							<![endif]-->
-						</td>
+							<![endif]--></td>
 					</tr>
 					<tr>
-						<td align="center" valign="top" id="templateHeader">
-							<!--[if (gte mso 9)|(IE)]>
+						<td align="center" valign="top" id="templateHeader"><!--[if (gte mso 9)|(IE)]>
 							<table align="center" border="0" cellspacing="0" cellpadding="0" width="600"
 								   style="width:600px;">
 								<tr>
 									<td align="center" valign="top" width="600" style="width:600px;">
 							<![endif]-->
+
 							<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%"
 								   class="templateContainer">
 								<tr>
 									<td valign="top" class="headerContainer">
 										<table border="0" cellpadding="0" cellspacing="0" width="100%"
-											   class="mcnImageBlock"
-											   style="min-width:100%;">
+											   class="mcnImageBlock" style="min-width:100%;">
 											<tbody class="mcnImageBlockOuter">
 											<tr>
 												<td valign="top" style="padding:0px" class="mcnImageBlockInner">
 													<table align="left" width="100%" border="0" cellpadding="0"
-														   cellspacing="0"
-														   class="mcnImageContentContainer" style="min-width:100%;">
+														   cellspacing="0" class="mcnImageContentContainer"
+														   style="min-width:100%;">
 														<tbody>
 														<tr>
 															<td class="mcnImageContent" valign="top"
 																style="padding-right: 0px; padding-left: 0px; padding-top: 0; padding-bottom: 0; text-align:center;">
-
-
 																<img align="center" alt=""
 																	 src="https://mcusercontent.com/3e910dcf189c820fdd63ae55d/images/73382f6f-c38d-6c1d-5865-4808fad65e89.png"
 																	 width="51"
 																	 style="max-width:100px; padding-bottom: 0; display: inline !important; vertical-align: bottom;"
-																	 class="mcnImage">
-
-
-															</td>
+																	 class="mcnImage"></td>
 														</tr>
 														</tbody>
 													</table>
@@ -1160,65 +1048,59 @@ function rhswp_newsletter_the_excerpt( $post, $words = 80 ) {
 									</td>
 								</tr>
 							</table>
+
 							<!--[if (gte mso 9)|(IE)]>
 							</td>
 							</tr>
 							</table>
-							<![endif]-->
-						</td>
+							<![endif]--></td>
 					</tr>
 					<tr>
-						<td align="center" valign="top" id="templateUpperBody">
-							<!--[if (gte mso 9)|(IE)]>
+						<td align="center" valign="top" id="templateUpperBody"><!--[if (gte mso 9)|(IE)]>
 							<table align="center" border="0" cellspacing="0" cellpadding="0" width="600"
 								   style="width:600px;">
 								<tr>
 									<td align="center" valign="top" width="600" style="width:600px;">
 							<![endif]-->
+
 							<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%"
 								   class="templateContainer">
 								<tr>
 									<td valign="top" class="bodyContainer">
 										<table border="0" cellpadding="0" cellspacing="0" width="100%"
-											   class="mcnTextBlock"
-											   style="min-width:100%;">
+											   class="mcnTextBlock" style="min-width:100%;">
 											<tbody class="mcnTextBlockOuter">
 											<tr>
 												<td valign="top" class="mcnTextBlockInner" style="padding-top:9px;">
 													<!--[if mso]>
 													<table align="left" border="0" cellspacing="0" cellpadding="0"
-														   width="100%"
-														   style="width:100%;">
+														   width="100%" style="width:100%;">
 														<tr>
 													<![endif]-->
 
 													<!--[if mso]>
 													<td valign="top" width="600" style="width:600px;">
 													<![endif]-->
+
 													<table align="left" border="0" cellpadding="0" cellspacing="0"
 														   style="max-width:100%; min-width:100%;" width="100%"
 														   class="mcnTextContentContainer">
 														<tbody>
 														<tr>
-
 															<td valign="top" class="mcnTextContent"
 																style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
-
 																<div
 																	style="display:flex; width: 100%; align-items: center; justify-content: space-between; background-color:#007BC7;">
-																	<p
-																		style="font-weight: 700; font-size: 24px; color: #fff; margin-left: 30px; padding:19px 0px">
-																		Digitale Overheid</p>
-
-																	<p
-																		style="font-weight: 400; font-size: 18px; color: #fff; margin-right: 30px; padding:19px 0px">
-																		Nieuwsbrief 30 april 2021</p>
+																	<p style="font-weight: 700; font-size: 24px; color: #fff; margin-left: 30px; padding:19px 0px">
+																		<?php echo $theme_sitetitle ?></p>
+																	<p style="font-weight: 400; font-size: 18px; color: #fff; margin-right: 30px; padding:19px 0px">
+																		<?php echo $theme_nieuwsbrieftitel ?></p>
 																</div>
-
 															</td>
 														</tr>
 														</tbody>
 													</table>
+
 													<!--[if mso]>
 													</td>
 													<![endif]-->
@@ -1226,68 +1108,71 @@ function rhswp_newsletter_the_excerpt( $post, $words = 80 ) {
 													<!--[if mso]>
 													</tr>
 													</table>
-													<![endif]-->
-												</td>
+													<![endif]--></td>
 											</tr>
 											</tbody>
 										</table>
+
+										<?php
+										if ( $uitgelicht ) {
+											// START UITGELICHT ARTIKEL
+
+											$uitgelicht_image_size = 'medium_large';
+											$uitgelicht_title      = $uitgelicht->post_title;
+											$uitgelicht_label      = mail_get_label( $uitgelicht->ID );
+											$uitgelicht_date       = get_the_date( get_option( 'date_format' ), $uitgelicht->ID );
+											$uitgelicht_excerpt    = rhswp_newsletter_get_excerpt( $uitgelicht->ID );
+											$uitgelicht_url        = get_permalink( $uitgelicht->ID ) . $theme_piwiktrackercode;
+											$image                 = wp_get_attachment_image_src( get_post_thumbnail_id( $uitgelicht->ID ), $uitgelicht_image_size );
+											if ( $image ) {
+												$alt   = $uitgelicht_title;
+												$image = '<tr><td class="mcnCaptionBottomImageContent" align="center" valign="top" style="padding:0 9px 9px 9px;"><a href="' . $uitgelicht_url . '"><img alt="' . $alt . '" src="' . $image[0] . '" width="564" style="max-width:768px;" class="mcnImage"></a></td></tr>';
+
+											}
+
+											?>
+
+											<table border="0" cellpadding="0" cellspacing="0" width="100%"
+												   class="mcnCaptionBlock">
+												<tbody class="mcnCaptionBlockOuter">
+												<tr>
+													<td class="mcnCaptionBlockInner" valign="top" style="padding:9px;">
+														<table align="left" border="0" cellpadding="0" cellspacing="0"
+															   class="mcnCaptionBottomContent">
+															<tbody>
+															<?php echo $image ?>
+															<tr>
+																<td class="mcnTextContent" valign="top"
+																	style="padding:0 9px 0 9px;" width="564"><p
+																		class="null"><span style="font-size:14px"><span
+																				style="color: #696969;font-weight: 600;"><?php echo $uitgelicht_label ?></span></span>
+																	</p>
+																	<h1 class="null"><a
+																			href="<?php echo $uitgelicht_url ?>"><strong>
+																				<span
+																					style="color:#01689B; font-size:32px; line-height:48px;text-decoration: none;"><?php echo $uitgelicht_title ?></span></strong></a>
+																	</h1>
+																	<p style="color:#000; font-size: 18px; font-weight: bold; margin: 10px 0">
+																		<?php echo $uitgelicht_date ?></p>
+																	<p style="color:#000; font-size: 18px"><?php echo $uitgelicht_excerpt ?></p>
+																</td>
+															</tr>
+															</tbody>
+														</table>
+													</td>
+												</tr>
+												</tbody>
+											</table>
+
+
+											<?php
+											// EIND UITGELICHT ARTIKEL
+										}
+										?>
+
+
 										<table border="0" cellpadding="0" cellspacing="0" width="100%"
-											   class="mcnCaptionBlock">
-											<tbody class="mcnCaptionBlockOuter">
-											<tr>
-												<td class="mcnCaptionBlockInner" valign="top" style="padding:9px;">
-
-
-													<table align="left" border="0" cellpadding="0" cellspacing="0"
-														   class="mcnCaptionBottomContent">
-														<tbody>
-														<tr>
-															<td class="mcnCaptionBottomImageContent" align="center"
-																valign="top"
-																style="padding:0 9px 9px 9px;">
-
-
-																<img alt=""
-																	 src="https://mcusercontent.com/3e910dcf189c820fdd63ae55d/images/3dacf59d-9b51-2ab4-82f7-394b15204c60.jpg"
-																	 width="564" style="max-width:768px;"
-																	 class="mcnImage">
-
-
-															</td>
-														</tr>
-														<tr>
-															<td class="mcnTextContent" valign="top"
-																style="padding:0 9px 0 9px;" width="564">
-																<p class="null"><span style="font-size:14px"><span
-																			style="color: #696969;font-weight: 600;">DIGITAAL TOEGANKELIJK</span></span>
-																</p>
-
-																<h1 class="null"><strong><span
-																			style="color:#01689B; font-size:32px; line-height:48px">Rathenau: actievere overheid nodig tegen onwenselijk online gedrag</span></strong>
-																</h1>
-
-																<p style="color:#000; font-size: 18px; font-weight: bold; margin: 10px 0">
-																	16 augustus
-																	2020</p>
-
-																<p style="color:#000; font-size: 18px">Advies aan de
-																	overheid is pro-actiever in te
-																	grijpen en een maatschappelijke dialoog te
-																	starten.</p>
-
-															</td>
-														</tr>
-														</tbody>
-													</table>
-
-
-												</td>
-											</tr>
-											</tbody>
-										</table>
-										<table border="0" cellpadding="0" cellspacing="0" width="100%"
-											   class="mcnDividerBlock"
-											   style="min-width:100%;">
+											   class="mcnDividerBlock" style="min-width:100%;">
 											<tbody class="mcnDividerBlockOuter">
 											<tr>
 												<td class="mcnDividerBlockInner" style="min-width:100%; padding:18px;">
@@ -1296,52 +1181,48 @@ function rhswp_newsletter_the_excerpt( $post, $words = 80 ) {
 														   style="min-width: 100%;border-top: 1px solid #EAEAEA;">
 														<tbody>
 														<tr>
-															<td>
-																<span></span>
-															</td>
+															<td><span></span></td>
 														</tr>
 														</tbody>
 													</table>
+
 													<!--
-																	<td class="mcnDividerBlockInner" style="padding: 18px;">
-																	<hr class="mcnDividerContent" style="border-bottom-color:none; border-left-color:none; border-right-color:none; border-bottom-width:0; border-left-width:0; border-right-width:0; margin-top:0; margin-right:0; margin-bottom:0; margin-left:0;" />
-													-->
-												</td>
+										<td class="mcnDividerBlockInner" style="padding: 18px;">
+										<hr class="mcnDividerContent" style="border-bottom-color:none; border-left-color:none; border-right-color:none; border-bottom-width:0; border-left-width:0; border-right-width:0; margin-top:0; margin-right:0; margin-bottom:0; margin-left:0;" />
+						--></td>
 											</tr>
 											</tbody>
 										</table>
 										<table border="0" cellpadding="0" cellspacing="0" width="100%"
-											   class="mcnTextBlock"
-											   style="min-width:100%;">
+											   class="mcnTextBlock" style="min-width:100%;">
 											<tbody class="mcnTextBlockOuter">
 											<tr>
 												<td valign="top" class="mcnTextBlockInner" style="padding-top:9px;">
 													<!--[if mso]>
 													<table align="left" border="0" cellspacing="0" cellpadding="0"
-														   width="100%"
-														   style="width:100%;">
+														   width="100%" style="width:100%;">
 														<tr>
 													<![endif]-->
 
 													<!--[if mso]>
 													<td valign="top" width="600" style="width:600px;">
 													<![endif]-->
+
 													<table align="left" border="0" cellpadding="0" cellspacing="0"
 														   style="max-width:100%; min-width:100%;" width="100%"
 														   class="mcnTextContentContainer">
 														<tbody>
 														<tr>
-
 															<td valign="top" class="mcnTextContent"
 																style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
-
 																<strong><span
 																		style="font-family:arial,helvetica neue,helvetica,sans-serif"><span
-																			style="font-size:32px">Laatste nieuws</span></span></strong>
+																			style="font-size:32px"><?php echo $theme_titel_nieuws ?></span></span></strong>
 															</td>
 														</tr>
 														</tbody>
 													</table>
+
 													<!--[if mso]>
 													</td>
 													<![endif]-->
@@ -1349,255 +1230,120 @@ function rhswp_newsletter_the_excerpt( $post, $words = 80 ) {
 													<!--[if mso]>
 													</tr>
 													</table>
-													<![endif]-->
-												</td>
+													<![endif]--></td>
 											</tr>
 											</tbody>
 										</table>
 									</td>
 								</tr>
 							</table>
+
 							<!--[if (gte mso 9)|(IE)]>
 							</td>
 							</tr>
 							</table>
-							<![endif]-->
-						</td>
+							<![endif]--></td>
 					</tr>
 					<tr>
 						<td align="center" valign="top" id="templateColumns">
 							<table border="0" cellpadding="0" cellspacing="0" width="100%" class="templateContainer">
 								<tr>
 									<td valign="top">
+
+										<!--  START LINKERKOLOM -->
+
 										<!--[if (gte mso 9)|(IE)]>
 										<table align="center" border="0" cellspacing="0" cellpadding="0" width="600"
 											   style="width:600px;">
 											<tr>
 												<td align="center" valign="top" width="300" style="width:300px;">
 										<![endif]-->
+
 										<table align="left" border="0" cellpadding="0" cellspacing="0" width="300"
 											   class="columnWrapper">
 											<tr>
 												<td valign="top" class="columnContainer">
-													<table border="0" cellpadding="0" cellspacing="0" width="100%"
-														   class="mcnCaptionBlock">
-														<tbody class="mcnCaptionBlockOuter">
-														<tr>
-															<td class="mcnCaptionBlockInner" valign="top"
-																style="padding:9px;">
+													<?php
+													$postcounter = 0;
 
-																DIT IS EEN BERICHT START
-																<table align="left" border="0" cellpadding="0"
-																	   cellspacing="0"
-																	   class="mcnCaptionBottomContent">
-																	<tbody>
-																	<tr>
-																		<td class="mcnCaptionBottomImageContent"
-																			align="center" valign="top"
-																			style="padding:0 9px 9px 9px;">
+													foreach ( $posts as $post ) {
+														setup_postdata( $post );
+														$postcounter ++;
+														if ( $postcounter > $linkeraantal ) {
+															break;
+														} else {
+															echo write_bericht( $post );
+														}
+													}
 
 
-																			<img alt=""
-																				 src="https://mcusercontent.com/3e910dcf189c820fdd63ae55d/images/8b32e4ad-cedd-1cba-dabd-675180dd48de.jpg"
-																				 width="264" style="max-width:368px;"
-																				 class="mcnImage">
+													?>
 
-
-																		</td>
-																	</tr>
-																	<tr>
-																		<td class="mcnTextContent" valign="top"
-																			style="padding:0 9px 0 9px;" width="264">
-
-																			<p style="font-size:14px"><strong><span
-																						style="color:#696969; text-transform:uppercase">Artificiële Intelligentie (AI)</span></strong>
-																			</p>
-
-																			<h2 class="null"><span
-																					style="color:#01689B"><strong><span
-																							style="font-size:24px; margin: 12px 0px; line-height:36px">E-magazine: AI als instrument voor gemeenten</span></strong></span>
-																			</h2>
-
-																			<p style="font-size:18px"><strong>24
-																					september 2020</strong></p>
-																			<p>In 20 artikelen geeft dit digitale
-																				magazine een actueel beeld van de
-																				mogelijkheden, toepassingen en risico’s
-																				van AI (Artificial Intelligence) door
-																				gemeenten.</p>
-
-																		</td>
-																	</tr>
-																	</tbody>
-																</table>
-																DIT IS EEN BERICHT EINDE
-
-
-															</td>
-														</tr>
-														</tbody>
-													</table>
-													<table border="0" cellpadding="0" cellspacing="0" width="100%"
-														   class="mcnCaptionBlock">
-														<tbody class="mcnCaptionBlockOuter">
-														<tr>
-															<td class="mcnCaptionBlockInner" valign="top"
-																style="padding:9px;">
-
-
-																WEG!
-
-															</td>
-														</tr>
-														</tbody>
-													</table>
 												</td>
 											</tr>
 										</table>
+
+										<!--  EIND LINKERKOLOM -->
+
+
 										<!--[if (gte mso 9)|(IE)]>
 										</td>
 										<td align="center" valign="top" width="300" style="width:300px;">
 										<![endif]-->
+
+										<!--  START RECHTERKOLOM -->
 										<table align="left" border="0" cellpadding="0" cellspacing="0" width="300"
 											   class="columnWrapper">
 											<tr>
 												<td valign="top" class="columnContainer">
-													<table border="0" cellpadding="0" cellspacing="0" width="100%"
-														   class="mcnCaptionBlock">
-														<tbody class="mcnCaptionBlockOuter">
-														<tr>
-															<td class="mcnCaptionBlockInner" valign="top"
-																style="padding:9px;">
+													<?php
+
+													$postcounter = 0;
+
+													foreach ( $posts as $post ) {
+														setup_postdata( $post );
+														$postcounter ++;
+														if ( $postcounter <= $linkeraantal ) {
+//															break;
+														} else {
+															echo write_bericht( $post );
+														}
+													}
 
 
-																<table align="left" border="0" cellpadding="0"
-																	   cellspacing="0"
-																	   class="mcnCaptionBottomContent">
-																	<tbody>
-																	<tr>
-																		<td class="mcnCaptionBottomImageContent"
-																			align="center" valign="top"
-																			style="padding:0 9px 9px 9px;">
+													?>
 
 
-																			<img alt=""
-																				 src="https://mcusercontent.com/3e910dcf189c820fdd63ae55d/images/22b98681-80c2-fb34-fd99-c26cbd07c032.jpg"
-																				 width="264" style="max-width:368px;"
-																				 class="mcnImage">
-
-
-																		</td>
-																	</tr>
-																	<tr>
-																		<td class="mcnTextContent" valign="top"
-																			style="padding:0 9px 0 9px;" width="264">
-																			<p style="font-size:14px"><strong><span
-																						style="color:#696969; text-transform:uppercase">Digitaal toegankelijk</span></strong>
-																			</p>
-
-																			<h2 class="null"><span
-																					style="color:#01689B"><u><strong><span
-																								style="font-size:24px; line-height:36px">Digitale toegankelijkheid gaat de hele organisatie aan</span></strong></u></span>
-																			</h2>
-																			<p style="font-size:18px"><strong>23
-																					september 2020</strong></p>
-																			<p>1 op de 5 Nederlanders heeft moeite om de
-																				digitale informatie en diensten van
-																				de overheid te gebruiken. Daarom is het
-																				heel belangrijk dat overheidswebsites
-																				voor iedereen toegankelijk zijn.</p>
-																		</td>
-																	</tr>
-																	</tbody>
-																</table>
-
-
-															</td>
-														</tr>
-														</tbody>
-													</table>
-													<table border="0" cellpadding="0" cellspacing="0" width="100%"
-														   class="mcnCaptionBlock">
-														<tbody class="mcnCaptionBlockOuter">
-														<tr>
-															<td class="mcnCaptionBlockInner" valign="top"
-																style="padding:9px;">
-
-
-																<table align="left" border="0" cellpadding="0"
-																	   cellspacing="0"
-																	   class="mcnCaptionBottomContent">
-																	<tbody>
-																	<tr>
-																		<td class="mcnCaptionBottomImageContent"
-																			align="center" valign="top"
-																			style="padding:0 9px 9px 9px;">
-
-
-																			<img alt=""
-																				 src="https://mcusercontent.com/3e910dcf189c820fdd63ae55d/images/8b32e4ad-cedd-1cba-dabd-675180dd48de.jpg"
-																				 width="264" style="max-width:368px;"
-																				 class="mcnImage">
-
-
-																		</td>
-																	</tr>
-																	<tr>
-																		<td class="mcnTextContent" valign="top"
-																			style="padding:0 9px 0 9px;" width="264">
-																			<p style="font-size:14px"><strong><span
-																						style="color:#696969; text-transform:uppercase">Artificiële Intelligentie (AI)</span></strong>
-																			</p>
-
-																			<h2 class="null"><span
-																					style="color:#01689B"><strong><span
-																							style="font-size:24px; line-height:36px">E-magazine: AI als instrument voor gemeenten</span></strong></span>
-																			</h2>
-																			<p style="font-size:18px"><strong>24
-																					september 2020</strong></p>
-																			<p>In 20 artikelen geeft dit digitale
-																				magazine een actueel beeld van de
-																				mogelijkheden, toepassingen en risico’s
-																				van AI (Artificial Intelligence) door
-																				gemeenten.</p>
-																		</td>
-																	</tr>
-																	</tbody>
-																</table>
-
-
-															</td>
-														</tr>
-														</tbody>
-													</table>
 												</td>
 											</tr>
 										</table>
+
 										<!--[if (gte mso 9)|(IE)]>
 										</td>
 										</tr>
 										</table>
-										<![endif]-->
-									</td>
+										<![endif]--></td>
+									<!--  EIND RECHTERKOLOM -->
+
+
 								</tr>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<td align="center" valign="top" id="templateLowerBody">
-							<!--[if (gte mso 9)|(IE)]>
+						<td align="center" valign="top" id="templateLowerBody"><!--[if (gte mso 9)|(IE)]>
 							<table align="center" border="0" cellspacing="0" cellpadding="0" width="600"
 								   style="width:600px;">
 								<tr>
 									<td align="center" valign="top" width="600" style="width:600px;">
 							<![endif]-->
+
 							<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%"
 								   class="templateContainer">
 								<tr>
 									<td valign="top" class="bodyContainer">
 										<table border="0" cellpadding="0" cellspacing="0" width="100%"
-											   class="mcnDividerBlock"
-											   style="min-width:100%;">
+											   class="mcnDividerBlock" style="min-width:100%;">
 											<tbody class="mcnDividerBlockOuter">
 											<tr>
 												<td class="mcnDividerBlockInner" style="min-width:100%; padding:18px;">
@@ -1606,52 +1352,87 @@ function rhswp_newsletter_the_excerpt( $post, $words = 80 ) {
 														   style="min-width: 100%;border-top: 1px solid #EAEAEA;">
 														<tbody>
 														<tr>
-															<td>
-																<span></span>
-															</td>
+															<td><span></span></td>
 														</tr>
 														</tbody>
 													</table>
+
 													<!--
-																	<td class="mcnDividerBlockInner" style="padding: 18px;">
-																	<hr class="mcnDividerContent" style="border-bottom-color:none; border-left-color:none; border-right-color:none; border-bottom-width:0; border-left-width:0; border-right-width:0; margin-top:0; margin-right:0; margin-bottom:0; margin-left:0;" />
-													-->
-												</td>
+										<td class="mcnDividerBlockInner" style="padding: 18px;">
+										<hr class="mcnDividerContent" style="border-bottom-color:none; border-left-color:none; border-right-color:none; border-bottom-width:0; border-left-width:0; border-right-width:0; margin-top:0; margin-right:0; margin-bottom:0; margin-left:0;" />
+						--></td>
 											</tr>
 											</tbody>
 										</table>
+
+										<?php
+
+										$linker_events  = '';
+										$rechter_events = '';
+										$args_selection = array(
+											'scope'      => 'future',
+											// alleen toekomstige events tonen
+											'pagination' => '0',
+											// nee, we willen geen pagination
+											'limit'      => $filters['theme_max_agenda'],
+											// het aantal events per pagina
+										);
+										$EM_Events      = EM_Events::get( $args_selection );
+
+										if ( $EM_Events ) {
+
+											// er zijn events...
+											$counter       = count( $EM_Events );
+											$linkeraantal  = round( ( $counter / 2 ), 0 );
+											$rechteraantal = ( $counter - $linkeraantal );
+											$postcounter   = 0;
+
+											foreach ( $EM_Events as $EM_Event ) {
+												setup_postdata( $EM_Event );
+												$postcounter ++;
+												if ( $postcounter <= $linkeraantal ) {
+													$linker_events .= maak_event( $EM_Event, $asseturl );
+												} else {
+													$rechter_events .= maak_event( $EM_Event, $asseturl );
+												}
+											}
+										}
+
+
+										?>
+
+
 										<table border="0" cellpadding="0" cellspacing="0" width="100%"
-											   class="mcnTextBlock"
-											   style="min-width:100%;">
+											   class="mcnTextBlock" style="min-width:100%;">
 											<tbody class="mcnTextBlockOuter">
 											<tr>
 												<td valign="top" class="mcnTextBlockInner" style="padding-top:9px;">
 													<!--[if mso]>
 													<table align="left" border="0" cellspacing="0" cellpadding="0"
-														   width="100%"
-														   style="width:100%;">
+														   width="100%" style="width:100%;">
 														<tr>
 													<![endif]-->
 
 													<!--[if mso]>
 													<td valign="top" width="600" style="width:600px;">
 													<![endif]-->
+
 													<table align="left" border="0" cellpadding="0" cellspacing="0"
 														   style="max-width:100%; min-width:100%;" width="100%"
 														   class="mcnTextContentContainer">
 														<tbody>
 														<tr>
-
 															<td valign="top" class="mcnTextContent"
 																style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
-
 																<strong><span
 																		style="font-family:arial,helvetica neue,helvetica,sans-serif"><span
-																			style="font-size:32px">Evenementen</span></span></strong>
+																			style="font-size:32px"><?php echo $theme_titel_events ?></span></span></strong>
+
 															</td>
 														</tr>
 														</tbody>
 													</table>
+
 													<!--[if mso]>
 													</td>
 													<![endif]-->
@@ -1659,69 +1440,40 @@ function rhswp_newsletter_the_excerpt( $post, $words = 80 ) {
 													<!--[if mso]>
 													</tr>
 													</table>
-													<![endif]-->
-												</td>
+													<![endif]--></td>
 											</tr>
 											</tbody>
 										</table>
 										<table border="0" cellpadding="0" cellspacing="0" width="100%"
-											   class="mcnTextBlock"
-											   style="min-width:100%;">
+											   class="mcnTextBlock" style="min-width:100%;">
 											<tbody class="mcnTextBlockOuter">
 											<tr>
 												<td valign="top" class="mcnTextBlockInner" style="padding-top:9px;">
 													<!--[if mso]>
 													<table align="left" border="0" cellspacing="0" cellpadding="0"
-														   width="100%"
-														   style="width:100%;">
+														   width="100%" style="width:100%;">
 														<tr>
 													<![endif]-->
 
 													<!--[if mso]>
 													<td valign="top" width="300" style="width:300px;">
 													<![endif]-->
+
 													<table align="left" border="0" cellpadding="0" cellspacing="0"
-														   style="max-width:300px;"
-														   width="100%" class="mcnTextContentContainer">
+														   style="max-width:300px;" width="100%"
+														   class="mcnTextContentContainer">
 														<tbody>
 														<tr>
-
 															<td valign="top" class="mcnTextContent"
 																style="padding-top:0; padding-left:18px; padding-bottom:9px; padding-right:18px;">
-
-																<strong><span
-																		style="font-size:24px; line-height:36px"><span
-																			style="color:#01689B">Cybersecurity for Artificial Intelligence</span></span></strong><br>
-																<br>
-																<img data-file-id="5453529" height="12"
-																	 src="https://mcusercontent.com/3e910dcf189c820fdd63ae55d/images/d26493ec-97ba-e9cd-2c79-8aed068c2bb4.png"
-																	 style="border: 0px  ; width: 12px; height: 12px; margin: 0px;"
-																	 width="12">&nbsp;
-																&nbsp;Dinsdag 30 september 2020<br>
-																<img data-file-id="5453533" height="12"
-																	 src="https://mcusercontent.com/3e910dcf189c820fdd63ae55d/images/5033e04f-5446-ec02-1b76-294c78036f8f.png"
-																	 style="border: 0px  ; width: 12px; height: 12px; margin: 0px;"
-																	 width="12">&nbsp;
-																&nbsp;17:00–19:00<br>
-																<br>
-																<strong><span
-																		style="font-size:24px; line-height:36px"><span
-																			style="color:#01689B">Cybersecurity for Artificial Intelligence</span></span></strong><br>
-																<br>
-																<img data-file-id="5453529" height="12"
-																	 src="https://mcusercontent.com/3e910dcf189c820fdd63ae55d/images/d26493ec-97ba-e9cd-2c79-8aed068c2bb4.png"
-																	 style="border: 0px  ; width: 12px; height: 12px; margin: 0px;"
-																	 width="12">&nbsp;
-																&nbsp;Dinsdag 30 september 2020<br>
-																<img data-file-id="5453533" height="12"
-																	 src="https://mcusercontent.com/3e910dcf189c820fdd63ae55d/images/5033e04f-5446-ec02-1b76-294c78036f8f.png"
-																	 style="border: 0px  ; width: 12px; height: 12px; margin: 0px;"
-																	 width="12">&nbsp;
-																&nbsp;17:00–19:00
+																<?php
+																echo $linker_events;
+																?>
 															</td>
 														</tr>
 														</tbody>
 													</table>
+
 													<!--[if mso]>
 													</td>
 													<![endif]-->
@@ -1729,33 +1481,22 @@ function rhswp_newsletter_the_excerpt( $post, $words = 80 ) {
 													<!--[if mso]>
 													<td valign="top" width="300" style="width:300px;">
 													<![endif]-->
+
 													<table align="left" border="0" cellpadding="0" cellspacing="0"
-														   style="max-width:300px;"
-														   width="100%" class="mcnTextContentContainer">
+														   style="max-width:300px;" width="100%"
+														   class="mcnTextContentContainer">
 														<tbody>
 														<tr>
-
 															<td valign="top" class="mcnTextContent"
 																style="padding-top:0; padding-left:18px; padding-bottom:9px; padding-right:18px;">
-
-																<strong><span
-																		style="font-size:24px; line-height:36px"><span
-																			style="color:#01689B">Overheidsbrede Cyberwebinars</span></span></strong><br>
-																<br>
-																<img data-file-id="5453529" height="12"
-																	 src="https://mcusercontent.com/3e910dcf189c820fdd63ae55d/images/d26493ec-97ba-e9cd-2c79-8aed068c2bb4.png"
-																	 style="border: 0px  ; width: 12px; height: 12px; margin: 0px;"
-																	 width="12">&nbsp;
-																&nbsp;Dinsdag 30 september 2020<br>
-																<img data-file-id="5453533" height="12"
-																	 src="https://mcusercontent.com/3e910dcf189c820fdd63ae55d/images/5033e04f-5446-ec02-1b76-294c78036f8f.png"
-																	 style="border: 0px  ; width: 12px; height: 12px; margin: 0px;"
-																	 width="12">&nbsp;
-																&nbsp;17:00–19:00
+																<?php
+																echo $rechter_events;
+																?>
 															</td>
 														</tr>
 														</tbody>
 													</table>
+
 													<!--[if mso]>
 													</td>
 													<![endif]-->
@@ -1763,14 +1504,12 @@ function rhswp_newsletter_the_excerpt( $post, $words = 80 ) {
 													<!--[if mso]>
 													</tr>
 													</table>
-													<![endif]-->
-												</td>
+													<![endif]--></td>
 											</tr>
 											</tbody>
 										</table>
 										<table border="0" cellpadding="0" cellspacing="0" width="100%"
-											   class="mcnDividerBlock"
-											   style="min-width:100%;">
+											   class="mcnDividerBlock" style="min-width:100%;">
 											<tbody class="mcnDividerBlockOuter">
 											<tr>
 												<td class="mcnDividerBlockInner" style="min-width:100%; padding:18px;">
@@ -1779,152 +1518,163 @@ function rhswp_newsletter_the_excerpt( $post, $words = 80 ) {
 														   style="min-width: 100%;border-top: 1px solid #EAEAEA;">
 														<tbody>
 														<tr>
-															<td>
-																<span></span>
-															</td>
+															<td><span></span></td>
 														</tr>
 														</tbody>
 													</table>
+
 													<!--
-																	<td class="mcnDividerBlockInner" style="padding: 18px;">
-																	<hr class="mcnDividerContent" style="border-bottom-color:none; border-left-color:none; border-right-color:none; border-bottom-width:0; border-left-width:0; border-right-width:0; margin-top:0; margin-right:0; margin-bottom:0; margin-left:0;" />
-													-->
-												</td>
+										<td class="mcnDividerBlockInner" style="padding: 18px;">
+										<hr class="mcnDividerContent" style="border-bottom-color:none; border-left-color:none; border-right-color:none; border-bottom-width:0; border-left-width:0; border-right-width:0; margin-top:0; margin-right:0; margin-bottom:0; margin-left:0;" />
+						--></td>
 											</tr>
 											</tbody>
 										</table>
-										<table border="0" cellpadding="0" cellspacing="0" width="100%"
-											   class="mcnTextBlock"
-											   style="min-width:100%;">
-											<tbody class="mcnTextBlockOuter">
-											<tr>
-												<td valign="top" class="mcnTextBlockInner" style="padding-top:9px;">
-													<!--[if mso]>
-													<table align="left" border="0" cellspacing="0" cellpadding="0"
-														   width="100%"
-														   style="width:100%;">
-														<tr>
-													<![endif]-->
 
-													<!--[if mso]>
-													<td valign="top" width="600" style="width:600px;">
-													<![endif]-->
-													<table align="left" border="0" cellpadding="0" cellspacing="0"
-														   style="max-width:100%; min-width:100%;" width="100%"
-														   class="mcnTextContentContainer">
-														<tbody>
-														<tr>
 
-															<td valign="top" class="mcnTextContent"
-																style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
+										<?php
+										// als er socials zijn
+										if ( ( $theme_socials_twitter_url && $theme_socials_twitter_linktext ) || ( $theme_socials_linkedin_url && $theme_socials_linkedin_linktext ) ) {
+											// START als er socials zijn
+											?>
 
-																<strong><span
-																		style="font-family:arial,helvetica neue,helvetica,sans-serif"><span
-																			style="font-size:32px">Volg ons via</span></span></strong>
-															</td>
+
+											<table border="0" cellpadding="0" cellspacing="0" width="100%"
+												   class="mcnTextBlock" style="min-width:100%;">
+												<tbody class="mcnTextBlockOuter">
+												<tr>
+													<td valign="top" class="mcnTextBlockInner" style="padding-top:9px;">
+														<!--[if mso]>
+														<table align="left" border="0" cellspacing="0" cellpadding="0"
+															   width="100%" style="width:100%;">
+															<tr>
+														<![endif]-->
+
+														<!--[if mso]>
+														<td valign="top" width="600" style="width:600px;">
+														<![endif]-->
+
+														<table align="left" border="0" cellpadding="0" cellspacing="0"
+															   style="max-width:100%; min-width:100%;" width="100%"
+															   class="mcnTextContentContainer">
+															<tbody>
+															<tr>
+																<td valign="top" class="mcnTextContent"
+																	style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
+																	<strong><span
+																			style="font-family:arial,helvetica neue,helvetica,sans-serif"><span
+																				style="font-size:32px"><?php echo $theme_titel_socials ?></span></span></strong>
+
+
+																</td>
+															</tr>
+															</tbody>
+														</table>
+
+														<!--[if mso]>
+														</td>
+														<![endif]-->
+
+														<!--[if mso]>
 														</tr>
-														</tbody>
-													</table>
-													<!--[if mso]>
-													</td>
-													<![endif]-->
+														</table>
+														<![endif]--></td>
+												</tr>
+												</tbody>
+											</table>
+											<table border="0" cellpadding="0" cellspacing="0" width="100%"
+												   class="mcnTextBlock" style="min-width:100%;">
+												<tbody class="mcnTextBlockOuter">
+												<tr>
+													<td valign="top" class="mcnTextBlockInner" style="padding-top:9px;">
+														<!--[if mso]>
+														<table align="left" border="0" cellspacing="0" cellpadding="0"
+															   width="100%" style="width:100%;">
+															<tr>
+														<![endif]-->
 
-													<!--[if mso]>
-													</tr>
-													</table>
-													<![endif]-->
-												</td>
-											</tr>
-											</tbody>
-										</table>
-										<table border="0" cellpadding="0" cellspacing="0" width="100%"
-											   class="mcnTextBlock"
-											   style="min-width:100%;">
-											<tbody class="mcnTextBlockOuter">
-											<tr>
-												<td valign="top" class="mcnTextBlockInner" style="padding-top:9px;">
-													<!--[if mso]>
-													<table align="left" border="0" cellspacing="0" cellpadding="0"
-														   width="100%"
-														   style="width:100%;">
-														<tr>
-													<![endif]-->
+														<!--[if mso]>
+														<td valign="top" width="600" style="width:600px;">
+														<![endif]-->
 
-													<!--[if mso]>
-													<td valign="top" width="600" style="width:600px;">
-													<![endif]-->
-													<table align="left" border="0" cellpadding="0" cellspacing="0"
-														   style="max-width:100%; min-width:100%;" width="100%"
-														   class="mcnTextContentContainer">
-														<tbody>
-														<tr>
+														<table align="left" border="0" cellpadding="0" cellspacing="0"
+															   style="max-width:100%; min-width:100%;" width="100%"
+															   class="mcnTextContentContainer">
+															<tbody>
+															<tr>
+																<td valign="top" class="mcnTextContent"
+																	style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
 
-															<td valign="top" class="mcnTextContent"
-																style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
+																	<?php
+																	if ( $theme_socials_twitter_url && $theme_socials_twitter_linktext ) {
 
-                            <span style="color:#01689B"><img data-file-id="5453537" height="16"
-															 src="https://mcusercontent.com/3e910dcf189c820fdd63ae55d/images/1f96e75c-c6c3-9460-8d3b-25231c4f859c.png"
-															 style="border: 0px  ; width: 16px; height: 16px; margin: 0px;"
-															 width="16">&nbsp; &nbsp;<u>Twitter</u><br>
-<img data-file-id="5453541" height="16"
-	 src="https://mcusercontent.com/3e910dcf189c820fdd63ae55d/images/e90ba490-fd35-3401-744f-3f025ab5aee3.png"
-	 style="border: 0px  ; width: 16px; height: 16px; margin: 0px;" width="16">&nbsp; &nbsp;<u>LinkedIn</u></span>
-															</td>
+																		echo '<span style="color:#01689B"><img height="16" src="' . $asseturl . 'icon_twitter.jpeg" style="border: 0px  ; width: 16px; height: 16px; margin: 0px;" width="16">&nbsp; &nbsp;<a href="' . $theme_socials_twitter_url . '">' . $theme_socials_twitter_linktext . '</a><br>';
+
+																	}
+																	if ( $theme_socials_linkedin_url && $theme_socials_linkedin_linktext ) {
+
+																		echo '<span style="color:#01689B"><img height="16" src="' . $asseturl . 'icon_linkedin.jpeg" style="border: 0px  ; width: 16px; height: 16px; margin: 0px;" width="16">&nbsp; &nbsp;<a href="' . $theme_socials_linkedin_url . '">' . $theme_socials_linkedin_linktext . '</a><br>';
+
+																	}
+
+																	?>
+																</td>
+															</tr>
+															</tbody>
+														</table>
+
+														<!--[if mso]>
+														</td>
+														<![endif]-->
+
+														<!--[if mso]>
 														</tr>
-														</tbody>
-													</table>
-													<!--[if mso]>
-													</td>
-													<![endif]-->
+														</table>
+														<![endif]--></td>
+												</tr>
+												</tbody>
+											</table>
 
-													<!--[if mso]>
-													</tr>
-													</table>
-													<![endif]-->
-												</td>
-											</tr>
-											</tbody>
-										</table>
+											<?php
+											// EIND als er socials zijn
+
+										}
+										?>
+
 										<table border="0" cellpadding="0" cellspacing="0" width="100%"
-											   class="mcnTextBlock"
-											   style="min-width:100%;">
+											   class="mcnTextBlock" style="min-width:100%;">
 											<tbody class="mcnTextBlockOuter">
 											<tr>
 												<td valign="top" class="mcnTextBlockInner" style="padding-top:9px;">
 													<!--[if mso]>
 													<table align="left" border="0" cellspacing="0" cellpadding="0"
-														   width="100%"
-														   style="width:100%;">
+														   width="100%" style="width:100%;">
 														<tr>
 													<![endif]-->
 
 													<!--[if mso]>
 													<td valign="top" width="600" style="width:600px;">
 													<![endif]-->
+
 													<table align="left" border="0" cellpadding="0" cellspacing="0"
 														   style="max-width:100%; min-width:100%;" width="100%"
 														   class="mcnTextContentContainer">
 														<tbody>
 														<tr>
-
 															<td valign="top" class="mcnTextContent"
 																style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
-
 																<div
 																	style="background-color: #007BC7; padding: 19px 30px">
 																	<h3 style="font-weight: 700; font-size: 26px; color: #fff; text-align: left;">
-																		Digitale
-																		Overheid</h3>
-
-																	<p
-																		style="font-weight: 400; font-size: 24px; color: #fff; font-style: italic;text-align: left">
-																		Voor professionals die werken aan digitalisering
-																		van de overheid</p>
+																		<?php echo $theme_sitetitle ?></h3>
+																	<p style="font-weight: 400; font-size: 24px; color: #fff; font-style: italic;text-align: left">
+																		<?php echo $theme_sitepayoff ?></p>
 																</div>
 															</td>
 														</tr>
 														</tbody>
 													</table>
+
 													<!--[if mso]>
 													</td>
 													<![endif]-->
@@ -1932,81 +1682,72 @@ function rhswp_newsletter_the_excerpt( $post, $words = 80 ) {
 													<!--[if mso]>
 													</tr>
 													</table>
-													<![endif]-->
-												</td>
+													<![endif]--></td>
 											</tr>
 											</tbody>
 										</table>
 									</td>
 								</tr>
 							</table>
+
 							<!--[if (gte mso 9)|(IE)]>
 							</td>
 							</tr>
 							</table>
-							<![endif]-->
-						</td>
+							<![endif]--></td>
 					</tr>
 					<tr>
-						<td align="center" valign="top" id="templateFooter">
-							<!--[if (gte mso 9)|(IE)]>
+						<td align="center" valign="top" id="templateFooter"><!--[if (gte mso 9)|(IE)]>
 							<table align="center" border="0" cellspacing="0" cellpadding="0" width="600"
 								   style="width:600px;">
 								<tr>
 									<td align="center" valign="top" width="600" style="width:600px;">
 							<![endif]-->
+
 							<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%"
 								   class="templateContainer">
 								<tr>
 									<td valign="top" class="footerContainer">
 										<table border="0" cellpadding="0" cellspacing="0" width="100%"
-											   class="mcnTextBlock"
-											   style="min-width:100%;">
+											   class="mcnTextBlock" style="min-width:100%;">
 											<tbody class="mcnTextBlockOuter">
 											<tr>
 												<td valign="top" class="mcnTextBlockInner" style="padding-top:9px;">
 													<!--[if mso]>
 													<table align="left" border="0" cellspacing="0" cellpadding="0"
-														   width="100%"
-														   style="width:100%;">
+														   width="100%" style="width:100%;">
 														<tr>
 													<![endif]-->
 
 													<!--[if mso]>
 													<td valign="top" width="600" style="width:600px;">
 													<![endif]-->
+
 													<table align="left" border="0" cellpadding="0" cellspacing="0"
 														   style="max-width:100%; min-width:100%;" width="100%"
 														   class="mcnTextContentContainer">
 														<tbody>
 														<tr>
-
 															<td valign="top" class="mcnTextContent"
 																style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
-
 																<div style="text-align: left;"><span
-																		style="color:#000000">Wilt u niet langer onze nieuwsbrief ontvangen? Dan kunt u zich </span><a
-																		href="#" style="color: #01689B" target="_blank"><span
-																			style="color:#01689B">uitschrijven</span></a><span
+																		style="color:#000000"><?php echo $theme_mail_unsubscribe_text ?>
+																	</span><a href="{unsubscription_url}"
+																			  style="color: #01689B"
+																			  target="_blank"><span
+																			style="color:#01689B"><?php echo $theme_mail_unsubscribe_linktext ?></span></a><span
 																		style="color:#01689B">.</span></div>
-
 																<div style="text-align: left;"><br>
-																	<span style="color:#000000">
-
-																		$TEXT_DIT_IS_
-
-																		Dit is een publicatie van het ministerie van Binnenlandse Zaken en Koninkrijksrelaties.<br>
-<br>
-Heeft u tips of nieuws voor de nieuwsbrief? Wij horen graag van u! Stuur een e-mail naar </span><a href="http://"
-																								   style="color: #01689B"
-																								   target="_blank"><span
-																			style="color:#01689B">redactie@digitaleoverheid.nl</span></a>
+																	<span
+																		style="color:#000000"><?php echo $colofon_blok1 ?></span><br>
+																	<span
+																		style="color:#000000"><?php echo $colofon_blok2 ?></span><br>
 																</div>
-
 															</td>
 														</tr>
 														</tbody>
 													</table>
+
 													<!--[if mso]>
 													</td>
 													<![endif]-->
@@ -2014,26 +1755,26 @@ Heeft u tips of nieuws voor de nieuwsbrief? Wij horen graag van u! Stuur een e-m
 													<!--[if mso]>
 													</tr>
 													</table>
-													<![endif]-->
-												</td>
+													<![endif]--></td>
 											</tr>
 											</tbody>
 										</table>
 									</td>
 								</tr>
 							</table>
+
 							<!--[if (gte mso 9)|(IE)]>
 							</td>
 							</tr>
 							</table>
-							<![endif]-->
-						</td>
+							<![endif]--></td>
 					</tr>
 				</table>
-				<!-- // END TEMPLATE -->
-			</td>
+
+				<!-- // END TEMPLATE --></td>
 		</tr>
 	</table>
 </center>
 </body>
+
 </html>
