@@ -103,6 +103,7 @@ $theme_socials_linkedin_linktext = isset( $theme_options['theme_socials_linkedin
 $theme_socials_linkedin_linktext = isset( $theme_options['theme_socials_linkedin_linktext'] ) ? $theme_options['theme_socials_linkedin_linktext'] : '';
 $theme_mail_unsubscribe_text     = isset( $theme_options['theme_mail_unsubscribe_text'] ) ? $theme_options['theme_mail_unsubscribe_text'] : 'Wilt u deze nieuwsbrief niet meer ontvangen?';
 $theme_mail_unsubscribe_linktext = isset( $theme_options['theme_mail_unsubscribe_linktext'] ) ? $theme_options['theme_mail_unsubscribe_linktext'] : 'Meld u zich hier af';
+$theme_preview_text              = isset( $theme_options['theme_preview_text'] ) ? $theme_options['theme_preview_text'] : $theme_nieuwsbrieftitel;
 
 
 //$asseturl = $_SERVER['HTTPS'] . $_SERVER['SERVER_NAME'] . '/';
@@ -163,7 +164,7 @@ function write_bericht( $postobject ) {
 		$uitgelicht_url        = get_permalink( $postobject->ID ) . $theme_piwiktrackercode;
 		$image                 = wp_get_attachment_image_src( get_post_thumbnail_id( $postobject->ID ), $uitgelicht_image_size );
 		if ( $image ) {
-			$alt   = $uitgelicht_title;
+			$alt   = 'Lees ' . $uitgelicht_title;
 			$image = '<tr><td class="mcnCaptionBottomImageContent" align="center" valign="top" style="padding:0 9px 9px 9px;"><a href="' . $uitgelicht_url . '"><img alt="' . $alt . '" src="' . $image[0] . '" width="264" style="max-width:368px;" class="mcnImage"></a></td></tr>';
 		}
 
@@ -938,7 +939,7 @@ function maak_event( $eventobject, $asseturl ) {
 <body>
 <!--*|IF:MC_PREVIEW_TEXT|*-->
 <!--[if !gte mso 9]><!----><span class="mcnPreviewText"
-								 style="display:none; font-size:0px; line-height:0px; max-height:0px; max-width:0px; opacity:0; overflow:hidden; visibility:hidden; mso-hide:all;">*|MC_PREVIEW_TEXT|*</span>
+								 style="display:none; font-size:0px; line-height:0px; max-height:0px; max-width:0px; opacity:0; overflow:hidden; visibility:hidden; mso-hide:all;"><?php echo $theme_preview_text ?></span>
 <!--<![endif]-->
 <!--*|END:IF|*-->
 <center>
@@ -981,8 +982,10 @@ function maak_event( $eventobject, $asseturl ) {
 														<tr>
 															<td valign="top" class="mcnTextContent"
 																style="padding: 0px 18px 9px; text-align: center;">
-																<div style="text-align: left;">Kunt u deze nieuwsbrief niet goed lezen?
-																	<a href="{email_url}" style="color: #01689B">Bekijk dan de online versie</a></div>
+																<div style="text-align: left;">Kunt u deze nieuwsbrief
+																	niet goed lezen?
+																	<a href="{email_url}" style="color: #01689B">Bekijk
+																		dan de online versie</a></div>
 															</td>
 														</tr>
 														</tbody>
@@ -1033,11 +1036,7 @@ function maak_event( $eventobject, $asseturl ) {
 														<tr>
 															<td class="mcnImageContent" valign="top"
 																style="padding-right: 0px; padding-left: 0px; padding-top: 0; padding-bottom: 0; text-align:center;">
-																<img align="center" alt=""
-																	 src="https://mcusercontent.com/3e910dcf189c820fdd63ae55d/images/73382f6f-c38d-6c1d-5865-4808fad65e89.png"
-																	 width="51"
-																	 style="max-width:100px; padding-bottom: 0; display: inline !important; vertical-align: bottom;"
-																	 class="mcnImage"></td>
+																<img align="center" alt="Logo Rijksoverheid" src="<?php echo $asseturl . 'digitaleoverheid-header.png' ?>" width="51" style="max-width:100px; padding-bottom: 0; display: inline !important; vertical-align: bottom;" class="mcnImage"></td>
 														</tr>
 														</tbody>
 													</table>
@@ -1125,7 +1124,7 @@ function maak_event( $eventobject, $asseturl ) {
 											$uitgelicht_url        = get_permalink( $uitgelicht->ID ) . $theme_piwiktrackercode;
 											$image                 = wp_get_attachment_image_src( get_post_thumbnail_id( $uitgelicht->ID ), $uitgelicht_image_size );
 											if ( $image ) {
-												$alt   = $uitgelicht_title;
+												$alt   = 'Lees ' . $uitgelicht_title;
 												$image = '<tr><td class="mcnCaptionBottomImageContent" align="center" valign="top" style="padding:0 9px 9px 9px;"><a href="' . $uitgelicht_url . '"><img alt="' . $alt . '" src="' . $image[0] . '" width="564" style="max-width:768px;" class="mcnImage"></a></td></tr>';
 
 											}
@@ -1147,11 +1146,7 @@ function maak_event( $eventobject, $asseturl ) {
 																		class="null"><span style="font-size:14px"><span
 																				style="color: #696969;font-weight: 600;"><?php echo $uitgelicht_label ?></span></span>
 																	</p>
-																	<h1 class="null"><a
-																			href="<?php echo $uitgelicht_url ?>"><strong>
-																				<span
-																					style="color:#01689B; font-size:32px; line-height:48px;text-decoration: none;"><?php echo $uitgelicht_title ?></span></strong></a>
-																	</h1>
+																	<h1 class="null"><a href="<?php echo $uitgelicht_url ?>" style="text-decoration: none;"><strong> <span style="color:#01689B; font-size:32px; line-height:48px;text-decoration: none;"><?php echo $uitgelicht_title ?></span></strong></a></h1>
 																	<p style="color:#000; font-size: 18px; font-weight: bold; margin: 10px 0">
 																		<?php echo $uitgelicht_date ?></p>
 																	<p style="color:#000; font-size: 18px"><?php echo $uitgelicht_excerpt ?></p>

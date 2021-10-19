@@ -41,6 +41,7 @@ $theme_defaults = array(
 	'theme_socials_linkedin_linktext' => 'Volg ons op LinkedIn',
 	'theme_mail_unsubscribe_text'     => 'Wilt u deze nieuwsbrief niet meer ontvangen?',
 	'theme_mail_unsubscribe_linktext' => 'Meld u zich hier af',
+	'theme_preview_text'              => 'Nieuwsbrief Digitale Overheid',
 );
 
 // Mandatory!
@@ -93,17 +94,6 @@ foreach ( $myposts as $post ) {
 			<?php $controls->text( 'theme_piwiktrackercode', 50 ); ?>
 		</td>
 	</tr>
-
-	<tr valign="top">
-		<th>Titel boven berichten</th>
-		<td>
-			<?php $controls->text( 'theme_titel_nieuws', 50 ); ?>
-		</td>
-	</tr>
-	<tr>
-		<th>Aantal berichten</th>
-		<td>Selecteer <?php $controls->text( 'theme_max_posts', 5 ); ?> berichten</td>
-	</tr>
 	<tr>
 		<th>Uitgelicht bericht</th>
 		<td>
@@ -117,10 +107,36 @@ foreach ( $myposts as $post ) {
 		</td>
 	</tr>
 	<tr>
+		<th>Aantal berichten</th>
+		<td>Selecteer <?php $controls->text( 'theme_max_posts', 5 ); ?> berichten</td>
+	</tr>
+	<tr>
 		<th>Filter op tag</th>
 		<td>
 			<?php $controls->text( 'theme_tags', 50 ); ?>
 			<p class="description" style="display: inline"> kommagescheiden invoeren</p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<th>Titel in de nieuwsbrief</th>
+		<td>
+			<?php $controls->textarea( 'theme_nieuwsbrieftitel' ); ?>
+			<p><code>{date}</code> is <em lang="en">placeholder</em> voor de datum; bij het versturen van de nieuwsbrief
+				wordt deze vervangen door de datum</p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<th>Preview text</th>
+		<td>
+			<?php $controls->textarea( 'theme_preview_text' ); ?>
+			<p>Max. 2 regels tekst met een samenvatting van de inhoud van de nieuwbrief.</p>
+		</td>
+	</tr>
+
+	<tr valign="top">
+		<th>Titel boven berichten</th>
+		<td>
+			<?php $controls->text( 'theme_titel_nieuws', 50 ); ?>
 		</td>
 	</tr>
 
@@ -142,15 +158,6 @@ foreach ( $myposts as $post ) {
 	</tr>
 
 
-	<tr valign="top">
-		<th>Titel in de nieuwsbrief</th>
-		<td>
-			<?php $controls->textarea( 'theme_nieuwsbrieftitel' ); ?>
-			<p><code>{date}</code> is <em lang="en">placeholder</em> voor de datum; bij het versturen van de nieuwsbrief
-				wordt deze vervangen door de datum</p>
-			<p>&nbsp;</p>
-		</td>
-	</tr>
 
 
 	<tr valign="top">
@@ -195,8 +202,6 @@ foreach ( $myposts as $post ) {
 			<?php $controls->text( 'theme_socials_linkedin_linktext', 50 ); ?>
 		</td>
 	</tr>
-
-
 	<tr valign="top">
 		<th>inleiding bij uitschrijven nieuwsbrief</th>
 		<td>
