@@ -1090,9 +1090,9 @@ function maak_event( $eventobject, $asseturl ) {
 																style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
 																<div
 																	style="display:flex; width: 100%; align-items: center; justify-content: space-between; background-color:#007BC7;">
-																	<p style="font-weight: 700; font-size: 24px; color: #fff; margin-left: 30px; padding:19px 0px">
+																	<p style="font-weight: 700; font-size: 24px; color: #fff; line-height: 24px; margin-left: 30px;margin-top: 5px;margin-bottom: 5px;margin-right: 16px; padding:19px 0px">
 																		<?php echo $theme_sitetitle ?></p>
-																	<p style="font-weight: 400; font-size: 18px; color: #fff; margin-right: 30px; padding:19px 0px">
+																	<p style="font-weight: 400; font-size: 18px; color: #fff; line-height: 24px; margin-right: 30px;margin-top: 5px;margin-bottom: 5px;margin-left: 16px; padding:19px 0px">
 																		<?php echo $theme_nieuwsbrieftitel ?></p>
 																</div>
 															</td>
@@ -1603,12 +1603,12 @@ function maak_event( $eventobject, $asseturl ) {
 																	<?php
 																	if ( $theme_socials_twitter_url && $theme_socials_twitter_linktext ) {
 
-																		echo '<span style="color:#01689B"><img height="16" src="' . $asseturl . 'icon_twitter.jpeg" style="border: 0px  ; width: 16px; height: 16px; margin: 0px;" width="16">&nbsp; &nbsp;<a href="' . $theme_socials_twitter_url . '">' . $theme_socials_twitter_linktext . '</a><br>';
+																		echo '<span style="color:#01689B"><img height="16" src="' . $asseturl . 'icon_twitter.jpeg" style="border: 0px  ; width: 16px; height: 16px; margin: 0px;" width="16">&nbsp; &nbsp;<a href="' . $theme_socials_twitter_url . '" style="color:#01689B">' . $theme_socials_twitter_linktext . '</a><br>';
 
 																	}
 																	if ( $theme_socials_linkedin_url && $theme_socials_linkedin_linktext ) {
 
-																		echo '<span style="color:#01689B"><img height="16" src="' . $asseturl . 'icon_linkedin.jpeg" style="border: 0px  ; width: 16px; height: 16px; margin: 0px;" width="16">&nbsp; &nbsp;<a href="' . $theme_socials_linkedin_url . '">' . $theme_socials_linkedin_linktext . '</a><br>';
+																		echo '<span style="color:#01689B"><img height="16" src="' . $asseturl . 'icon_linkedin.jpeg" style="border: 0px  ; width: 16px; height: 16px; margin: 0px;" width="16">&nbsp; &nbsp;<a href="' . $theme_socials_linkedin_url . '" style="color:#01689B">' . $theme_socials_linkedin_linktext . '</a><br>';
 
 																	}
 
