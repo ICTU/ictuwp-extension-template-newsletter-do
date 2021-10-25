@@ -108,7 +108,9 @@ foreach ( $myposts as $post ) {
 	</tr>
 	<tr>
 		<th>Aantal berichten</th>
-		<td>Selecteer <?php $controls->text( 'theme_max_posts', 5 ); ?> berichten</td>
+		<td>Selecteer <?php $controls->text( 'theme_max_posts', 5 ); ?> berichten
+		<p>Dit is het aantal berichten onder het uitgelichte bericht.</p>
+		</td>
 	</tr>
 	<tr>
 		<th>Filter op tag</th>
