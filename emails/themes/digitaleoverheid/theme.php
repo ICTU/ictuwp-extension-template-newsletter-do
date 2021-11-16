@@ -210,10 +210,10 @@ function maak_event( $eventobject, $asseturl ) {
 
 		$return = '<a href="' . $uitgelicht_url . '" style="text-decoration: none;"><strong><span style="font-size:18px; line-height:24px; color:#01689B">' . get_the_title( $eventobject->ID ) . '</span></span></strong></a><br>';
 		if ( $datum ) {
-			$return .= '<img height="12" src="' . $asseturl . 'icon_calendar.jpeg" style="border: 0px  ; width: 12px; height: 12px; margin: 0px;" width="12">&nbsp;&nbsp;' . $datum . '<br>';
+			$return .= '<img alt="datum" height="12" src="' . $asseturl . 'icon_calendar.jpeg" style="border: 0px  ; width: 12px; height: 12px; margin: 0px;" width="12">&nbsp;&nbsp;' . $datum . '<br>';
 		}
 		if ( $tijd ) {
-			$return .= '<img height="12" src="' . $asseturl . 'icon_clock.jpeg" style="border: 0px  ; width: 12px; height: 12px; margin: 0px;" width="12">&nbsp;&nbsp;' . $tijd . '<br><br>';
+			$return .= '<img alt="tijd" height="12" src="' . $asseturl . 'icon_clock.jpeg" style="border: 0px  ; width: 12px; height: 12px; margin: 0px;" width="12">&nbsp;&nbsp;' . $tijd . '<br><br>';
 		}
 
 	}
@@ -226,7 +226,7 @@ function maak_event( $eventobject, $asseturl ) {
 
 ?>
 <!doctype html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml"
+<html lang="nl" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml"
 	  xmlns:o="urn:schemas-microsoft-com:office:office">
 <head>
 	<!-- NAME: 1:2:1 COLUMN - FULL WIDTH -->
@@ -1603,12 +1603,12 @@ function maak_event( $eventobject, $asseturl ) {
 																	<?php
 																	if ( $theme_socials_twitter_url && $theme_socials_twitter_linktext ) {
 
-																		echo '<span style="color:#01689B"><img height="16" src="' . $asseturl . 'icon_twitter.jpeg" style="border: 0px  ; width: 16px; height: 16px; margin: 0px;" width="16">&nbsp; &nbsp;<a href="' . $theme_socials_twitter_url . '" style="color:#01689B">' . $theme_socials_twitter_linktext . '</a><br>';
+																		echo '<span style="color:#01689B"><img alt="twitter-logo" height="16" src="' . $asseturl . 'icon_twitter.jpeg" alt="" style="border: 0px  ; width: 16px; height: 16px; margin: 0px;" width="16">&nbsp; &nbsp;<a href="' . $theme_socials_twitter_url . '" style="color:#01689B">' . $theme_socials_twitter_linktext . '</a><br>';
 
 																	}
 																	if ( $theme_socials_linkedin_url && $theme_socials_linkedin_linktext ) {
 
-																		echo '<span style="color:#01689B"><img height="16" src="' . $asseturl . 'icon_linkedin.jpeg" style="border: 0px  ; width: 16px; height: 16px; margin: 0px;" width="16">&nbsp; &nbsp;<a href="' . $theme_socials_linkedin_url . '" style="color:#01689B">' . $theme_socials_linkedin_linktext . '</a><br>';
+																		echo '<span style="color:#01689B"><img alt="linkedin-logo" height="16" src="' . $asseturl . 'icon_linkedin.jpeg" alt="" style="border: 0px  ; width: 16px; height: 16px; margin: 0px;" width="16">&nbsp; &nbsp;<a href="' . $theme_socials_linkedin_url . '" style="color:#01689B">' . $theme_socials_linkedin_linktext . '</a><br>';
 
 																	}
 
