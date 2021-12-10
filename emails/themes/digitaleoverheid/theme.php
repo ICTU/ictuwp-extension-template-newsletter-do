@@ -213,7 +213,7 @@ function maak_event( $eventobject, $asseturl ) {
 		$tijd           = $eventobject->output( '#_EVENTTIMES' );
 // $location_town = $eventobject->output( '#_LOCATIONTOWN' );
 
-		$return = '<a href="' . $uitgelicht_url . '" ><strong><span style="font-size:18px; line-height:24px; color:#01689B">' . get_the_title( $eventobject->ID ) . '</span></span></strong></a><br>';
+		$return = '<a href="' . $uitgelicht_url . '"><strong><span style="font-size:18px; line-height:24px; color:#01689B">' . get_the_title( $eventobject->ID ) . '</span></span></strong></a><br>';
 		if ( $datum ) {
 			$return .= '<img alt="datum" height="12" src="' . $asseturl . 'icon_calendar.jpeg" style="border: 0px; width: 12px; height: 12px; margin: 0px;" width="12">&nbsp;&nbsp;' . $datum . '<br>';
 		}
@@ -918,22 +918,6 @@ function maak_event( $eventobject, $asseturl ) {
 												<td valign="top" class="mcnTextBlockInner" style="padding-top:9px;">
 
 
-													<!-- <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width:100%; min-width:100%;" width="100%" class="mcnTextContentContainer">
-                                    <tbody>
-                                        <tr>
-                                            <td valign="top" class="mcnTextContent"
-                                            style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
-                                                <div
-                                                style="display:flex; width: 100%; align-items: center; justify-content: space-between; background-color:#007BC7;">
-                                                <p style="font-weight: 700; font-size: 24px; color: #fff; line-height: 24px; margin-left: 30px;margin-top: 5px;margin-bottom: 5px;margin-right: 16px; padding:19px 0px">
-                                                <?php /* echo $theme_sitetitle */ ?></p>
-                                                <p style="font-weight: 400; font-size: 18px; color: #fff; line-height: 24px; margin-right: 30px;margin-top: 5px;margin-bottom: 5px;margin-left: 16px; padding:19px 0px">
-                                                <?php /* echo  $theme_nieuwsbrieftitel */ ?></ p >
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table> -->
 													<table width="94%" align="center" role="presentation"
 														   style="background-color: #007BC7;">
 														<tbody>
@@ -997,8 +981,7 @@ function maak_event( $eventobject, $asseturl ) {
 																				<span
 																					style="color:#01689B; font-size:32px; line-height:48px;"><?php echo $uitgelicht_title ?></span></strong></a>
 																	</h1>
-																	<p style="color:#000; font-size: 18px; font-weight: bold; margin: 10px 0">
-																		<?php echo $uitgelicht_date ?> </ p >
+																	<p style="color:#000; font-size: 18px; font-weight: bold; margin: 10px 0"><?php echo $uitgelicht_date ?></p>
 																	<p style="color:#000; font-size: 18px"><?php echo $uitgelicht_excerpt ?></p>
 																</td>
 															</tr>
