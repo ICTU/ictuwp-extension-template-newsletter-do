@@ -894,11 +894,10 @@ function maak_event( $eventobject, $asseturl ) {
 							<table width="578" align="center" role="presentation" style="border-collapse:collapse;">
 								<tbody>
 								<tr>
-									<td width="264" style="max-width: 264px;">&nbsp;</td>
-									<td width="63" style="max-width: 63px;">
-									<img align="center" alt="Logo Rijksoverheid" src="<?php echo $asseturl . 'digitaleoverheid-header.png' ?>" width="63" height="125" style="padding-bottom: 0px; vertical-align: bottom; border-radius: 0%; display: block !important; width: 63px; height: 125px;" class="mcnImage">
+									<td width="264">&nbsp;</td>
+									<td width="314">
+									<img align="center" alt="Logo Rijksoverheid" src="<?php echo $asseturl . 'digitaleoverheid-header.png' ?>" width="314" height="125" style="padding-bottom: 0px; vertical-align: bottom; border-radius: 0%; display: block !important; width: 63px; height: 125px;" class="mcnImage">
 									</td>
-									<td width="251" style="max-width: 251px;">&nbsp;</td>
 								</tr>
 								</tbody>
 							</table>
