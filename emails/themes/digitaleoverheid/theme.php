@@ -896,7 +896,7 @@ function maak_event( $eventobject, $asseturl ) {
 								<tr>
 									<td width="264">&nbsp;</td>
 									<td width="314">
-									<img align="center" alt="Logo Rijksoverheid" src="<?php echo $asseturl . 'digitaleoverheid-header.png' ?>" width="314" height="125" style="padding-bottom: 0px; vertical-align: bottom; border-radius: 0%; display: block !important; width: 63px; height: 125px;" class="mcnImage">
+									<img align="center" alt="Logo Rijksoverheid" src="<?php echo $asseturl . 'digitaleoverheid-header.png' ?>" width="314" height="125" style="padding-bottom: 0px; vertical-align: bottom; border-radius: 0%; display: block !important; width: 314px; height: 125px;" class="mcnImage">
 									</td>
 								</tr>
 								</tbody>
