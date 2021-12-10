@@ -1427,17 +1427,18 @@ function maak_event( $eventobject, $asseturl ) {
 														   class="mcnTextContentContainer">
 														<tbody>
 														<tr>
-															<td valign="top" class="mcnTextContent"
-																style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
-																<div style="text-align: left;">
-																	<span style="color:#000000"><?php echo $theme_mail_unsubscribe_text ?></span>
-																	<a href="{unsubscription_url}" style="color: #01689B" target="_blank"><span style="color:#01689B"><?php echo $theme_mail_unsubscribe_linktext ?></span></a>
-																	<span style="color:#01689B">.</span>
-																</div>
-																<div style="text-align: left;"><br>
+															<td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
+																<div style="text-align: left;"><br><br>
 																	<span style="color:#000000"><?php echo $colofon_blok1 ?></span><br>
 																	<span style="color:#000000"><?php echo $colofon_blok2 ?></span><br>
 																</div>
+
+																<div style="text-align: left;">
+																	<span style="color:#000000"><br><?php echo $theme_mail_unsubscribe_text ?></span>
+																	<a href="{unsubscription_url}" style="color: #01689B" target="_blank"><span style="color:#01689B"><?php echo $theme_mail_unsubscribe_linktext ?></span></a>
+																	<span style="color:#01689B">.</span>
+																</div>
+
 															</td>
 														</tr>
 														</tbody>
