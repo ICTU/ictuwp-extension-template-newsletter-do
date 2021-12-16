@@ -169,28 +169,23 @@ function write_bericht( $postobject ) {
 		}
 
 		$return = '<table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnCaptionBlock">
-  <tbody class="mcnCaptionBlockOuter">
-  <tr>
-    <td class="mcnCaptionBlockInner" valign="top" style="padding:9px;">
-      <table align="left" border="0" cellpadding="0"
-             cellspacing="0" class="mcnCaptionBottomContent">
-        <tbody>' . $image . '
-        <tr>
-          <td class="mcnTextContent" valign="top" style="padding:0 9px 0 9px;" width="264">
-            <p style="font-size:14px"><strong><span style="color:#696969; text-transform:uppercase">' . $uitgelicht_label . '</span></strong>
-            </p>
-            <h2 class="null"><a href="' . $uitgelicht_url . '"
-                                style="color:#01689B; text-decoration: none"><strong><span
-              style="font-size:24px; margin: 12px 0px; line-height:36px">' . $uitgelicht_title . '</span></strong></a>
-            </h2>
-            <p style="font-size:18px"><strong>' . $uitgelicht_date . '</strong></p>
-            <p>' . $uitgelicht_excerpt . '</p></td>
-        </tr>
-        </tbody>
-      </table>
-    </td>
-  </tr>
-  </tbody>
+<tbody class="mcnCaptionBlockOuter">
+<tr>
+  <td class="mcnCaptionBlockInner" valign="top" style="padding:9px;">
+    <table align="left" border="0" cellpadding="0" cellspacing="0" class="mcnCaptionBottomContent">
+      <tbody>' . $image . '
+      <tr>
+        <td class="mcnTextContent" valign="top" style="padding:0 9px 0 9px;" width="264">
+          <p style="font-size:14px"><strong><span style="color:#696969; text-transform:uppercase">' . $uitgelicht_label . '</span></strong></p>
+          <h2 class="null"><a href="' . $uitgelicht_url . '" style="color:#01689B; text-decoration: none"><strong><span style="font-size:24px; margin: 12px 0px; line-height:32px">' . $uitgelicht_title . '</span></strong></a></h2>
+          <p style="font-size:18px"><strong>' . $uitgelicht_date . '</strong></p>
+          <p>' . $uitgelicht_excerpt . '</p></td>
+      </tr>
+      </tbody>
+    </table>
+  </td>
+</tr>
+</tbody>
 </table>';
 	}
 
@@ -840,10 +835,9 @@ function maak_event( $eventobject, $asseturl ) {
 														<tr>
 															<td valign="top" class="mcnTextContent"
 																style="padding: 0px 18px 9px; text-align: center;">
-																<div style="text-align: left;">Kunt u deze nieuwsbrief
-																	niet goed lezen?
-																	<a href="{email_url}" style="color: #01689B">Bekijk
-																		dan de online versie</a></div>
+																<div style="text-align: left;">Kunt u deze nieuwsbrief niet goed lezen?
+																<a href="{email_url}" style="color: #01689B">Bekijk dan de online versie</a>
+															</div>
 															</td>
 														</tr>
 														</tbody>
@@ -894,9 +888,9 @@ function maak_event( $eventobject, $asseturl ) {
 							<table width="578" align="center" role="presentation" style="border-collapse:collapse;">
 								<tbody>
 								<tr>
-									<td width="264">&nbsp;</td>
+									<td width="264"></td>
 									<td width="314">
-									<img align="center" alt="Logo Rijksoverheid" src="<?php echo $asseturl . 'digitaleoverheid-header-breed.png' ?>" width="314" height="125" style="padding-bottom: 0px; vertical-align: bottom; border-radius: 0%; display: block !important; width: 314px; height: 125px;" class="mcnImage">
+										<img align="center" alt="Logo Rijksoverheid" src="<?php echo $asseturl . 'digitaleoverheid-header.png' ?>" width="314" height="125" style="padding-bottom: 0px; vertical-align: bottom; border-radius: 0%; display: block !important;" class="mcnImage">
 									</td>
 								</tr>
 								</tbody>
@@ -916,8 +910,6 @@ function maak_event( $eventobject, $asseturl ) {
 											<tbody class="mcnTextBlockOuter">
 											<tr>
 												<td valign="top" class="mcnTextBlockInner" style="padding-top:9px;">
-
-
 													<table width="94%" align="center" role="presentation"
 														   style="background-color: #007BC7;">
 														<tbody>
@@ -973,13 +965,14 @@ function maak_event( $eventobject, $asseturl ) {
 															<tr>
 																<td class="mcnTextContent" valign="top"
 																	style="padding:0 9px 0 9px;" width="564"><p
-																		class="null"><span style="font-size:14px"><span
+																		class="null"><span
+																			style="font-size:14px"><span
 																				style="color: #696969;font-weight: 600;"><?php echo $uitgelicht_label ?></span></span>
 																	</p>
 																	<h1 class="null"><a
 																			href="<?php echo $uitgelicht_url ?>"><strong>
 																				<span
-																					style="color:#01689B; font-size:32px; line-height:48px;"><?php echo $uitgelicht_title ?></span></strong></a>
+																					style="color:#01689B; font-size:24px; line-height:32px;"><?php echo $uitgelicht_title ?></span></strong></a>
 																	</h1>
 																	<p style="color:#000; font-size: 18px; font-weight: bold; margin: 10px 0"><?php echo $uitgelicht_date ?></p>
 																	<p style="color:#000; font-size: 18px"><?php echo $uitgelicht_excerpt ?></p>
@@ -1003,7 +996,7 @@ function maak_event( $eventobject, $asseturl ) {
 											   class="mcnDividerBlock" style="min-width:100%;">
 											<tbody class="mcnDividerBlockOuter">
 											<tr>
-												<td class="mcnDividerBlockInner" style="min-width:100%; padding:18px;">
+												<td class="mcnDividerBlockInner" style="min-width:100%; padding:9px;">
 													<table class="mcnDividerContent" border="0" cellpadding="0"
 														   cellspacing="0" width="100%"
 														   style="min-width: 100%;border-top: 1px solid #EAEAEA;">
@@ -1013,11 +1006,7 @@ function maak_event( $eventobject, $asseturl ) {
 														</tr>
 														</tbody>
 													</table>
-
-													<!--
-													<td class="mcnDividerBlockInner" style="padding: 18px;">
-													<hr class="mcnDividerContent" style="border-bottom-color:none; border-left-color:none; border-right-color:none; border-bottom-width:0; border-left-width:0; border-right-width:0; margin-top:0; margin-right:0; margin-bottom:0; margin-left:0;" />
-													--></td>
+												</td>
 											</tr>
 											</tbody>
 										</table>
@@ -1138,12 +1127,7 @@ function maak_event( $eventobject, $asseturl ) {
 						</td>
 					</tr>
 					<tr>
-						<td align="center" valign="top" id="templateLowerBody"><!--[if (gte mso 9)|(IE)]>
-							<table align="center" border="0" cellspacing="0" cellpadding="0" width="600"
-								   style="width:600px;">
-								<tr>
-									<td align="center" valign="top" width="600" style="width:600px;">
-							<![endif]-->
+						<td align="center" valign="top" id="templateLowerBody">
 
 							<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%"
 								   class="templateContainer">
@@ -1164,10 +1148,7 @@ function maak_event( $eventobject, $asseturl ) {
 														</tbody>
 													</table>
 
-													<!--
-													<td class="mcnDividerBlockInner" style="padding: 18px;">
-													<hr class="mcnDividerContent" style="border-bottom-color:none; border-left-color:none; border-right-color:none; border-bottom-width:0; border-left-width:0; border-right-width:0; margin-top:0; margin-right:0; margin-bottom:0; margin-left:0;" />
-													--></td>
+												</td>
 											</tr>
 											</tbody>
 										</table>
@@ -1234,10 +1215,12 @@ function maak_event( $eventobject, $asseturl ) {
 											</tr>
 											</tbody>
 										</table>
+
+
 										<table border="0" cellpadding="0" cellspacing="0" class="templateContainer">
 											<tbody class="mcnTextBlockOuter">
 											<tr width="100%">
-												<td class="columnWrapper" valign="top" align="left">
+												<td class="columnWrapper" valign="top" width="50%">
 													<table align="center" border="0" cellpadding="0" cellspacing="0"
 														   width="100%">
 														<tbody>
@@ -1252,7 +1235,7 @@ function maak_event( $eventobject, $asseturl ) {
 														</tbody>
 													</table>
 												</td>
-												<td class="columnWrapper" valign="top" align="left">
+												<td class="columnWrapper" valign="top" width="50%">
 													<table align="center" border="0" cellpadding="0" cellspacing="0"
 														   width="100%">
 														<tbody>
@@ -1271,6 +1254,8 @@ function maak_event( $eventobject, $asseturl ) {
 											</tr>
 											</tbody>
 										</table>
+
+
 										<table border="0" cellpadding="0" cellspacing="0" width="100%"
 											   class="mcnDividerBlock" style="min-width:100%;">
 											<tbody class="mcnDividerBlockOuter">
@@ -1427,18 +1412,15 @@ function maak_event( $eventobject, $asseturl ) {
 														   class="mcnTextContentContainer">
 														<tbody>
 														<tr>
-															<td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
-																<div style="text-align: left;"><br><br>
+															<td valign="top" class="mcnTextContent"
+																style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
+																<div style="text-align: left;">
 																	<span style="color:#000000"><?php echo $colofon_blok1 ?></span><br>
 																	<span style="color:#000000"><?php echo $colofon_blok2 ?></span><br>
 																</div>
-
-																<div style="text-align: left;">
-																	<span style="color:#000000"><br><?php echo $theme_mail_unsubscribe_text ?></span>
-																	<a href="{unsubscription_url}" style="color: #01689B" target="_blank"><span style="color:#01689B"><?php echo $theme_mail_unsubscribe_linktext ?></span></a>
-																	<span style="color:#01689B">.</span>
+																<div style="text-align: left;"><br>
+																	<span style="color:#000000"><?php echo $theme_mail_unsubscribe_text ?></span> <a href="{unsubscription_url}" style="color: #01689B" target="_blank"><span style="color:#01689B"><?php echo $theme_mail_unsubscribe_linktext ?></span></a><span style="color:#01689B">.</span>
 																</div>
-
 															</td>
 														</tr>
 														</tbody>
