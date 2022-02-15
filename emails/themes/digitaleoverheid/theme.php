@@ -177,8 +177,8 @@ function write_bericht( $postobject ) {
       <tr>
         <td class="mcnTextContent" valign="top" style="padding:0 9px 0 9px;" width="264">
           <p style="font-size:14px"><strong><span style="color:#696969; text-transform:uppercase">' . $uitgelicht_label . '</span></strong></p>
-          <h2 class="null"><a href="' . $uitgelicht_url . '" style="color:#01689B; text-decoration: none"><strong><span style="font-size:24px; margin: 12px 0px; line-height:32px">' . $uitgelicht_title . '</span></strong></a></h2>
-          <p style="font-size:18px"><strong>' . $uitgelicht_date . '</strong></p>
+          <h2 class="null"><a href="' . $uitgelicht_url . '" style="color:#01689B; text-decoration: none"><strong><span style="font-size:18px; line-height:24px; margin: 12px 0px;">' . $uitgelicht_title . '</span></strong></a></h2>
+          <p style="font-size:14px"><strong>' . $uitgelicht_date . '</strong></p>
           <p>' . $uitgelicht_excerpt . '</p></td>
       </tr>
       </tbody>
