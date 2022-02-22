@@ -165,14 +165,14 @@ function write_bericht( $postobject ) {
 		$image                 = wp_get_attachment_image_src( get_post_thumbnail_id( $postobject->ID ), $uitgelicht_image_size );
 		if ( $image ) {
 			$alt   = 'Lees ' . $uitgelicht_title;
-			$image = '<tr><td class="mcnCaptionBottomImageContent" align="center" valign="top" style="padding:0 9px 9px 9px;"><a href="' . $uitgelicht_url . '"><img alt="' . $alt . '" src="' . $image[0] . '" width="264" class="mcnImage"></a></td></tr>';
+			$image = '<tr><td class="mcnCaptionBottomImageContent" align="center" valign="top" style="padding:0 9px 9px 9px;"><a href="' . $uitgelicht_url . '" aria-hidden="true" tabindex="-1"><img alt="' . $alt . '" src="' . $image[0] . '" width="264" class="mcnImage"></a></td></tr>';
 		}
 
-		$return = '<table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnCaptionBlock">
+		$return = '<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnCaptionBlock">
 <tbody class="mcnCaptionBlockOuter">
 <tr>
   <td class="mcnCaptionBlockInner" valign="top" style="padding:9px;">
-    <table align="left" border="0" cellpadding="0" cellspacing="0" class="mcnCaptionBottomContent">
+    <table role="presentation" align="left" border="0" cellpadding="0" cellspacing="0" class="mcnCaptionBottomContent">
       <tbody>' . $image . '
       <tr>
         <td class="mcnTextContent" valign="top" style="padding:0 9px 0 9px;" width="264">
@@ -809,26 +809,26 @@ function maak_event( $eventobject, $asseturl ) {
 	  style="display:none; font-size:0px; line-height:0px; max-height:0px; max-width:0px; opacity:0; overflow:hidden; visibility:hidden; mso-hide:all;"><?php echo $theme_preview_text ?></span>
 
 <center>
-	<table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable">
+	<table role="presentation" align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable">
 		<tr>
 			<td align="center" valign="top" id="bodyCell"><!-- BEGIN TEMPLATE // -->
 
-				<table border="0" cellpadding="0" cellspacing="0" width="100%">
+				<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
 					<tr>
 						<td align="center" valign="top" id="templatePreheader">
 
-							<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%"
+							<table role="presentation" align="center" border="0" cellpadding="0" cellspacing="0" width="100%"
 								   class="templateContainer">
 								<tr>
 									<td valign="top" class="preheaderContainer">
-										<table border="0" cellpadding="0" cellspacing="0" width="100%"
+										<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%"
 											   class="mcnTextBlock" style="min-width:100%;">
 											<tbody class="mcnTextBlockOuter">
 											<tr>
 												<td valign="top" class="mcnTextBlockInner" style="padding-top:9px;">
 
 
-													<table align="left" border="0" cellpadding="0" cellspacing="0"
+													<table role="presentation" align="left" border="0" cellpadding="0" cellspacing="0"
 														   style="max-width:100%; min-width:100%;" width="100%"
 														   class="mcnTextContentContainer">
 														<tbody>
@@ -856,16 +856,16 @@ function maak_event( $eventobject, $asseturl ) {
 					<tr>
 						<td align="center" valign="top" id="templateHeader">
 
-							<!-- <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%"
+							<!-- <table role="presentation" align="center" border="0" cellpadding="0" cellspacing="0" width="100%"
  class="templateContainer">
     <tr>
         <td valign="top" class="headerContainer">
-            <table border="0" cellpadding="0" cellspacing="0" width="100%"
+            <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%"
             class="mcnImageBlock" style="min-width:100%;">
                 <tbody class="mcnImageBlockOuter">
                     <tr>
                         <td valign="top" style="padding:0px" class="mcnImageBlockInner">
-                            <table align="left" width="100%" border="0" cellpadding="0"
+                            <table role="presentation" align="left" width="100%" border="0" cellpadding="0"
                             cellspacing="0" class="mcnImageContentContainer"
                             style="min-width:100%;">
                                 <tbody>
@@ -885,7 +885,7 @@ function maak_event( $eventobject, $asseturl ) {
     </tr>
  </table> -->
 
-							<table width="578" align="center" role="presentation" style="border-collapse:collapse;">
+							<table role="presentation" width="578" align="center" role="presentation" style="border-collapse:collapse;">
 								<tbody>
 								<tr>
 									<td width="264"></td>
@@ -901,16 +901,16 @@ function maak_event( $eventobject, $asseturl ) {
 					</tr>
 					<tr>
 						<td align="center" valign="top" id="templateUpperBody">
-							<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%"
+							<table role="presentation" align="center" border="0" cellpadding="0" cellspacing="0" width="100%"
 								   class="templateContainer">
 								<tr>
 									<td valign="top" class="bodyContainer">
-										<table border="0" cellpadding="0" cellspacing="0" width="100%"
+										<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%"
 											   class="mcnTextBlock" style="min-width:100%;">
 											<tbody class="mcnTextBlockOuter">
 											<tr>
 												<td valign="top" class="mcnTextBlockInner" style="padding-top:9px;">
-													<table width="94%" align="center" role="presentation"
+													<table role="presentation" width="94%" align="center" role="presentation"
 														   style="background-color: #007BC7;">
 														<tbody>
 														<tr>
@@ -953,12 +953,12 @@ function maak_event( $eventobject, $asseturl ) {
 
 											?>
 
-											<table border="0" cellpadding="0" cellspacing="0" width="100%"
+											<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%"
 												   class="mcnCaptionBlock">
 												<tbody class="mcnCaptionBlockOuter">
 												<tr>
 													<td class="mcnCaptionBlockInner" valign="top" style="padding:9px;">
-														<table align="left" border="0" cellpadding="0" cellspacing="0"
+														<table role="presentation" align="left" border="0" cellpadding="0" cellspacing="0"
 															   class="mcnCaptionBottomContent">
 															<tbody>
 															<?php echo $image ?>
@@ -992,12 +992,12 @@ function maak_event( $eventobject, $asseturl ) {
 										?>
 
 
-										<table border="0" cellpadding="0" cellspacing="0" width="100%"
+										<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%"
 											   class="mcnDividerBlock" style="min-width:100%;">
 											<tbody class="mcnDividerBlockOuter">
 											<tr>
 												<td class="mcnDividerBlockInner" style="min-width:100%; padding:9px;">
-													<table class="mcnDividerContent" border="0" cellpadding="0"
+													<table role="presentation" class="mcnDividerContent" border="0" cellpadding="0"
 														   cellspacing="0" width="100%"
 														   style="min-width: 100%;border-top: 1px solid #EAEAEA;">
 														<tbody>
@@ -1010,13 +1010,13 @@ function maak_event( $eventobject, $asseturl ) {
 											</tr>
 											</tbody>
 										</table>
-										<table border="0" cellpadding="0" cellspacing="0" width="100%"
+										<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%"
 											   class="mcnTextBlock" style="min-width:100%;">
 											<tbody class="mcnTextBlockOuter">
 											<tr>
 												<td valign="top" class="mcnTextBlockInner" style="padding-top:9px;">
 													<!--[if mso]>
-													<table align="left" border="0" cellspacing="0" cellpadding="0"
+													<table role="presentation" align="left" border="0" cellspacing="0" cellpadding="0"
 														   width="100%" style="width:100%;">
 														<tr>
 													<![endif]-->
@@ -1025,7 +1025,7 @@ function maak_event( $eventobject, $asseturl ) {
 													<td valign="top" width="600" style="width:600px;">
 													<![endif]-->
 
-													<table align="left" border="0" cellpadding="0" cellspacing="0"
+													<table role="presentation" align="left" border="0" cellpadding="0" cellspacing="0"
 														   style="max-width:100%; min-width:100%;" width="100%"
 														   class="mcnTextContentContainer">
 														<tbody>
@@ -1059,13 +1059,13 @@ function maak_event( $eventobject, $asseturl ) {
 					</tr>
 					<tr>
 						<td align="center" valign="top" id="templateColumns">
-							<table border="0" cellpadding="0" cellspacing="0" class="templateContainer">
+							<table role="presentation" border="0" cellpadding="0" cellspacing="0" class="templateContainer">
 								<tr width="100%">
 									<td valign="top" align="left" class="columnWrapper">
 
 										<!-- START LINKERKOLOM -->
 
-										<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+										<table role="presentation" align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
 											<tr>
 												<td valign="top" class="columnContainer">
 													<?php
@@ -1093,7 +1093,7 @@ function maak_event( $eventobject, $asseturl ) {
 
 									<!-- START RECHTERKOLOM -->
 									<td valign="top" align="left" class="columnWrapper">
-										<table align="cenetr" border="0" cellpadding="0" cellspacing="0" width="100%">
+										<table role="presentation" align="cenetr" border="0" cellpadding="0" cellspacing="0" width="100%">
 											<tr>
 												<td valign="top" class="columnContainer">
 													<?php
@@ -1129,16 +1129,16 @@ function maak_event( $eventobject, $asseturl ) {
 					<tr>
 						<td align="center" valign="top" id="templateLowerBody">
 
-							<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%"
+							<table role="presentation" align="center" border="0" cellpadding="0" cellspacing="0" width="100%"
 								   class="templateContainer">
 								<tr>
 									<td valign="top" class="bodyContainer">
-										<table border="0" cellpadding="0" cellspacing="0" width="100%"
+										<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%"
 											   class="mcnDividerBlock" style="min-width:100%;">
 											<tbody class="mcnDividerBlockOuter">
 											<tr>
 												<td class="mcnDividerBlockInner" style="min-width:100%; padding:18px;">
-													<table class="mcnDividerContent" border="0" cellpadding="0"
+													<table role="presentation" class="mcnDividerContent" border="0" cellpadding="0"
 														   cellspacing="0" width="100%"
 														   style="min-width: 100%;border-top: 1px solid #EAEAEA;">
 														<tbody>
@@ -1190,13 +1190,13 @@ function maak_event( $eventobject, $asseturl ) {
 										?>
 
 
-										<table border="0" cellpadding="0" cellspacing="0" width="100%"
+										<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%"
 											   class="mcnTextBlock" style="min-width:100%;">
 											<tbody class="mcnTextBlockOuter">
 											<tr>
 												<td valign="top" class="mcnTextBlockInner" style="padding-top:9px;">
 
-													<table align="left" border="0" cellpadding="0" cellspacing="0"
+													<table role="presentation" align="left" border="0" cellpadding="0" cellspacing="0"
 														   style="max-width:100%; min-width:100%;" width="100%"
 														   class="mcnTextContentContainer">
 														<tbody>
@@ -1217,11 +1217,11 @@ function maak_event( $eventobject, $asseturl ) {
 										</table>
 
 
-										<table border="0" cellpadding="0" cellspacing="0" class="templateContainer">
+										<table role="presentation" border="0" cellpadding="0" cellspacing="0" class="templateContainer">
 											<tbody class="mcnTextBlockOuter">
 											<tr width="100%">
 												<td class="columnWrapper" valign="top" width="50%">
-													<table align="center" border="0" cellpadding="0" cellspacing="0"
+													<table role="presentation" align="center" border="0" cellpadding="0" cellspacing="0"
 														   width="100%">
 														<tbody>
 														<tr>
@@ -1236,7 +1236,7 @@ function maak_event( $eventobject, $asseturl ) {
 													</table>
 												</td>
 												<td class="columnWrapper" valign="top" width="50%">
-													<table align="center" border="0" cellpadding="0" cellspacing="0"
+													<table role="presentation" align="center" border="0" cellpadding="0" cellspacing="0"
 														   width="100%">
 														<tbody>
 														<tr>
@@ -1256,12 +1256,12 @@ function maak_event( $eventobject, $asseturl ) {
 										</table>
 
 
-										<table border="0" cellpadding="0" cellspacing="0" width="100%"
+										<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%"
 											   class="mcnDividerBlock" style="min-width:100%;">
 											<tbody class="mcnDividerBlockOuter">
 											<tr>
 												<td class="mcnDividerBlockInner" style="min-width:100%; padding:18px;">
-													<table class="mcnDividerContent" border="0" cellpadding="0"
+													<table role="presentation" class="mcnDividerContent" border="0" cellpadding="0"
 														   cellspacing="0" width="100%"
 														   style="min-width: 100%;border-top: 1px solid #EAEAEA;">
 														<tbody>
@@ -1287,14 +1287,14 @@ function maak_event( $eventobject, $asseturl ) {
 											?>
 
 
-											<table border="0" cellpadding="0" cellspacing="0" width="100%"
+											<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%"
 												   class="mcnTextBlock" style="min-width:100%;">
 												<tbody class="mcnTextBlockOuter">
 												<tr>
 													<td valign="top" class="mcnTextBlockInner" style="padding-top:9px;">
 
 
-														<table align="left" border="0" cellpadding="0" cellspacing="0"
+														<table role="presentation" align="left" border="0" cellpadding="0" cellspacing="0"
 															   style="max-width:100%; min-width:100%;" width="100%"
 															   class="mcnTextContentContainer">
 															<tbody>
@@ -1315,13 +1315,13 @@ function maak_event( $eventobject, $asseturl ) {
 												</tr>
 												</tbody>
 											</table>
-											<table border="0" cellpadding="0" cellspacing="0" width="100%"
+											<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%"
 												   class="mcnTextBlock" style="min-width:100%;">
 												<tbody class="mcnTextBlockOuter">
 												<tr>
 													<td valign="top" class="mcnTextBlockInner" style="padding-top:9px;">
 
-														<table align="left" border="0" cellpadding="0" cellspacing="0"
+														<table role="presentation" align="left" border="0" cellpadding="0" cellspacing="0"
 															   style="max-width:100%; min-width:100%;" width="100%"
 															   class="mcnTextContentContainer">
 															<tbody>
@@ -1358,14 +1358,14 @@ function maak_event( $eventobject, $asseturl ) {
 										}
 										?>
 
-										<table border="0" cellpadding="0" cellspacing="0" width="100%"
+										<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%"
 											   class="mcnTextBlock" style="min-width:100%;">
 											<tbody class="mcnTextBlockOuter">
 											<tr>
 												<td valign="top" class="mcnTextBlockInner" style="padding-top:9px;">
 
 
-													<table align="left" border="0" cellpadding="0" cellspacing="0"
+													<table role="presentation" align="left" border="0" cellpadding="0" cellspacing="0"
 														   style="max-width:100%; min-width:100%;" width="100%"
 														   class="mcnTextContentContainer">
 														<tbody>
@@ -1397,17 +1397,17 @@ function maak_event( $eventobject, $asseturl ) {
 					<tr>
 						<td align="center" valign="top" id="templateFooter">
 
-							<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%"
+							<table role="presentation" align="center" border="0" cellpadding="0" cellspacing="0" width="100%"
 								   class="templateContainer">
 								<tr>
 									<td valign="top" class="footerContainer">
-										<table border="0" cellpadding="0" cellspacing="0" width="100%"
+										<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%"
 											   class="mcnTextBlock" style="min-width:100%;">
 											<tbody class="mcnTextBlockOuter">
 											<tr>
 												<td valign="top" class="mcnTextBlockInner" style="padding-top:9px;">
 
-													<table align="left" border="0" cellpadding="0" cellspacing="0"
+													<table role="presentation" align="left" border="0" cellpadding="0" cellspacing="0"
 														   style="max-width:100%; min-width:100%;" width="100%"
 														   class="mcnTextContentContainer">
 														<tbody>
