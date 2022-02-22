@@ -165,7 +165,7 @@ function write_bericht( $postobject ) {
 		$image                 = wp_get_attachment_image_src( get_post_thumbnail_id( $postobject->ID ), $uitgelicht_image_size );
 		if ( $image ) {
 			$alt   = 'Lees ' . $uitgelicht_title;
-			$image = '<tr><td class="mcnCaptionBottomImageContent" align="center" valign="top" style="padding:0 9px 9px 9px;"><a href="' . $uitgelicht_url . '" aria-hidden="true" tabindex="-1"><img alt="' . $alt . '" src="' . $image[0] . '" width="264" class="mcnImage"></a></td></tr>';
+			$image = '<tr><td class="mcnCaptionBottomImageContent" align="center" valign="top" style="padding:0 9px 9px 9px;"><a href="' . $uitgelicht_url . '" role="presentation" tabindex="-1"><img alt="' . $alt . '" src="' . $image[0] . '" width="264" class="mcnImage"></a></td></tr>';
 		}
 
 		$return = '<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnCaptionBlock">
@@ -177,7 +177,7 @@ function write_bericht( $postobject ) {
       <tr>
         <td class="mcnTextContent" valign="top" style="padding:0 9px 0 9px;" width="264">
           <p style="font-size:14px"><strong><span style="color:#696969; text-transform:uppercase">' . $uitgelicht_label . '</span></strong></p>
-          <h2 class="null"><a href="' . $uitgelicht_url . '" style="color:#01689B; text-decoration: none"><strong><span style="font-size:18px; line-height:24px; margin: 12px 0px;">' . $uitgelicht_title . '</span></strong></a></h2>
+          <h3 class="null"><a href="' . $uitgelicht_url . '" style="color:#01689B; text-decoration: none"><strong><span style="font-size:18px; line-height:24px; margin: 12px 0px;">' . $uitgelicht_title . '</span></strong></a></h3>
           <p style="font-size:14px"><strong>' . $uitgelicht_date . '</strong></p>
           <p>' . $uitgelicht_excerpt . '</p></td>
       </tr>
@@ -208,7 +208,7 @@ function maak_event( $eventobject, $asseturl ) {
 		$tijd           = $eventobject->output( '#_EVENTTIMES' );
 // $location_town = $eventobject->output( '#_LOCATIONTOWN' );
 
-		$return = '<a href="' . $uitgelicht_url . '"><strong><span style="font-size:18px; line-height:24px; color:#01689B">' . get_the_title( $eventobject->ID ) . '</span></span></strong></a><br>';
+		$return = '<h3><a href="' . $uitgelicht_url . '"><strong><span style="font-size:18px; line-height:24px; color:#01689B">' . get_the_title( $eventobject->ID ) . '</span></span></strong></a></h3>';
 		if ( $datum ) {
 			$return .= '<img alt="datum" height="12" src="' . $asseturl . 'icon_calendar.jpeg" style="border: 0px; width: 12px; height: 12px; margin: 0px;" width="12">&nbsp;&nbsp;' . $datum . '<br>';
 		}
@@ -915,10 +915,10 @@ function maak_event( $eventobject, $asseturl ) {
 														<tbody>
 														<tr>
 															<td width="50%">
-																<p class="query"
+																<h1 class="query"
 																   style="font-family: Helvetica; font-weight: 700; font-size: 24px; color: #fff; text-align: left; padding-left: 10px !important;">
 																	<?php echo $theme_sitetitle ?>
-																</p>
+																</h1>
 															</td>
 															<td width="50%">
 																<p class="query"
@@ -947,7 +947,7 @@ function maak_event( $eventobject, $asseturl ) {
 											$image                 = wp_get_attachment_image_src( get_post_thumbnail_id( $uitgelicht->ID ), $uitgelicht_image_size );
 											if ( $image ) {
 												$alt   = 'Lees ' . $uitgelicht_title;
-												$image = '<tr><td class="mcnCaptionBottomImageContent" align="center" valign="top" style="padding:0 9px 9px 9px;"><a href="' . $uitgelicht_url . '" aria-hidden="true" tabindex="-1"><img alt="' . $alt . '" src="' . $image[0] . '" width="564" style="max-width:768px;" class="mcnImage"></a></td></tr>';
+												$image = '<tr><td class="mcnCaptionBottomImageContent" align="center" valign="top" style="padding:0 9px 9px 9px;"><a href="' . $uitgelicht_url . '" role="presentation" tabindex="-1"><img alt="' . $alt . '" src="' . $image[0] . '" width="564" style="max-width:768px;" class="mcnImage"></a></td></tr>';
 
 											}
 
@@ -969,11 +969,11 @@ function maak_event( $eventobject, $asseturl ) {
 																			style="font-size:14px"><span
 																				style="color: #696969;font-weight: 600;"><?php echo $uitgelicht_label ?></span></span>
 																	</p>
-																	<h1 class="null"><a
+																	<h2 class="null"><a
 																			href="<?php echo $uitgelicht_url ?>"><strong>
 																				<span
 																					style="color:#01689B; font-size:24px; line-height:32px;"><?php echo $uitgelicht_title ?></span></strong></a>
-																	</h1>
+																	</h2>
 																	<p style="color:#000; font-size: 18px; font-weight: bold; margin: 10px 0"><?php echo $uitgelicht_date ?></p>
 																	<p style="color:#000; font-size: 18px"><?php echo $uitgelicht_excerpt ?></p>
 																</td>
@@ -1031,10 +1031,7 @@ function maak_event( $eventobject, $asseturl ) {
 														<tbody>
 														<tr>
 															<td valign="top" class="mcnTextContent"
-																style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
-																<strong><span
-																		style="font-family:arial,helvetica neue,helvetica,sans-serif"><span
-																			style="font-size:32px"><?php echo $theme_titel_nieuws ?></span></span></strong>
+																style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;"><h2><strong><span style="font-family:arial,helvetica neue,helvetica,sans-serif; font-size:32px"><?php echo $theme_titel_nieuws ?></span></strong></h2>
 															</td>
 														</tr>
 														</tbody>
@@ -1202,11 +1199,7 @@ function maak_event( $eventobject, $asseturl ) {
 														<tbody>
 														<tr>
 															<td valign="top" class="mcnTextContent"
-																style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
-																<strong><span
-																		style="font-family:arial,helvetica neue,helvetica,sans-serif"><span
-																			style="font-size:32px"><?php echo $theme_titel_events ?></span></span></strong>
-
+																style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;"><h2><strong><span style="font-family:arial,helvetica neue,helvetica,sans-serif; font-size:32px"><?php echo $theme_titel_events ?></span></strong></h2>
 															</td>
 														</tr>
 														</tbody>
@@ -1374,8 +1367,8 @@ function maak_event( $eventobject, $asseturl ) {
 																style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
 																<div
 																	style="background-color: #007BC7; padding: 19px 30px">
-																	<h3 style="font-weight: 700; font-size: 26px; color: #fff; text-align: left;">
-																		<?php echo $theme_sitetitle ?></h3>
+																	<p style="font-weight: 700; font-size: 26px; color: #fff; text-align: left;">
+																		<?php echo $theme_sitetitle ?></p>
 																	<p style="font-weight: 400; font-size: 24px; color: #fff; font-style: italic;text-align: left">
 																		<?php echo $theme_sitepayoff ?></p>
 																</div>
