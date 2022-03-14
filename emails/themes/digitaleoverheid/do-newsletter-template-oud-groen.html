@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- General styles, not used by all email clients -->
+    <style type="text/css" media="screen">
+        table {
+            font: 12px verdana, sans-serif;
+            background-color: #fff;
+        }
+
+        .header a,
+        .text .colofon a {
+            text-decoration: underline;
+            color: #000;
+        }
+
+        .header a:hover,
+        .colofon a:hover,
+        .text a:hover {
+            color: #010101;
+            text-decoration: underline;
+        }
+
+        .text p, .disclaimer p, p {
+            margin-bottom: 1em !important;
+        }
+
+        .text a {
+            color: #154273;
+            text-decoration: none;
+        }
+
+        .text a:hover {
+            text-decoration: underline;
+        }
+
+        .text a.up {
+            display: block;
+            font-size: 11px;
+            color: #555;
+        }
+
+        .text a.head {
+            color: #000;
+        }
+
+        .text a.head:hover {
+            color: #154273;
+        }
+
+    </style>
+</head>
+
+<!-- KEEP THE TAMPLE SIMPLE: THOSE ARE SERVICE MESSAGES. -->
+<body style="margin: 0;">
+
+<table style="width: 100%; border: none;background-color: #fff">
+    <tr>
+        <td align="center">
+            <table style="width: 648px; background-color: #efefef; text-align: left; border-collapse: collapse">
+                <tr>
+                    <td style="padding: 20px 20px 20px 20px">
+
+                        <div class="logo" style="background-color: #275937;"><img
+                                src="http://www.digitaleoverheid.nl/mailingassets/assets-newsletter-do/header-newsletter-digitale-overheid.jpg"
+                                width="608" height="87" alt="Digitale Overheid" title="Digitale Overheid"></div>
+
+                        <table class="header"
+                               style="width: 608px; background-color: #fff; border-collapse: collapse; padding: 0; border: 0; color: #474747; font-size: 10px">
+                            <tr>
+                                <td style="padding: 12px 20px 12px 20px">
+
+                                    <h1 style="font-size: 16px; font-weight: bold;">{blog_title}</h1>
+
+                                    {message}
+
+
+                                </td>
+                            </tr>
+
+                        </table>
+
+                        <!-- Footer ribbon -->
+                        <table style="border-collapse: collapse; width: 100%">
+                            <tr>
+                                <td colspan="3" style="background-color: #275937; height: 25px"> </td>
+                            <tr>
+                                <td style="background-color: #275937; width: 282px;"></td>
+                                <td style="background-color: #123552; width: 44px; height: 15px"></td>
+                                <td style="background-color: #275937; width: 282px"></td>
+                            </tr>
+                        </table>
+
+                        <!-- Disclaimer -->
+                        <table class="disclaimer"
+                               style="border-collapse:collapse; background-color: #efefef; color: #555; font-size: 10px; line-height: 13px">
+                            <tr>
+                                <td style="padding: 30px 20px 0 20px;">
+                                    <p style="margin-top: 0">
+                                        Dit bericht kan informatie bevatten die niet voor u is bestemd. Indien u niet de
+                                        geadresse erde bent of dit bericht abusievelijk aan u is toegezonden, wordt u
+                                        verzocht dat aan de afzender te melden en het bericht te verwijderen.
+                                        De Staat aanvaardt geen aansprakelijkheid voor schade, van welke aard ook, die
+                                        verband houdt met risico's verbonden aan het elektronisch verzenden van
+                                        berichten.
+                                    </p>
+                                    <p>
+                                        This message may contain information that is not intended for you. If you are
+                                        not the addressee or if this message was sent to you by mistake, you are
+                                        requested to inform the sender and delete the message.
+                                        The State accepts no liability for damage of any kind resulting from the risks
+                                        inherent in the electronic transmission of messages.
+                                    </p></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>
