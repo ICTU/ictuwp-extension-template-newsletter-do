@@ -149,10 +149,10 @@ function mail_get_label( $postID = 0 ) {
 
 //========================================================================================================
 
-function write_bericht( $postobject ) {
+function write_bericht( $postobject, $theme_options ) {
 
-	global $theme_piwiktrackercode;
-	$return = '';
+	$return                 = '';
+	$theme_piwiktrackercode = isset( $theme_options['theme_piwiktrackercode'] ) ? '?pk_campaign=' . $theme_options['theme_piwiktrackercode'] : '';
 
 	if ( $postobject ) {
 
@@ -197,11 +197,11 @@ function write_bericht( $postobject ) {
 
 //========================================================================================================
 
-function maak_event( $eventobject, $asseturl ) {
+function maak_event( $eventobject, $asseturl, $theme_options ) {
 
-// global $asseturl;
-	global $theme_piwiktrackercode;
-	$return = '';
+	$return                 = '';
+	$theme_piwiktrackercode = isset( $theme_options['theme_piwiktrackercode'] ) ? '?pk_campaign=' . $theme_options['theme_piwiktrackercode'] : '';
+
 	if ( $eventobject ) {
 		$uitgelicht_url = get_permalink( $eventobject->ID ) . $theme_piwiktrackercode;
 		$datum          = $eventobject->output( '#_EVENTDATES' );
@@ -1100,7 +1100,7 @@ function maak_event( $eventobject, $asseturl ) {
 														if ( $postcounter > $linkeraantal ) {
 															break;
 														} else {
-															echo write_bericht( $post );
+															echo write_bericht( $post, $theme_options );
 														}
 													}
 
@@ -1130,7 +1130,7 @@ function maak_event( $eventobject, $asseturl ) {
 														if ( $postcounter <= $linkeraantal ) {
 // break;
 														} else {
-															echo write_bericht( $post );
+															echo write_bericht( $post, $theme_options );
 														}
 													}
 
@@ -1206,9 +1206,9 @@ function maak_event( $eventobject, $asseturl ) {
 												setup_postdata( $EM_Event );
 												$postcounter ++;
 												if ( $postcounter <= $linkeraantal ) {
-													$linker_events .= maak_event( $EM_Event, $asseturl );
+													$linker_events .= maak_event( $EM_Event, $asseturl, $theme_options );
 												} else {
-													$rechter_events .= maak_event( $EM_Event, $asseturl );
+													$rechter_events .= maak_event( $EM_Event, $asseturl, $theme_options );
 												}
 											}
 										}
