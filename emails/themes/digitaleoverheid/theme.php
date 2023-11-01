@@ -87,7 +87,7 @@ if ( empty( $color ) ) {
 
 $font                            = isset( $theme_options['theme_font'] ) ? $theme_options['theme_font'] : '';
 $font_size                       = isset( $theme_options['theme_font_size'] ) ? $theme_options['theme_font_size'] : '';
-$theme_nieuwsbrieftitel          = isset( $theme_options['theme_nieuwsbrieftitel'] ) ? $theme_options['theme_nieuwsbrieftitel'] : 'Digitale Overheid - {date}';
+$theme_nieuwsbrieftitel_datetext = isset( $theme_options['theme_nieuwsbrieftitel_datetext'] ) ? $theme_options['theme_nieuwsbrieftitel_datetext'] : date( get_option( 'date_format' ) );
 $colofon_blok1                   = isset( $theme_options['theme_colofon_block_1'] ) ? $theme_options['theme_colofon_block_1'] : 'Dit is een publicatie van de ministeries van Binnenlandse Zaken en Koninkrijksrelaties en van Economische Zaken.';
 $colofon_blok2                   = isset( $theme_options['theme_colofon_block_2'] ) ? $theme_options['theme_colofon_block_2'] : 'Heeft u tips of leuk nieuws voor de nieuwsbrief? Wij horen  graag van u! Stuur een email naar <a href="mailto:redactie@digitaleoverheid.nl">redactie@digitaleoverheid.nl</a>';
 $theme_piwiktrackercode          = isset( $theme_options['theme_piwiktrackercode'] ) ? '?pk_campaign=' . $theme_options['theme_piwiktrackercode'] : '';
@@ -103,7 +103,7 @@ $theme_socials_linkedin_linktext = isset( $theme_options['theme_socials_linkedin
 $theme_socials_linkedin_linktext = isset( $theme_options['theme_socials_linkedin_linktext'] ) ? $theme_options['theme_socials_linkedin_linktext'] : '';
 $theme_mail_unsubscribe_text     = isset( $theme_options['theme_mail_unsubscribe_text'] ) ? $theme_options['theme_mail_unsubscribe_text'] : 'Wilt u deze nieuwsbrief niet meer ontvangen?';
 $theme_mail_unsubscribe_linktext = isset( $theme_options['theme_mail_unsubscribe_linktext'] ) ? $theme_options['theme_mail_unsubscribe_linktext'] : 'Meld u zich hier af';
-$theme_preview_text              = isset( $theme_options['theme_preview_text'] ) ? $theme_options['theme_preview_text'] : $theme_nieuwsbrieftitel;
+$theme_preview_text              = isset( $theme_options['theme_preview_text'] ) ? $theme_options['theme_preview_text'] : $theme_nieuwsbrieftitel_datetext;
 
 
 //$asseturl = $_SERVER['HTTPS'] . $_SERVER['SERVER_NAME'] . '/';
@@ -232,7 +232,7 @@ function maak_event( $eventobject, $asseturl, $theme_options ) {
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title><?php echo $theme_nieuwsbrieftitel ?></title>
+	<title><?php echo $theme_nieuwsbrieftitel_datetext ?></title>
 	<style type="text/css">
 		p {
 			margin: 10px 0;
@@ -937,7 +937,7 @@ function maak_event( $eventobject, $asseturl, $theme_options ) {
 															<td width="50%">
 																<p class="query"
 																   style="font-family: Helvetica;font-weight: 400; font-size: 18px; color: #fff; text-align: right;  padding-right: 10px !important;">
-																	<?php echo $theme_nieuwsbrieftitel ?>
+																	<?php echo $theme_nieuwsbrieftitel_datetext ?>
 																</p>
 															</td>
 														</tr>
