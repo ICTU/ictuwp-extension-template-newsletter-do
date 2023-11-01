@@ -25,7 +25,7 @@ $default_description = get_bloginfo( 'description' );
 $theme_defaults = array(
 	'theme_max_posts'                 => 5,
 	'theme_max_agenda'                => 5,
-	'theme_nieuwsbrieftitel'          => 'Digitale Overheid - {date}',
+	'theme_nieuwsbrieftitel_datetext' => date( get_option( 'date_format' ) ),
 	'theme_colofon_block_1'           => 'Dit is een publicatie van de ministeries van Binnenlandse Zaken en Koninkrijksrelaties en van Economische Zaken.',
 	'theme_colofon_block_2'           => 'Heeft u tips of leuk nieuws voor de nieuwsbrief? Wij horen  graag van u! Stuur een email naar <a href="mailto:redactie@digitaleoverheid.nl">redactie@digitaleoverheid.nl</a>',
 	'theme_sitetitle'                 => $default_name,
@@ -51,7 +51,7 @@ $laatsteberichten = array(
 	'0' => __( '-selecteer bericht-', 'newsletter' ),
 );
 
-$maxberichten = 100;
+$maxberichten = 50;
 
 $arguments = array(
 	'numberposts' => $maxberichten,
@@ -78,17 +78,19 @@ foreach ( $myposts as $post ) {
 		<td colspan="2">
 			<h2>Preselectie</h2>
 
-			<p>Je kunt de nieuwsbrief automatisch laten vullen met nieuwsberichten. </p>
-			<p>Met het aantal berichten bepaal je het maximum aantal berichten dat hierna automatisch aan je nieuwsbrief
-				wordt toegevoegd.<br>
-				De makkelijkste methode om de berichten die je in de nieuwsbrief wilt hebben tijdelijk te voorzien van
+			<p class="description">Je kunt de nieuwsbrief automatisch laten vullen met nieuwsberichten. </p>
+			<p class="description">Met het aantal berichten bepaal je het maximum aantal berichten dat hierna
+				automatisch aan je nieuwsbrief
+				wordt toegevoegd.</p>
+			<p class="description">De makkelijkste methode om de berichten die je in de nieuwsbrief wilt hebben
+				tijdelijk te voorzien van
 				een tag, zoals 'nieuwsbrief'. Deze tag kun je dan hieronder invoeren bij 'Filter op tag'; het wordt een
 				criterium om de nieuwsberichten voor je nieuwsbrief automatisch te selecteren.<br>Je kunt de preselectie
 				van nieuwsberichten ook beperken tot een categorie.</p>
 
 		</td>
 	</tr>
-	<tr valign="top">
+	<tr>
 		<th>Piwik-trackercode</th>
 		<td>
 			<?php $controls->text( 'theme_piwiktrackercode', 50 ); ?>
@@ -101,7 +103,8 @@ foreach ( $myposts as $post ) {
 			$lists = $controls->get_list_options();
 
 			$controls->select( 'theme_select_uitgelicht', $laatsteberichten ); ?>
-			<p>Het bericht dat je hier selecteert wordt groot boven aan de mail weergegeven. <br> De lijst toont de
+			<p class="description">Het bericht dat je hier selecteert wordt groot boven aan de mail weergegeven. De
+				lijst toont de
 				laatste <?php echo $maxberichten ?> berichten, gesorteerd op datum.</p>
 
 		</td>
@@ -109,120 +112,119 @@ foreach ( $myposts as $post ) {
 	<tr>
 		<th>Aantal berichten</th>
 		<td>Selecteer <?php $controls->text( 'theme_max_posts', 5 ); ?> berichten
-		<p>Dit is het aantal berichten onder het uitgelichte bericht.</p>
+			<p class="description">Dit is het aantal berichten onder het uitgelichte bericht.</p>
 		</td>
 	</tr>
 	<tr>
 		<th>Filter op tag</th>
 		<td>
 			<?php $controls->text( 'theme_tags', 50 ); ?>
-			<p class="description" style="display: inline"> kommagescheiden invoeren</p>
+			<p class="description"> kommagescheiden invoeren</p>
 		</td>
 	</tr>
-	<tr valign="top">
-		<th>Titel in de nieuwsbrief</th>
+	<tr>
+		<th>Datum naast de titel</th>
 		<td>
-			<?php $controls->textarea( 'theme_nieuwsbrieftitel' ); ?>
-			<p><code>{date}</code> is <em lang="en">placeholder</em> voor de datum; bij het versturen van de nieuwsbrief
-				wordt deze vervangen door de datum</p>
+			<?php $controls->textarea( 'theme_nieuwsbrieftitel_datetext' ); ?>
+			<p class="description">Deze tekst heeft geen invloed op het moment waarop de nieuwsbrief verstuurd
+				wordt.</p>
 		</td>
 	</tr>
-	<tr valign="top">
+	<tr>
 		<th>Preview text</th>
 		<td>
 			<?php $controls->textarea( 'theme_preview_text' ); ?>
-			<p>Max. 2 regels tekst met een samenvatting van de inhoud van de nieuwbrief.</p>
+			<p class="description">Max. 2 regels tekst met een samenvatting van de inhoud van de nieuwbrief.</p>
 		</td>
 	</tr>
 
-	<tr valign="top">
+	<tr>
 		<th>Titel boven berichten</th>
 		<td>
 			<?php $controls->text( 'theme_titel_nieuws', 50 ); ?>
 		</td>
 	</tr>
 
-	<tr valign="top">
+	<tr>
 		<th>Filter op categorie</th>
 		<td><?php $controls->categories_group( 'theme_categories' ); ?></td>
 	</tr>
 
 
-	<tr valign="top">
+	<tr>
 		<th>Titel boven agenda</th>
 		<td>
 			<?php $controls->text( 'theme_titel_events', 50 ); ?>
 		</td>
 	</tr>
-	<tr valign="top">
+	<tr>
 		<th>Aantal items in agenda</th>
 		<td>Selecteer <?php $controls->text( 'theme_max_agenda', 5 ); ?> items voor de agenda</td>
 	</tr>
 
 
-
-
-	<tr valign="top">
-		<th>Site-titel</th>
+	<tr>
+		<th>Nieuwsbrief-titel</th>
 		<td>
 			<?php $controls->text( 'theme_sitetitle', 50 ); ?>
+			<p class="description">.</p>
 		</td>
 	</tr>
-	<tr valign="top">
+	<tr>
 		<th>Payoff</th>
 		<td>
 			<?php $controls->text( 'theme_sitepayoff', 50 ); ?>
 		</td>
 	</tr>
-	<tr valign="top">
+	<tr>
 		<th>Titel boven socialmedia-links</th>
 		<td>
 			<?php $controls->text( 'theme_titel_socials', 50 ); ?>
 		</td>
 	</tr>
-	<tr valign="top">
+	<tr>
 		<th>Twitter URL</th>
 		<td>
 			<?php $controls->text( 'theme_socials_twitter_url', 50 ); ?>
 		</td>
 	</tr>
-	<tr valign="top">
+	<tr>
 		<th>Twitter linktekst</th>
 		<td>
 			<?php $controls->text( 'theme_socials_twitter_linktext', 50 ); ?>
 		</td>
 	</tr>
-	<tr valign="top">
+	<tr>
 		<th>LinkedIn URL</th>
 		<td>
 			<?php $controls->text( 'theme_socials_linkedin_url', 50 ); ?>
 		</td>
 	</tr>
-	<tr valign="top">
+	<tr>
 		<th>LinkedIn linktekst</th>
 		<td>
 			<?php $controls->text( 'theme_socials_linkedin_linktext', 50 ); ?>
 		</td>
 	</tr>
-	<tr valign="top">
+	<tr>
 		<th>inleiding bij uitschrijven nieuwsbrief</th>
 		<td>
 			<?php $controls->textarea( 'theme_mail_unsubscribe_text' ); ?>
 		</td>
 	</tr>
-	<tr valign="top">
+	<tr>
 		<th>linktekst voor uitschrijven nieuwsbrief</th>
 		<td>
 			<?php $controls->textarea( 'theme_mail_unsubscribe_linktext' ); ?>
 		</td>
 	</tr>
-	<tr valign="top">
+	<tr>
 		<th>Colofon - blok 1</th>
 		<td>
 			<?php $controls->textarea( 'theme_colofon_block_1' ); ?>
 		</td>
 	</tr>
-	<tr valign="top">
+	<tr>
 		<th>Colofon - blok 2</th>
 		<td>
 			<?php $controls->textarea( 'theme_colofon_block_2' ); ?>
