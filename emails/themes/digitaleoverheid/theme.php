@@ -928,13 +928,13 @@ function maak_event( $eventobject, $asseturl, $theme_options ) {
 														   style="background-color: #007BC7;">
 														<tbody>
 														<tr>
-															<td width="50%">
+															<td width="66%">
 																<h1 class="query"
-																	style="font-family: Helvetica; font-weight: 700; font-size: 24px; color: #fff; text-align: left; padding-left: 10px !important;">
+																	style="font-family: Helvetica; font-weight: 700; font-size: 21px; color: #fff; text-align: left; padding-left: 10px !important;">
 																	<?php echo $theme_sitetitle ?>
 																</h1>
 															</td>
-															<td width="50%">
+															<td width="34%">
 																<p class="query"
 																   style="font-family: Helvetica;font-weight: 400; font-size: 18px; color: #fff; text-align: right;  padding-right: 10px !important;">
 																	<?php echo $theme_nieuwsbrieftitel_datetext ?>
