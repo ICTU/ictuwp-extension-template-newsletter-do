@@ -176,9 +176,9 @@ function write_bericht( $postobject, $theme_options ) {
       <tbody>' . $image . '
       <tr>
         <td class="mcnTextContent" valign="top" style="padding:0 9px 0 9px;" width="264">
+          <p style="font-size:14px"><strong>' . $uitgelicht_date . '</strong></p>
           <p style="font-size:14px"><strong><span style="color:#696969; text-transform:uppercase">' . $uitgelicht_label . '</span></strong></p>
           <h3 class="null"><a href="' . $uitgelicht_url . '" style="color:#01689B; text-decoration: none"><strong><span style="font-size:18px; line-height:24px; margin: 12px 0px;">' . $uitgelicht_title . '</span></strong></a></h3>
-          <p style="font-size:14px"><strong>' . $uitgelicht_date . '</strong></p>
           <p>' . $uitgelicht_excerpt . '</p></td>
       </tr>
       </tbody>
@@ -980,17 +980,15 @@ function maak_event( $eventobject, $asseturl, $theme_options ) {
 															<?php echo $image ?>
 															<tr>
 																<td class="mcnTextContent" valign="top"
-																	style="padding:0 9px 0 9px;" width="564"><p
-																		class="null"><span
-																			style="font-size:14px"><span
-																				style="color: #696969;font-weight: 600;"><?php echo $uitgelicht_label ?></span></span>
+																	style="padding:0 9px 0 9px;" width="564">
+																	<p style="color:#000; font-size: 18px; font-weight: bold; margin: 10px 0"><?php echo $uitgelicht_date ?></p>
+																	<p class="null"><span style="font-size:14px"><span style="color: #696969;font-weight: 600;"><?php echo $uitgelicht_label ?></span></span>
 																	</p>
 																	<h2 class="null"><a
 																			href="<?php echo $uitgelicht_url ?>"><strong>
 																				<span
 																					style="color:#01689B; font-size:24px; line-height:32px;"><?php echo $uitgelicht_title ?></span></strong></a>
 																	</h2>
-																	<p style="color:#000; font-size: 18px; font-weight: bold; margin: 10px 0"><?php echo $uitgelicht_date ?></p>
 																	<p style="color:#000; font-size: 18px"><?php echo $uitgelicht_excerpt ?></p>
 																</td>
 															</tr>
