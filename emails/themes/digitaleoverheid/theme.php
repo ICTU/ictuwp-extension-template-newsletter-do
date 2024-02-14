@@ -96,8 +96,8 @@ $theme_titel_events              = isset( $theme_options['theme_titel_events'] )
 $theme_titel_socials             = isset( $theme_options['theme_titel_socials'] ) ? $theme_options['theme_titel_socials'] : 'Social media';
 $theme_sitetitle                 = isset( $theme_options['theme_sitetitle'] ) ? $theme_options['theme_sitetitle'] : get_bloginfo( 'name' );
 $theme_sitepayoff                = isset( $theme_options['theme_sitepayoff'] ) ? $theme_options['theme_sitepayoff'] : get_bloginfo( 'description' );
-$theme_socials_twitter_url       = isset( $theme_options['theme_socials_twitter_url'] ) ? $theme_options['theme_socials_twitter_url'] : '';
-$theme_socials_twitter_linktext  = isset( $theme_options['theme_socials_twitter_linktext'] ) ? $theme_options['theme_socials_twitter_linktext'] : '';
+$theme_socials_xwitter_url       = isset( $theme_options['theme_socials_xwitter_url'] ) ? $theme_options['theme_socials_xwitter_url'] : '';
+$theme_socials_xwitter_linktext  = isset( $theme_options['theme_socials_xwitter_linktext'] ) ? $theme_options['theme_socials_xwitter_linktext'] : '';
 $theme_socials_linkedin_url      = isset( $theme_options['theme_socials_linkedin_url'] ) ? $theme_options['theme_socials_linkedin_url'] : '';
 $theme_socials_linkedin_linktext = isset( $theme_options['theme_socials_linkedin_linktext'] ) ? $theme_options['theme_socials_linkedin_linktext'] : '';
 $theme_socials_linkedin_linktext = isset( $theme_options['theme_socials_linkedin_linktext'] ) ? $theme_options['theme_socials_linkedin_linktext'] : '';
@@ -1313,7 +1313,7 @@ function maak_event( $eventobject, $asseturl, $theme_options ) {
 
 										<?php
 										// als er socials zijn
-										if ( ( $theme_socials_twitter_url && $theme_socials_twitter_linktext ) || ( $theme_socials_linkedin_url && $theme_socials_linkedin_linktext ) ) {
+										if ( ( $theme_socials_xwitter_url && $theme_socials_xwitter_linktext ) || ( $theme_socials_linkedin_url && $theme_socials_linkedin_linktext ) ) {
 											// START als er socials zijn
 											?>
 
@@ -1365,9 +1365,9 @@ function maak_event( $eventobject, $asseturl, $theme_options ) {
 																	style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
 
 																	<?php
-																	if ( $theme_socials_twitter_url && $theme_socials_twitter_linktext ) {
+																	if ( $theme_socials_xwitter_url && $theme_socials_xwitter_linktext ) {
 
-																		echo '<span style="color:#01689B"><img alt="twitter-logo" height="16" src="' . $asseturl . 'icon_twitter.jpeg" alt="" style="border: 0px; width: 16px; height: 16px; margin: 0px;" width="16">&nbsp; &nbsp;<a href="' . $theme_socials_twitter_url . '" style="color:#01689B">' . $theme_socials_twitter_linktext . '</a><br>';
+																		echo '<span style="color:#01689B"><img alt="x / twitter-logo" height="16" src="' . $asseturl . 'icon-xwitter.jpg" alt="" style="border: 0px; width: 16px; height: 16px; margin: 0px;" width="16">&nbsp; &nbsp;<a href="' . $theme_socials_xwitter_url . '" style="color:#01689B">' . $theme_socials_xwitter_linktext . '</a><br>';
 
 																	}
 																	if ( $theme_socials_linkedin_url && $theme_socials_linkedin_linktext ) {

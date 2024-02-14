@@ -74,7 +74,7 @@ $font_size  = isset( $theme_options['theme_font_size'] ) ? $theme_options['theme
 $theme_nieuwsbrieftitel  = isset( $theme_options['theme_nieuwsbrieftitel'] ) ? $theme_options['theme_nieuwsbrieftitel'] : 'Digitale Overheid - {date}';
 $colofon_blok1  = isset( $theme_options['theme_colofon_block_1'] ) ? $theme_options['theme_colofon_block_1'] : 'Dit is een publicatie van de ministeries van Binnenlandse Zaken en Koninkrijksrelaties en van Economische Zaken.';
 $colofon_blok2  = isset( $theme_options['theme_colofon_block_2'] ) ? $theme_options['theme_colofon_block_2'] : 'Heeft u tips of leuk nieuws voor de nieuwsbrief? Wij horen  graag van u! Stuur een email naar <a href="mailto:redactie@digitaleoverheid.nl">redactie@digitaleoverheid.nl</a>';
-$colofon_blok3  = isset( $theme_options['theme_colofon_block_3'] ) ? $theme_options['theme_colofon_block_3'] : 'Digitale Overheid is ook te volgen op Twitter: <a href="https://twitter.com/digioverheid">@digioverheid</a>';
+$colofon_blok3  = isset( $theme_options['theme_colofon_block_3'] ) ? $theme_options['theme_colofon_block_3'] : 'Digitale Overheid is ook te volgen op X (Twitter): <a href="https://twitter.com/digioverheid">@digioverheid</a>';
 $theme_show_featuredimage  = isset( $theme_options['theme_show_featuredimage'] ) ? $theme_options['theme_show_featuredimage'] : '';
 
 
