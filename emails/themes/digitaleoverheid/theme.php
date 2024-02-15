@@ -93,11 +93,11 @@ $colofon_blok2                   = isset( $theme_options['theme_colofon_block_2'
 $theme_piwiktrackercode          = isset( $theme_options['theme_piwiktrackercode'] ) ? '?pk_campaign=' . $theme_options['theme_piwiktrackercode'] : '';
 $theme_titel_nieuws              = isset( $theme_options['theme_titel_nieuws'] ) ? $theme_options['theme_titel_nieuws'] : 'Nieuws';
 $theme_titel_events              = isset( $theme_options['theme_titel_events'] ) ? $theme_options['theme_titel_events'] : 'Agenda';
-$theme_titel_socials             = isset( $theme_options['theme_titel_socials'] ) ? $theme_options['theme_titel_socials'] : 'Social media';
+$theme_socials_title             = isset( $theme_options['theme_socials_title'] ) ? $theme_options['theme_socials_title'] : 'Social media';
 $theme_sitetitle                 = isset( $theme_options['theme_sitetitle'] ) ? $theme_options['theme_sitetitle'] : get_bloginfo( 'name' );
 $theme_sitepayoff                = isset( $theme_options['theme_sitepayoff'] ) ? $theme_options['theme_sitepayoff'] : get_bloginfo( 'description' );
-$theme_socials_twitter_url       = isset( $theme_options['theme_socials_twitter_url'] ) ? $theme_options['theme_socials_twitter_url'] : '';
-$theme_socials_twitter_linktext  = isset( $theme_options['theme_socials_twitter_linktext'] ) ? $theme_options['theme_socials_twitter_linktext'] : '';
+$theme_socials_xwitter_url       = isset( $theme_options['theme_socials_xwitter_url'] ) ? $theme_options['theme_socials_xwitter_url'] : '';
+$theme_socials_xwitter_linktext  = isset( $theme_options['theme_socials_xwitter_linktext'] ) ? $theme_options['theme_socials_xwitter_linktext'] : '';
 $theme_socials_linkedin_url      = isset( $theme_options['theme_socials_linkedin_url'] ) ? $theme_options['theme_socials_linkedin_url'] : '';
 $theme_socials_linkedin_linktext = isset( $theme_options['theme_socials_linkedin_linktext'] ) ? $theme_options['theme_socials_linkedin_linktext'] : '';
 $theme_socials_linkedin_linktext = isset( $theme_options['theme_socials_linkedin_linktext'] ) ? $theme_options['theme_socials_linkedin_linktext'] : '';
@@ -176,9 +176,9 @@ function write_bericht( $postobject, $theme_options ) {
       <tbody>' . $image . '
       <tr>
         <td class="mcnTextContent" valign="top" style="padding:0 9px 0 9px;" width="264">
+          <p style="font-size:14px"><strong>' . $uitgelicht_date . '</strong></p>
           <p style="font-size:14px"><strong><span style="color:#696969; text-transform:uppercase">' . $uitgelicht_label . '</span></strong></p>
           <h3 class="null"><a href="' . $uitgelicht_url . '" style="color:#01689B; text-decoration: none"><strong><span style="font-size:18px; line-height:24px; margin: 12px 0px;">' . $uitgelicht_title . '</span></strong></a></h3>
-          <p style="font-size:14px"><strong>' . $uitgelicht_date . '</strong></p>
           <p>' . $uitgelicht_excerpt . '</p></td>
       </tr>
       </tbody>
@@ -980,17 +980,15 @@ function maak_event( $eventobject, $asseturl, $theme_options ) {
 															<?php echo $image ?>
 															<tr>
 																<td class="mcnTextContent" valign="top"
-																	style="padding:0 9px 0 9px;" width="564"><p
-																		class="null"><span
-																			style="font-size:14px"><span
-																				style="color: #696969;font-weight: 600;"><?php echo $uitgelicht_label ?></span></span>
+																	style="padding:0 9px 0 9px;" width="564">
+																	<p style="color:#000; font-size: 18px; font-weight: bold; margin: 10px 0"><?php echo $uitgelicht_date ?></p>
+																	<p class="null"><span style="font-size:14px"><span style="color: #696969;font-weight: 600;"><?php echo $uitgelicht_label ?></span></span>
 																	</p>
 																	<h2 class="null"><a
 																			href="<?php echo $uitgelicht_url ?>"><strong>
 																				<span
 																					style="color:#01689B; font-size:24px; line-height:32px;"><?php echo $uitgelicht_title ?></span></strong></a>
 																	</h2>
-																	<p style="color:#000; font-size: 18px; font-weight: bold; margin: 10px 0"><?php echo $uitgelicht_date ?></p>
 																	<p style="color:#000; font-size: 18px"><?php echo $uitgelicht_excerpt ?></p>
 																</td>
 															</tr>
@@ -1315,7 +1313,7 @@ function maak_event( $eventobject, $asseturl, $theme_options ) {
 
 										<?php
 										// als er socials zijn
-										if ( ( $theme_socials_twitter_url && $theme_socials_twitter_linktext ) || ( $theme_socials_linkedin_url && $theme_socials_linkedin_linktext ) ) {
+										if ( ( $theme_socials_xwitter_url && $theme_socials_xwitter_linktext ) || ( $theme_socials_linkedin_url && $theme_socials_linkedin_linktext ) ) {
 											// START als er socials zijn
 											?>
 
@@ -1338,7 +1336,7 @@ function maak_event( $eventobject, $asseturl, $theme_options ) {
 																	style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
 																	<strong><span
 																			style="font-family:arial,helvetica neue,helvetica,sans-serif"><span
-																				style="font-size:32px"><?php echo $theme_titel_socials ?></span></span></strong>
+																				style="font-size:32px"><?php echo $theme_socials_title ?></span></span></strong>
 
 
 																</td>
@@ -1367,9 +1365,9 @@ function maak_event( $eventobject, $asseturl, $theme_options ) {
 																	style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
 
 																	<?php
-																	if ( $theme_socials_twitter_url && $theme_socials_twitter_linktext ) {
+																	if ( $theme_socials_xwitter_url && $theme_socials_xwitter_linktext ) {
 
-																		echo '<span style="color:#01689B"><img alt="twitter-logo" height="16" src="' . $asseturl . 'icon_twitter.jpeg" alt="" style="border: 0px; width: 16px; height: 16px; margin: 0px;" width="16">&nbsp; &nbsp;<a href="' . $theme_socials_twitter_url . '" style="color:#01689B">' . $theme_socials_twitter_linktext . '</a><br>';
+																		echo '<span style="color:#01689B"><img alt="x / twitter-logo" height="16" src="' . $asseturl . 'icon-xwitter.jpg" alt="" style="border: 0px; width: 16px; height: 16px; margin: 0px;" width="16">&nbsp; &nbsp;<a href="' . $theme_socials_xwitter_url . '" style="color:#01689B">' . $theme_socials_xwitter_linktext . '</a><br>';
 
 																	}
 																	if ( $theme_socials_linkedin_url && $theme_socials_linkedin_linktext ) {

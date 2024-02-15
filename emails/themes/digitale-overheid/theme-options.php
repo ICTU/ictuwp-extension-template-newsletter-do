@@ -25,7 +25,7 @@ $theme_defaults = array(
     'theme_nieuwsbrieftitel'    =>  'Digitale Overheid - {date}',
     'theme_colofon_block_1'     =>  'Dit is een publicatie van de ministeries van Binnenlandse Zaken en Koninkrijksrelaties en van Economische Zaken.',
     'theme_colofon_block_2'     =>  'Heeft u tips of leuk nieuws voor de nieuwsbrief? Wij horen  graag van u! Stuur een email naar <a href="mailto:redactie@digitaleoverheid.nl">redactie@digitaleoverheid.nl</a>',
-    'theme_colofon_block_3'      =>  'Digitale Overheid is ook te volgen op Twitter: <a href="https://twitter.com/digioverheid">@digioverheid</a>',
+    'theme_colofon_block_3'      =>  'Digitale Overheid is ook te volgen op X (Twitter): <a href="https://twitter.com/digioverheid">@digioverheid</a>',
     'theme_categories'  =>  array()
     );
 
@@ -48,7 +48,7 @@ $controls->merge_defaults($theme_defaults);
             <?php $controls->text('theme_piwiktrackercode'); ?>
         </td>
     </tr>
-  
+
     <tr>
         <th>Aantal berichten</th>
         <td>Selecteer <?php $controls->text('theme_max_posts', 5); ?> berichten</td>

@@ -34,9 +34,9 @@ $theme_defaults = array(
 	'theme_select_uitgelicht'         => 0,
 	'theme_titel_nieuws'              => 'Nieuws',
 	'theme_titel_events'              => 'Evenementen',
-	'theme_titel_socials'             => 'Volg ons via social media',
-	'theme_socials_twitter_url'       => 'https://twitter.com/digioverheid',
-	'theme_socials_twitter_linktext'  => 'Volg ons via Twitter',
+	'theme_socials_title'             => 'Social media',
+	'theme_socials_xwitter_url'       => 'https://twitter.com/digioverheid',
+	'theme_socials_xwitter_linktext'  => 'Volg ons via X',
 	'theme_socials_linkedin_url'      => 'https://www.linkedin.com/company/digitaleoverheidnl/',
 	'theme_socials_linkedin_linktext' => 'Volg ons op LinkedIn',
 	'theme_mail_unsubscribe_text'     => 'Wilt u deze nieuwsbrief niet meer ontvangen?',
@@ -179,19 +179,19 @@ foreach ( $myposts as $post ) {
 	<tr>
 		<th>Titel boven socialmedia-links</th>
 		<td>
-			<?php $controls->text( 'theme_titel_socials', 50 ); ?>
+			<?php $controls->text( 'theme_socials_title', 50 ); ?>
 		</td>
 	</tr>
 	<tr>
-		<th>Twitter URL</th>
+		<th>X (Twitter) URL</th>
 		<td>
-			<?php $controls->text( 'theme_socials_twitter_url', 50 ); ?>
+			<?php $controls->text( 'theme_socials_xwitter_url', 50 ); ?>
 		</td>
 	</tr>
 	<tr>
-		<th>Twitter linktekst</th>
+		<th>X (Twitter) linktekst</th>
 		<td>
-			<?php $controls->text( 'theme_socials_twitter_linktext', 50 ); ?>
+			<?php $controls->text( 'theme_socials_xwitter_linktext', 50 ); ?>
 		</td>
 	</tr>
 	<tr>
