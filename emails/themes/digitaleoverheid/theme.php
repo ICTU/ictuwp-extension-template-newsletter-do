@@ -99,8 +99,8 @@ $theme_sitepayoff                = isset( $theme_options['theme_sitepayoff'] ) ?
 $theme_socials_xwitter_url       = isset( $theme_options['theme_socials_xwitter_url'] ) ? $theme_options['theme_socials_xwitter_url'] : '';
 $theme_socials_xwitter_linktext  = isset( $theme_options['theme_socials_xwitter_linktext'] ) ? $theme_options['theme_socials_xwitter_linktext'] : '';
 $theme_socials_linkedin_url      = isset( $theme_options['theme_socials_linkedin_url'] ) ? $theme_options['theme_socials_linkedin_url'] : '';
-$theme_socials_linkedin_linktext = isset( $theme_options['theme_socials_linkedin_linktext'] ) ? $theme_options['theme_socials_linkedin_linktext'] : '';
-$theme_socials_linkedin_linktext = isset( $theme_options['theme_socials_linkedin_linktext'] ) ? $theme_options['theme_socials_linkedin_linktext'] : '';
+$theme_socials_linkedin_linxtext = isset( $theme_options['theme_socials_linkedin_linxtext'] ) ? $theme_options['theme_socials_linkedin_linxtext'] : '';
+$theme_socials_linkedin_linxtext = isset( $theme_options['theme_socials_linkedin_linxtext'] ) ? $theme_options['theme_socials_linkedin_linxtext'] : '';
 $theme_mail_unsubscribe_text     = isset( $theme_options['theme_mail_unsubscribe_text'] ) ? $theme_options['theme_mail_unsubscribe_text'] : 'Wilt u deze nieuwsbrief niet meer ontvangen?';
 $theme_mail_unsubscribe_linktext = isset( $theme_options['theme_mail_unsubscribe_linktext'] ) ? $theme_options['theme_mail_unsubscribe_linktext'] : 'Meld u zich hier af';
 $theme_preview_text              = isset( $theme_options['theme_preview_text'] ) ? $theme_options['theme_preview_text'] : $theme_nieuwsbrieftitel_datetext;
@@ -1313,7 +1313,7 @@ function maak_event( $eventobject, $asseturl, $theme_options ) {
 
 										<?php
 										// als er socials zijn
-										if ( ( $theme_socials_xwitter_url && $theme_socials_xwitter_linktext ) || ( $theme_socials_linkedin_url && $theme_socials_linkedin_linktext ) ) {
+										if ( ( $theme_socials_xwitter_url && $theme_socials_xwitter_linktext ) || ( $theme_socials_linkedin_url && $theme_socials_linkedin_linxtext ) ) {
 											// START als er socials zijn
 											?>
 
@@ -1370,9 +1370,9 @@ function maak_event( $eventobject, $asseturl, $theme_options ) {
 																		echo '<span style="color:#01689B"><img alt="x / twitter-logo" height="16" src="' . $asseturl . 'icon-xwitter.jpg" alt="" style="border: 0px; width: 16px; height: 16px; margin: 0px;" width="16">&nbsp; &nbsp;<a href="' . $theme_socials_xwitter_url . '" style="color:#01689B">' . $theme_socials_xwitter_linktext . '</a><br>';
 
 																	}
-																	if ( $theme_socials_linkedin_url && $theme_socials_linkedin_linktext ) {
+																	if ( $theme_socials_linkedin_url && $theme_socials_linkedin_linxtext ) {
 
-																		echo '<span style="color:#01689B"><img alt="linkedin-logo" height="16" src="' . $asseturl . 'icon_linkedin.jpeg" alt="" style="border: 0px; width: 16px; height: 16px; margin: 0px;" width="16">&nbsp; &nbsp;<a href="' . $theme_socials_linkedin_url . '" style="color:#01689B">' . $theme_socials_linkedin_linktext . '</a><br>';
+																		echo '<span style="color:#01689B"><img alt="linkedin-logo" height="16" src="' . $asseturl . 'icon_linkedin.jpeg" alt="" style="border: 0px; width: 16px; height: 16px; margin: 0px;" width="16">&nbsp; &nbsp;<a href="' . $theme_socials_linkedin_url . '" style="color:#01689B">' . $theme_socials_linkedin_linxtext . '</a><br>';
 
 																	}
 
