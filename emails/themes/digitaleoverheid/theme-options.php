@@ -38,7 +38,7 @@ $theme_defaults = array(
 	'theme_socials_xwitter_url'       => 'https://twitter.com/digioverheid',
 	'theme_socials_xwitter_linktext'  => 'Volg ons via X',
 	'theme_socials_linkedin_url'      => 'https://www.linkedin.com/company/digitaleoverheidnl/',
-	'theme_socials_linkedin_linktext' => 'Volg ons op LinkedIn',
+	'theme_socials_linkedin_linxtext' => 'Volg ons op LinkedIn',
 	'theme_mail_unsubscribe_text'     => 'Wilt u deze nieuwsbrief niet meer ontvangen?',
 	'theme_mail_unsubscribe_linktext' => 'Meld u zich hier af',
 	'theme_preview_text'              => 'Nieuwsbrief Digitale Overheid',
@@ -203,7 +203,7 @@ foreach ( $myposts as $post ) {
 	<tr>
 		<th>LinkedIn linktekst</th>
 		<td>
-			<?php $controls->text( 'theme_socials_linkedin_linktext', 50 ); ?>
+			<?php $controls->text( 'theme_socials_linkedin_linxtext', 50 ); ?>
 		</td>
 	</tr>
 	<tr>
