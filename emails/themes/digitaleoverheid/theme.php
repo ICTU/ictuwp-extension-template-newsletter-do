@@ -93,7 +93,7 @@ $colofon_blok2                   = isset( $theme_options['theme_colofon_block_2'
 $theme_piwiktrackercode          = isset( $theme_options['theme_piwiktrackercode'] ) ? '?pk_campaign=' . $theme_options['theme_piwiktrackercode'] : '';
 $theme_titel_nieuws              = isset( $theme_options['theme_titel_nieuws'] ) ? $theme_options['theme_titel_nieuws'] : 'Nieuws';
 $theme_titel_events              = isset( $theme_options['theme_titel_events'] ) ? $theme_options['theme_titel_events'] : 'Agenda';
-$theme_titel_socials             = isset( $theme_options['theme_titel_socials'] ) ? $theme_options['theme_titel_socials'] : 'Social media';
+$theme_socials_title             = isset( $theme_options['theme_socials_title'] ) ? $theme_options['theme_socials_title'] : 'Social media';
 $theme_sitetitle                 = isset( $theme_options['theme_sitetitle'] ) ? $theme_options['theme_sitetitle'] : get_bloginfo( 'name' );
 $theme_sitepayoff                = isset( $theme_options['theme_sitepayoff'] ) ? $theme_options['theme_sitepayoff'] : get_bloginfo( 'description' );
 $theme_socials_xwitter_url       = isset( $theme_options['theme_socials_xwitter_url'] ) ? $theme_options['theme_socials_xwitter_url'] : '';
@@ -1336,7 +1336,7 @@ function maak_event( $eventobject, $asseturl, $theme_options ) {
 																	style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
 																	<strong><span
 																			style="font-family:arial,helvetica neue,helvetica,sans-serif"><span
-																				style="font-size:32px"><?php echo $theme_titel_socials ?></span></span></strong>
+																				style="font-size:32px"><?php echo $theme_socials_title ?></span></span></strong>
 
 
 																</td>
