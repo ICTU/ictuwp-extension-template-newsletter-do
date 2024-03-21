@@ -41,7 +41,7 @@ $theme_defaults = array(
 	'theme_socials_linkedin_linxtext' => 'Volg ons op LinkedIn',
 	'theme_mail_unsubscribe_text'     => 'Wilt u deze nieuwsbrief niet meer ontvangen?',
 	'theme_mail_unsubscribe_linktext' => 'Meld u zich hier af',
-	'theme_preview_text'              => 'Nieuwsbrief Digitale Overheid',
+	'theme_preview_text_view_online'  => 'Kunt u deze nieuwsbrief niet goed lezen? <a href="{email_url}" style="color: #01689B">Bekijk dan de online versie</a><br>',
 );
 
 // Mandatory!
@@ -65,7 +65,6 @@ foreach ( $myposts as $post ) {
 	setup_postdata( $post );
 	$titel = get_the_title( $post->ID );
 	$datum = ' - (' . get_the_date( get_option( 'date_format' ), $post->ID ) . ')';
-//	$category                      = get_the_date( $post->ID );
 	$category                      = '';
 	$laatsteberichten[ $post->ID ] = $titel . $datum . $category;
 }
@@ -133,7 +132,7 @@ foreach ( $myposts as $post ) {
 	<tr>
 		<th>Preview text</th>
 		<td>
-			<?php $controls->textarea( 'theme_preview_text' ); ?>
+			<?php $controls->textarea( 'theme_preview_text_view_online' ); ?>
 			<p class="description">Max. 2 regels tekst met een samenvatting van de inhoud van de nieuwbrief.</p>
 		</td>
 	</tr>
