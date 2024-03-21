@@ -103,7 +103,7 @@ $theme_socials_linkedin_linxtext = isset( $theme_options['theme_socials_linkedin
 $theme_socials_linkedin_linxtext = isset( $theme_options['theme_socials_linkedin_linxtext'] ) ? $theme_options['theme_socials_linkedin_linxtext'] : '';
 $theme_mail_unsubscribe_text     = isset( $theme_options['theme_mail_unsubscribe_text'] ) ? $theme_options['theme_mail_unsubscribe_text'] : 'Wilt u deze nieuwsbrief niet meer ontvangen?';
 $theme_mail_unsubscribe_linktext = isset( $theme_options['theme_mail_unsubscribe_linktext'] ) ? $theme_options['theme_mail_unsubscribe_linktext'] : 'Meld u zich hier af';
-$theme_preview_text              = isset( $theme_options['theme_preview_text'] ) ? $theme_options['theme_preview_text'] : $theme_nieuwsbrieftitel_datetext;
+$theme_preview_text_view_online  = isset( $theme_options['theme_preview_text_view_online'] ) ? $theme_options['theme_preview_text_view_online'] : 'Kunt u deze nieuwsbrief niet goed lezen? <a href="{email_url}" style="color: #01689B">Bekijk dan de online versie</a><br>';
 
 
 //$asseturl = $_SERVER['HTTPS'] . $_SERVER['SERVER_NAME'] . '/';
@@ -806,7 +806,7 @@ function maak_event( $eventobject, $asseturl, $theme_options ) {
 </head>
 <body>
 <span class="mcnPreviewText"
-	  style="display:none; font-size:0px; line-height:0px; max-height:0px; max-width:0px; opacity:0; overflow:hidden; visibility:hidden; mso-hide:all;"><?php echo $theme_preview_text ?></span>
+	  style="display:none; font-size:0px; line-height:0px; max-height:0px; max-width:0px; opacity:0; overflow:hidden; visibility:hidden; mso-hide:all;"><?php echo $theme_preview_text_view_online ?></span>
 
 <center>
 	<table role="presentation" align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%"
@@ -839,10 +839,8 @@ function maak_event( $eventobject, $asseturl, $theme_options ) {
 														<tr>
 															<td valign="top" class="mcnTextContent"
 																style="padding: 0px 18px 9px; text-align: center;">
-																<div style="text-align: left;">Kunt u deze nieuwsbrief
-																	niet goed lezen?
-																	<a href="{email_url}" style="color: #01689B">Bekijk
-																		dan de online versie</a>
+																<div style="text-align: left;">
+																	<?php echo $theme_preview_text_view_online ?>
 																</div>
 															</td>
 														</tr>
@@ -1126,7 +1124,7 @@ function maak_event( $eventobject, $asseturl, $theme_options ) {
 														setup_postdata( $post );
 														$postcounter ++;
 														if ( $postcounter <= $linkeraantal ) {
-// break;
+															// break;
 														} else {
 															echo write_bericht( $post, $theme_options );
 														}
@@ -1179,7 +1177,6 @@ function maak_event( $eventobject, $asseturl, $theme_options ) {
 										</table>
 
 										<?php
-
 										$linker_events  = '';
 										$rechter_events = '';
 										$args_selection = array(
@@ -1241,7 +1238,6 @@ function maak_event( $eventobject, $asseturl, $theme_options ) {
 											</tr>
 											</tbody>
 										</table>
-
 
 										<table role="presentation" border="0" cellpadding="0" cellspacing="0"
 											   class="templateContainer">
@@ -1309,7 +1305,6 @@ function maak_event( $eventobject, $asseturl, $theme_options ) {
 											</tr>
 											</tbody>
 										</table>
-
 
 										<?php
 										// als er socials zijn
