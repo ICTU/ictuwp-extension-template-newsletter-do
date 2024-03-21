@@ -71,11 +71,10 @@ if ( isset( $theme_options['theme_categories'] ) ) {
 
 
 // Retrieve the posts asking them to WordPress
-$posts = get_posts( $filters );
-
-$counter       = count( $posts );
-$linkeraantal  = round( ( $counter / 2 ), 0 );
-$rechteraantal = ( $counter - $linkeraantal );
+$posts         = get_posts( $filters );
+$post_counter  = count( $posts );
+$linkeraantal  = round( ( $post_counter / 2 ), 0 );
+$rechteraantal = ( $post_counter - $linkeraantal );
 
 
 // Styles
@@ -980,7 +979,8 @@ function maak_event( $eventobject, $asseturl, $theme_options ) {
 																<td class="mcnTextContent" valign="top"
 																	style="padding:0 9px 0 9px;" width="564">
 																	<p style="color:#000; font-size: 18px; font-weight: bold; margin: 10px 0"><?php echo $uitgelicht_date ?></p>
-																	<p class="null"><span style="font-size:14px"><span style="color: #696969;font-weight: 600;"><?php echo $uitgelicht_label ?></span></span>
+																	<p class="null"><span style="font-size:14px"><span
+																				style="color: #696969;font-weight: 600;"><?php echo $uitgelicht_label ?></span></span>
 																	</p>
 																	<h2 class="null"><a
 																			href="<?php echo $uitgelicht_url ?>"><strong>
@@ -1002,28 +1002,36 @@ function maak_event( $eventobject, $asseturl, $theme_options ) {
 											// EIND UITGELICHT ARTIKEL
 										}
 										?>
+										<?php // START (1) check if any posts are available
+										if ( $post_counter > 0 ) {
+											?>
 
 
-										<table role="presentation" border="0" cellpadding="0" cellspacing="0"
-											   width="100%"
-											   class="mcnDividerBlock" style="min-width:100%;">
-											<tbody class="mcnDividerBlockOuter">
-											<tr>
-												<td class="mcnDividerBlockInner" style="min-width:100%; padding:9px;">
-													<table role="presentation" class="mcnDividerContent" border="0"
-														   cellpadding="0"
-														   cellspacing="0" width="100%"
-														   style="min-width: 100%;border-top: 1px solid #EAEAEA;">
-														<tbody>
-														<tr>
-															<td><span></span></td>
-														</tr>
-														</tbody>
-													</table>
-												</td>
-											</tr>
-											</tbody>
-										</table>
+											<table role="presentation" border="0" cellpadding="0" cellspacing="0"
+												   width="100%"
+												   class="mcnDividerBlock" style="min-width:100%;">
+												<tbody class="mcnDividerBlockOuter">
+												<tr>
+													<td class="mcnDividerBlockInner"
+														style="min-width:100%; padding:9px;">
+														<table role="presentation" class="mcnDividerContent" border="0"
+															   cellpadding="0"
+															   cellspacing="0" width="100%"
+															   style="min-width: 100%;border-top: 1px solid #EAEAEA;">
+															<tbody>
+															<tr>
+																<td><span></span></td>
+															</tr>
+															</tbody>
+														</table>
+													</td>
+												</tr>
+												</tbody>
+											</table>
+											<?php // END (1) check if any posts are available
+										}
+										?>
+
 										<table role="presentation" border="0" cellpadding="0" cellspacing="0"
 											   width="100%"
 											   class="mcnTextBlock" style="min-width:100%;">
@@ -1040,6 +1048,9 @@ function maak_event( $eventobject, $asseturl, $theme_options ) {
 													<!--[if mso]>
 													<td valign="top" width="600" style="width:600px;">
 													<![endif]-->
+													<?php // START (2) check if any posts are available
+													if ( $post_counter > 0 ) {
+													?>
 
 													<table role="presentation" align="left" border="0" cellpadding="0"
 														   cellspacing="0"
@@ -1064,6 +1075,10 @@ function maak_event( $eventobject, $asseturl, $theme_options ) {
 													<!--[if mso]>
 													</tr>
 													</table>
+													<?php // END (2) check if any posts are available
+													}
+													?>
+
 													<![endif]--></td>
 											</tr>
 											</tbody>
@@ -1074,78 +1089,85 @@ function maak_event( $eventobject, $asseturl, $theme_options ) {
 
 						</td>
 					</tr>
-					<tr>
-						<td align="center" valign="top" id="templateColumns">
-							<table role="presentation" border="0" cellpadding="0" cellspacing="0"
-								   class="templateContainer">
-								<tr width="100%">
-									<td valign="top" align="left" class="columnWrapper">
+					<?php // START (3) check if any posts are available
+					if ( $post_counter > 0 ) {
+						?>
+						<tr>
+							<td align="center" valign="top" id="templateColumns">
+								<table role="presentation" border="0" cellpadding="0" cellspacing="0"
+									   class="templateContainer">
+									<tr width="100%">
+										<td valign="top" align="left" class="columnWrapper">
 
-										<!-- START LINKERKOLOM -->
+											<!-- START LINKERKOLOM -->
 
-										<table role="presentation" align="center" border="0" cellpadding="0"
-											   cellspacing="0" width="100%">
-											<tr>
-												<td valign="top" class="columnContainer">
-													<?php
-													$postcounter = 0;
+											<table role="presentation" align="center" border="0" cellpadding="0"
+												   cellspacing="0" width="100%">
+												<tr>
+													<td valign="top" class="columnContainer">
+														<?php
+														$postcounter = 0;
 
-													foreach ( $posts as $post ) {
-														setup_postdata( $post );
-														$postcounter ++;
-														if ( $postcounter > $linkeraantal ) {
-															break;
-														} else {
-															echo write_bericht( $post, $theme_options );
+														foreach ( $posts as $post ) {
+															setup_postdata( $post );
+															$postcounter ++;
+															if ( $postcounter > $linkeraantal ) {
+																break;
+															} else {
+																echo write_bericht( $post, $theme_options );
+															}
 														}
-													}
 
 
-													?>
-												</td>
-											</tr>
-										</table>
-									</td>
+														?>
+													</td>
+												</tr>
+											</table>
+										</td>
 
-									<!-- EIND LINKERKOLOM -->
+										<!-- EIND LINKERKOLOM -->
 
 
-									<!-- START RECHTERKOLOM -->
-									<td valign="top" align="left" class="columnWrapper">
-										<table role="presentation" align="cenetr" border="0" cellpadding="0"
-											   cellspacing="0" width="100%">
-											<tr>
-												<td valign="top" class="columnContainer">
-													<?php
+										<!-- START RECHTERKOLOM -->
+										<td valign="top" align="left" class="columnWrapper">
+											<table role="presentation" align="cenetr" border="0" cellpadding="0"
+												   cellspacing="0" width="100%">
+												<tr>
+													<td valign="top" class="columnContainer">
+														<?php
 
-													$postcounter = 0;
+														$postcounter = 0;
 
-													foreach ( $posts as $post ) {
-														setup_postdata( $post );
-														$postcounter ++;
-														if ( $postcounter <= $linkeraantal ) {
-															// break;
-														} else {
-															echo write_bericht( $post, $theme_options );
+														foreach ( $posts as $post ) {
+															setup_postdata( $post );
+															$postcounter ++;
+															if ( $postcounter <= $linkeraantal ) {
+																// break;
+															} else {
+																echo write_bericht( $post, $theme_options );
+															}
 														}
-													}
 
 
-													?>
+														?>
 
 
-												</td>
-											</tr>
-										</table>
+													</td>
+												</tr>
+											</table>
 
-									</td>
-									<!-- EIND RECHTERKOLOM -->
+										</td>
+										<!-- EIND RECHTERKOLOM -->
 
 
-								</tr>
-							</table>
-						</td>
-					</tr>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<?php // END (3) check if any posts are available
+					}
+					?>
+
 					<tr>
 						<td align="center" valign="top" id="templateLowerBody">
 
@@ -1192,9 +1214,9 @@ function maak_event( $eventobject, $asseturl, $theme_options ) {
 										if ( $EM_Events ) {
 
 											// er zijn events...
-											$counter       = count( $EM_Events );
-											$linkeraantal  = round( ( $counter / 2 ), 0 );
-											$rechteraantal = ( $counter - $linkeraantal );
+											$event_counter = count( $EM_Events );
+											$linkeraantal  = round( ( $event_counter / 2 ), 0 );
+											$rechteraantal = ( $event_counter - $linkeraantal );
 											$postcounter   = 0;
 
 											foreach ( $EM_Events as $EM_Event ) {
@@ -1208,103 +1230,114 @@ function maak_event( $eventobject, $asseturl, $theme_options ) {
 											}
 										}
 
+										if ( $linker_events || $rechter_events ) {
+											// only show events title etc if events are available
+
+											?>
+
+
+											<table role="presentation" border="0" cellpadding="0" cellspacing="0"
+												   width="100%"
+												   class="mcnTextBlock" style="min-width:100%;">
+												<tbody class="mcnTextBlockOuter">
+												<tr>
+													<td valign="top" class="mcnTextBlockInner" style="padding-top:9px;">
+
+														<table role="presentation" align="left" border="0"
+															   cellpadding="0"
+															   cellspacing="0"
+															   style="max-width:100%; min-width:100%;" width="100%"
+															   class="mcnTextContentContainer">
+															<tbody>
+															<tr>
+																<td valign="top" class="mcnTextContent"
+																	style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
+																	<h2><strong><span
+																				style="font-family:arial,helvetica neue,helvetica,sans-serif; font-size:32px"><?php echo $theme_titel_events ?></span></strong>
+																	</h2>
+																</td>
+															</tr>
+															</tbody>
+														</table>
+													</td>
+												</tr>
+												</tbody>
+											</table>
+
+											<table role="presentation" border="0" cellpadding="0" cellspacing="0"
+												   class="templateContainer">
+												<tbody class="mcnTextBlockOuter">
+												<tr width="100%">
+													<td class="columnWrapper" valign="top" width="50%">
+														<table role="presentation" align="center" border="0"
+															   cellpadding="0"
+															   cellspacing="0"
+															   width="100%">
+															<tbody>
+															<tr>
+																<td valign="top" class="mcnTextContent"
+																	style="padding-top:0; padding-left:18px; padding-bottom:9px; padding-right:18px;">
+																	<?php
+																	echo $linker_events;
+																	?>
+																</td>
+															</tr>
+															</tbody>
+														</table>
+													</td>
+													<td class="columnWrapper" valign="top" width="50%">
+														<table role="presentation" align="center" border="0"
+															   cellpadding="0"
+															   cellspacing="0"
+															   width="100%">
+															<tbody>
+															<tr>
+																<td valign="top" class="mcnTextContent"
+																	style="padding-top:0; padding-left:18px; padding-bottom:9px; padding-right:18px;">
+																	<?php
+																	echo $rechter_events;
+																	?>
+																</td>
+															</tr>
+															</tbody>
+														</table>
+
+													</td>
+												</tr>
+												</tbody>
+											</table>
+
+
+											<table role="presentation" border="0" cellpadding="0" cellspacing="0"
+												   width="100%"
+												   class="mcnDividerBlock" style="min-width:100%;">
+												<tbody class="mcnDividerBlockOuter">
+												<tr>
+													<td class="mcnDividerBlockInner"
+														style="min-width:100%; padding:18px;">
+														<table role="presentation" class="mcnDividerContent" border="0"
+															   cellpadding="0"
+															   cellspacing="0" width="100%"
+															   style="min-width: 100%;border-top: 1px solid #EAEAEA;">
+															<tbody>
+															<tr>
+																<td><span></span></td>
+															</tr>
+															</tbody>
+														</table>
+
+														<!--
+														<td class="mcnDividerBlockInner" style="padding: 18px;">
+														<hr class="mcnDividerContent" style="border-bottom-color:none; border-left-color:none; border-right-color:none; border-bottom-width:0; border-left-width:0; border-right-width:0; margin-top:0; margin-right:0; margin-bottom:0; margin-left:0;" />
+														--></td>
+												</tr>
+												</tbody>
+											</table>
+
+											<?php
+										}
 
 										?>
-
-
-										<table role="presentation" border="0" cellpadding="0" cellspacing="0"
-											   width="100%"
-											   class="mcnTextBlock" style="min-width:100%;">
-											<tbody class="mcnTextBlockOuter">
-											<tr>
-												<td valign="top" class="mcnTextBlockInner" style="padding-top:9px;">
-
-													<table role="presentation" align="left" border="0" cellpadding="0"
-														   cellspacing="0"
-														   style="max-width:100%; min-width:100%;" width="100%"
-														   class="mcnTextContentContainer">
-														<tbody>
-														<tr>
-															<td valign="top" class="mcnTextContent"
-																style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
-																<h2><strong><span
-																			style="font-family:arial,helvetica neue,helvetica,sans-serif; font-size:32px"><?php echo $theme_titel_events ?></span></strong>
-																</h2>
-															</td>
-														</tr>
-														</tbody>
-													</table>
-												</td>
-											</tr>
-											</tbody>
-										</table>
-
-										<table role="presentation" border="0" cellpadding="0" cellspacing="0"
-											   class="templateContainer">
-											<tbody class="mcnTextBlockOuter">
-											<tr width="100%">
-												<td class="columnWrapper" valign="top" width="50%">
-													<table role="presentation" align="center" border="0" cellpadding="0"
-														   cellspacing="0"
-														   width="100%">
-														<tbody>
-														<tr>
-															<td valign="top" class="mcnTextContent"
-																style="padding-top:0; padding-left:18px; padding-bottom:9px; padding-right:18px;">
-																<?php
-																echo $linker_events;
-																?>
-															</td>
-														</tr>
-														</tbody>
-													</table>
-												</td>
-												<td class="columnWrapper" valign="top" width="50%">
-													<table role="presentation" align="center" border="0" cellpadding="0"
-														   cellspacing="0"
-														   width="100%">
-														<tbody>
-														<tr>
-															<td valign="top" class="mcnTextContent"
-																style="padding-top:0; padding-left:18px; padding-bottom:9px; padding-right:18px;">
-																<?php
-																echo $rechter_events;
-																?>
-															</td>
-														</tr>
-														</tbody>
-													</table>
-
-												</td>
-											</tr>
-											</tbody>
-										</table>
-
-
-										<table role="presentation" border="0" cellpadding="0" cellspacing="0"
-											   width="100%"
-											   class="mcnDividerBlock" style="min-width:100%;">
-											<tbody class="mcnDividerBlockOuter">
-											<tr>
-												<td class="mcnDividerBlockInner" style="min-width:100%; padding:18px;">
-													<table role="presentation" class="mcnDividerContent" border="0"
-														   cellpadding="0"
-														   cellspacing="0" width="100%"
-														   style="min-width: 100%;border-top: 1px solid #EAEAEA;">
-														<tbody>
-														<tr>
-															<td><span></span></td>
-														</tr>
-														</tbody>
-													</table>
-
-													<!--
-													<td class="mcnDividerBlockInner" style="padding: 18px;">
-													<hr class="mcnDividerContent" style="border-bottom-color:none; border-left-color:none; border-right-color:none; border-bottom-width:0; border-left-width:0; border-right-width:0; margin-top:0; margin-right:0; margin-bottom:0; margin-left:0;" />
-													--></td>
-											</tr>
-											</tbody>
-										</table>
 
 										<?php
 										// als er socials zijn
