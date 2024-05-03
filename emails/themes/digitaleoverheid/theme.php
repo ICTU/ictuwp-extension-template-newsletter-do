@@ -97,6 +97,8 @@ $theme_sitetitle                 = isset( $theme_options['theme_sitetitle'] ) ? 
 $theme_sitepayoff                = isset( $theme_options['theme_sitepayoff'] ) ? $theme_options['theme_sitepayoff'] : get_bloginfo( 'description' );
 $theme_socials_xwitter_url       = isset( $theme_options['theme_socials_xwitter_url'] ) ? $theme_options['theme_socials_xwitter_url'] : '';
 $theme_socials_xwitter_linktext  = isset( $theme_options['theme_socials_xwitter_linktext'] ) ? $theme_options['theme_socials_xwitter_linktext'] : '';
+$theme_socials_mastodon_url      = isset( $theme_options['theme_socials_mastodon_url'] ) ? $theme_options['theme_socials_mastodon_url'] : '';
+$theme_socials_mastodon_linktext = isset( $theme_options['theme_socials_mastodon_linktext'] ) ? $theme_options['theme_socials_mastodon_linktext'] : '';
 $theme_socials_linkedin_url      = isset( $theme_options['theme_socials_linkedin_url'] ) ? $theme_options['theme_socials_linkedin_url'] : '';
 $theme_socials_linkedin_linxtext = isset( $theme_options['theme_socials_linkedin_linxtext'] ) ? $theme_options['theme_socials_linkedin_linxtext'] : '';
 $theme_socials_linkedin_linxtext = isset( $theme_options['theme_socials_linkedin_linxtext'] ) ? $theme_options['theme_socials_linkedin_linxtext'] : '';
@@ -104,15 +106,17 @@ $theme_mail_unsubscribe_text     = isset( $theme_options['theme_mail_unsubscribe
 $theme_mail_unsubscribe_linktext = isset( $theme_options['theme_mail_unsubscribe_linktext'] ) ? $theme_options['theme_mail_unsubscribe_linktext'] : 'Meld u zich hier af';
 $theme_preview_text_view_online  = isset( $theme_options['theme_preview_text_view_online'] ) ? $theme_options['theme_preview_text_view_online'] : 'Kunt u deze nieuwsbrief niet goed lezen? <a href="{email_url}" style="color: #01689B">Bekijk dan de online versie</a><br>';
 
-
-//$asseturl = $_SERVER['HTTPS'] . $_SERVER['SERVER_NAME'] . '/';
-
+// folder for icons
 $asset_domain = get_theme_root_uri();
 $asseturl     = wp_slash( str_replace( '/themes', '/', $asset_domain ) );
 $asset_folder = dirname( __FILE__ );
 if ( stripos( $asset_folder, 'wp-content' ) ) {
 	$folders  = explode( 'wp-content/', $asset_folder );
 	$asseturl .= $folders[1] . '/';
+} elseif ( stripos( $asset_folder, 'ictuwp-extension-template-newsletter-do' ) ) {
+    // template served from Github dev. folder
+    $folders  = explode( 'ictuwp-extension-template-newsletter-do/', $asset_folder );
+    $asseturl .= 'extensions/newsletter/' . $folders[1] . '/';
 }
 
 
@@ -1341,7 +1345,7 @@ function maak_event( $eventobject, $asseturl, $theme_options ) {
 
 										<?php
 										// als er socials zijn
-										if ( ( $theme_socials_xwitter_url && $theme_socials_xwitter_linktext ) || ( $theme_socials_linkedin_url && $theme_socials_linkedin_linxtext ) ) {
+										if ( ( $theme_socials_xwitter_url && $theme_socials_xwitter_linktext ) || ( $theme_socials_linkedin_url && $theme_socials_linkedin_linxtext ) || ( $theme_socials_mastodon_url && $theme_socials_mastodon_linktext ) ) {
 											// START als er socials zijn
 											?>
 
@@ -1401,6 +1405,11 @@ function maak_event( $eventobject, $asseturl, $theme_options ) {
 																	if ( $theme_socials_linkedin_url && $theme_socials_linkedin_linxtext ) {
 
 																		echo '<span style="color:#01689B"><img alt="linkedin-logo" height="16" src="' . $asseturl . 'icon_linkedin.jpeg" alt="" style="border: 0px; width: 16px; height: 16px; margin: 0px;" width="16">&nbsp; &nbsp;<a href="' . $theme_socials_linkedin_url . '" style="color:#01689B">' . $theme_socials_linkedin_linxtext . '</a><br>';
+
+																	}
+																	if ( $theme_socials_mastodon_url && $theme_socials_mastodon_linktext ) {
+
+																		echo '<span style="color:#01689B"><img alt="Mastodon-logo" height="16" src="' . $asseturl . 'icon_mastodon.jpg" alt="" style="border: 0px; width: 16px; height: 16px; margin: 0px;" width="16">&nbsp; &nbsp;<a href="' . $theme_socials_mastodon_url . '" style="color:#01689B">' . $theme_socials_mastodon_linktext . '</a><br>';
 
 																	}
 
