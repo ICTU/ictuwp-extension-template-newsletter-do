@@ -22,6 +22,14 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 
 
+$shared_folder = dirname(__FILE__, 2);
+$shared_file = $shared_folder . '/shared/functions.php';
+
+include_once( $shared_file );
+
+$asseturl = get_asset_url();
+
+
 // This array will be passed to WordPress to extract the posts
 $filters = array();
 
@@ -106,18 +114,6 @@ $theme_mail_unsubscribe_text     = isset( $theme_options['theme_mail_unsubscribe
 $theme_mail_unsubscribe_linktext = isset( $theme_options['theme_mail_unsubscribe_linktext'] ) ? $theme_options['theme_mail_unsubscribe_linktext'] : 'Meld u zich hier af';
 $theme_preview_text_view_online  = isset( $theme_options['theme_preview_text_view_online'] ) ? $theme_options['theme_preview_text_view_online'] : 'Kunt u deze nieuwsbrief niet goed lezen? <a href="{email_url}" style="color: #01689B">Bekijk dan de online versie</a><br>';
 
-// folder for icons
-$asset_domain = get_theme_root_uri();
-$asseturl     = wp_slash( str_replace( '/themes', '/', $asset_domain ) );
-$asset_folder = dirname( __FILE__ );
-if ( stripos( $asset_folder, 'wp-content' ) ) {
-	$folders  = explode( 'wp-content/', $asset_folder );
-	$asseturl .= $folders[1] . '/';
-} elseif ( stripos( $asset_folder, 'ictuwp-extension-template-newsletter-do' ) ) {
-    // template served from Github dev. folder
-    $folders  = explode( 'ictuwp-extension-template-newsletter-do/', $asset_folder );
-    $asseturl .= 'extensions/newsletter/' . $folders[1] . '/';
-}
 
 
 //========================================================================================================
