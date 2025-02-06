@@ -1067,11 +1067,8 @@ function maak_event( $eventobject, $asseturl, $theme_options ) {
 										<?php
 										if ( $vrije_invoer ) {
 
-
 											echo $vrije_invoer;
 
-										} else {
-											echo '<h1>GEEN VRIJE INVOER</h1>';
 										}
 										?>
 										<?php // START (1) check if any posts are available
