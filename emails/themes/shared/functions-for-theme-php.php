@@ -267,7 +267,7 @@ function get_vrije_invoer( $theme_options = array() ) {
 		$image_alt          = $theme_vrije_invoer_xx3_title;
 		$titel              = '<strong><span style="color:#000; font-size:24px; line-height:32px;">' . $theme_vrije_invoer_xx3_title . '</span></strong>';
 		$vrije_invoer_label = '<p class="null"><span style="font-size:14px"><span
-                                            style="color: #696969;font-weight: 600;">' . $theme_vrije_invoer_xx3_label . '</span></span>
+                                            style="color: #696969;font-weight: 600;">' . strtoupper($theme_vrije_invoer_xx3_label ). '</span></span>
                             </p>';
 
 		// Do we have a valid URL?
