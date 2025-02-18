@@ -32,11 +32,11 @@ $theme_defaults = array(
 	'theme_mail_unsubscribe_linktext' => 'Meld u zich hier af',
 	'theme_preview_text_view_online'  => 'Kunt u deze nieuwsbrief niet goed lezen? <a href="{email_url}" style="color: #01689B">Bekijk dan de online versie</a><br>',
 
-	'theme_vrije_invoer_xx3_title' => '',
-	'theme_vrije_invoer_xx3_text'  => '',
-	'theme_vrije_invoer_xx3_url'   => '',
-	'theme_vrije_invoer_xx3_image' => '',
-	'theme_vrije_invoer_xx3_label' => '',
+	'theme_vrije_invoer_title' => '',
+	'theme_vrije_invoer_text'  => '',
+	'theme_vrije_invoer_url'   => '',
+	'theme_vrije_invoer_image' => '',
+	'theme_vrije_invoer_label' => '',
 
 
 );

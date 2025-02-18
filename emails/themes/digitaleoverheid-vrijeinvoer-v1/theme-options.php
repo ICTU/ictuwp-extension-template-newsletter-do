@@ -66,20 +66,20 @@ include_once( $shared_file );
     <tr style="padding: 1rem; background: #eaeaea;">
         <th style="border-left: 1px solid var(--tnp-text);">Titel (verplicht)</th>
         <td style="border-right: 1px solid var(--tnp-text);">
-			<?php $controls->text( 'theme_vrije_invoer_xx3_title', 50 ) ?>
+			<?php $controls->text( 'theme_vrije_invoer_title', 50 ) ?>
             <p class="description"> Zowel titel als vrije tekst zijn verplicht.</p>
         </td>
     </tr>
     <tr style="padding: 0 1rem; background: #eaeaea;">
         <th style="border-left: 1px solid var(--tnp-text);">Vrije tekst (verplicht)</th>
         <td style="border-right: 1px solid var(--tnp-text);">
-			<?php $controls->wp_editor( 'theme_vrije_invoer_xx3_text' ) ?>
+			<?php $controls->wp_editor( 'theme_vrije_invoer_text' ) ?>
         </td>
     </tr>
     <tr style="padding: 1rem; background: #eaeaea;">
         <th style="border-left: 1px solid var(--tnp-text);">Label</th>
         <td style="border-right: 1px solid var(--tnp-text);">
-			<?php $controls->text( 'theme_vrije_invoer_xx3_label', 50 ) ?>
+			<?php $controls->text( 'theme_vrije_invoer_label', 50 ) ?>
             <p class="description"> Dit is de korte tekst boven de titel. Wees kort; gebruik niet meer dan 3
                 woorden.</p>
         </td>
@@ -89,7 +89,7 @@ include_once( $shared_file );
             Uitgelichte afbeelding
         </th>
         <td style="border-right: 1px solid var(--tnp-text);">
-			<?php $controls->media( 'theme_vrije_invoer_xx3_image' ) ?>
+			<?php $controls->media( 'theme_vrije_invoer_image' ) ?>
             <p class="description"> Deze afbeelding wordt breed getoond en moet een minimale breedte hebben van 600 pixels.</p>
         </td>
     </tr>
@@ -98,7 +98,7 @@ include_once( $shared_file );
             URL
         </th>
         <td style="border: 1px solid var(--tnp-text) ?> border-left-style: none; border-top-style: none;">
-			<?php $controls->text_url( 'theme_vrije_invoer_xx3_url' ) ?>
+			<?php $controls->text_url( 'theme_vrije_invoer_url' ) ?>
             <p class="description"> Deze link wordt toegevoegd aan de titel en de uitgelichte afbeelding als je die hebt
                 toegevoegd.</p>
         </td>

@@ -132,27 +132,30 @@ include_once( $shared_file );
 
     <!-- START TOEGEVOEGD ------>
     <tr style="padding: 1rem; background: #eaeaea;">
-        <td colspan="2" style="border: 1px solid var(--tnp-text) ?> border-bottom-style: none;">
+        <td colspan="2" style="border: 1px solid var(--tnp-text); border-bottom-style: none;">
             <h2 style="margin: 0;">Vrije invoer</h2>
+            <p class="description">De vrije invoer wordt pas getoond als 'Titel' en 'vrije tekst' gevuld zijn.</p>
+            <p class="description">Als je een link toevoegt, dan wordt deze link toegevoegd aan de titel en aan de
+                uitgelichte afbeelding.</p>
         </td>
     </tr>
     <tr style="padding: 1rem; background: #eaeaea;">
         <th style="border-left: 1px solid var(--tnp-text);">Titel (verplicht)</th>
         <td style="border-right: 1px solid var(--tnp-text);">
-			<?php $controls->text( 'theme_vrije_invoer_xx3_title', 50 ) ?>
+			<?php $controls->text( 'theme_vrije_invoer_title', 50 ) ?>
             <p class="description"> Zowel titel als vrije tekst zijn verplicht.</p>
         </td>
     </tr>
     <tr style="padding: 0 1rem; background: #eaeaea;">
         <th style="border-left: 1px solid var(--tnp-text);">Vrije tekst (verplicht)</th>
         <td style="border-right: 1px solid var(--tnp-text);">
-			<?php $controls->wp_editor( 'theme_vrije_invoer_xx3_text' ) ?>
+			<?php $controls->wp_editor( 'theme_vrije_invoer_text' ) ?>
         </td>
     </tr>
     <tr style="padding: 1rem; background: #eaeaea;">
         <th style="border-left: 1px solid var(--tnp-text);">Label</th>
         <td style="border-right: 1px solid var(--tnp-text);">
-			<?php $controls->text( 'theme_vrije_invoer_xx3_label', 50 ) ?>
+			<?php $controls->text( 'theme_vrije_invoer_label', 50 ) ?>
             <p class="description"> Dit is de korte tekst boven de titel. Wees kort; gebruik niet meer dan 3
                 woorden.</p>
         </td>
@@ -162,18 +165,19 @@ include_once( $shared_file );
             Uitgelichte afbeelding
         </th>
         <td style="border-right: 1px solid var(--tnp-text);">
-	        <?php $controls->media( 'theme_vrije_invoer_xx3_image' ) ?>
-            <p class="description"> Deze afbeelding wordt breed getoond en moet een minimale breedte hebben van 600 pixels.</p>
+			<?php $controls->media( 'theme_vrije_invoer_image' ) ?>
+            <p class="description"> Deze afbeelding wordt breed getoond en moet een minimale breedte hebben van 600
+                pixels.</p>
         </td>
     </tr>
     <tr style="padding: 0 1rem 1rem 1rem; background: #eaeaea;">
-        <th style="border: 1px solid var(--tnp-text) ?> border-right-style: none; border-top-style: none;">
+        <th style="border: 1px solid var(--tnp-text); border-right-style: none; border-top-style: none;">
             URL
         </th>
-        <td style="border: 1px solid var(--tnp-text) ?> border-left-style: none; border-top-style: none;">
-			<?php $controls->text_url( 'theme_vrije_invoer_xx3_url' ) ?>
-            <p class="description"> Deze link wordt toegevoegd aan de titel en de uitgelichte afbeelding als je die hebt
-                toegevoegd.</p>
+        <td style="border: 1px solid var(--tnp-text); border-left-style: none; border-top-style: none;">
+			<?php $controls->text_url( 'theme_vrije_invoer_url' ) ?>
+            <p class="description"> Deze link wordt toegevoegd aan de titel (en aan de uitgelichte afbeelding, als je
+                die hebt toegevoegd)</p>
         </td>
     </tr>
     <!-- EIND TOEGEVOEGD ------>

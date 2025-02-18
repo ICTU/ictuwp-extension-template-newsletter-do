@@ -110,11 +110,11 @@ $theme_mail_unsubscribe_text     = isset( $theme_options['theme_mail_unsubscribe
 $theme_mail_unsubscribe_linktext = isset( $theme_options['theme_mail_unsubscribe_linktext'] ) ? $theme_options['theme_mail_unsubscribe_linktext'] : 'Meld u zich hier af';
 $theme_preview_text_view_online  = isset( $theme_options['theme_preview_text_view_online'] ) ? $theme_options['theme_preview_text_view_online'] : 'Kunt u deze nieuwsbrief niet goed lezen? <a href="{email_url}" style="color: #01689B">Bekijk dan de online versie</a><br>';
 
-$theme_vrije_invoer_xx3_title = isset( $theme_options['theme_vrije_invoer_xx3_title'] ) ? $theme_options['theme_vrije_invoer_xx3_title'] : '';
-$theme_vrije_invoer_xx3_text  = isset( $theme_options['theme_vrije_invoer_xx3_text'] ) ? $theme_options['theme_vrije_invoer_xx3_text'] : '';
-$theme_vrije_invoer_xx3_image = isset( $theme_options['theme_vrije_invoer_xx3_image'] ) ? $theme_options['theme_vrije_invoer_xx3_image'] : null;
-$theme_vrije_invoer_xx3_url   = isset( $theme_options['theme_vrije_invoer_xx3_url'] ) ? $theme_options['theme_vrije_invoer_xx3_url'] : '';
-$theme_vrije_invoer_xx3_label = isset( $theme_options['theme_vrije_invoer_xx3_label'] ) ? $theme_options['theme_vrije_invoer_xx3_label'] : '';
+$theme_vrije_invoer_title = isset( $theme_options['theme_vrije_invoer_title'] ) ? $theme_options['theme_vrije_invoer_title'] : '';
+$theme_vrije_invoer_text  = isset( $theme_options['theme_vrije_invoer_text'] ) ? $theme_options['theme_vrije_invoer_text'] : '';
+$theme_vrije_invoer_image = isset( $theme_options['theme_vrije_invoer_image'] ) ? $theme_options['theme_vrije_invoer_image'] : null;
+$theme_vrije_invoer_url   = isset( $theme_options['theme_vrije_invoer_url'] ) ? $theme_options['theme_vrije_invoer_url'] : '';
+$theme_vrije_invoer_label = isset( $theme_options['theme_vrije_invoer_label'] ) ? $theme_options['theme_vrije_invoer_label'] : '';
 
 $vrije_invoer = get_vrije_invoer( $theme_options );
 
@@ -251,50 +251,50 @@ function get_vrije_invoer( $theme_options = array() ) {
 
 	$return = '';
 
-	$theme_vrije_invoer_xx3_title = isset( $theme_options['theme_vrije_invoer_xx3_title'] ) ? $theme_options['theme_vrije_invoer_xx3_title'] : '';
-	$theme_vrije_invoer_xx3_text  = isset( $theme_options['theme_vrije_invoer_xx3_text'] ) ? $theme_options['theme_vrije_invoer_xx3_text'] : '';
-	$theme_vrije_invoer_xx3_image = isset( $theme_options['theme_vrije_invoer_xx3_image'] ) ? $theme_options['theme_vrije_invoer_xx3_image'] : null;
-	$theme_vrije_invoer_xx3_url   = isset( $theme_options['theme_vrije_invoer_xx3_url'] ) ? $theme_options['theme_vrije_invoer_xx3_url'] : '';
-	$theme_vrije_invoer_xx3_label = isset( $theme_options['theme_vrije_invoer_xx3_label'] ) ? $theme_options['theme_vrije_invoer_xx3_label'] : '';
+	$theme_vrije_invoer_title = isset( $theme_options['theme_vrije_invoer_title'] ) ? $theme_options['theme_vrije_invoer_title'] : '';
+	$theme_vrije_invoer_text  = isset( $theme_options['theme_vrije_invoer_text'] ) ? $theme_options['theme_vrije_invoer_text'] : '';
+	$theme_vrije_invoer_image = isset( $theme_options['theme_vrije_invoer_image'] ) ? $theme_options['theme_vrije_invoer_image'] : null;
+	$theme_vrije_invoer_url   = isset( $theme_options['theme_vrije_invoer_url'] ) ? $theme_options['theme_vrije_invoer_url'] : '';
+	$theme_vrije_invoer_label = isset( $theme_options['theme_vrije_invoer_label'] ) ? $theme_options['theme_vrije_invoer_label'] : '';
 
-	if ( $theme_vrije_invoer_xx3_title && $theme_vrije_invoer_xx3_text ) {
+	if ( $theme_vrije_invoer_title && $theme_vrije_invoer_text ) {
 
 		// START UITGELICHT ARTIKEL
 		$entry_image_size   = 'medium_large';
 		$image              = '';
 		$imageURL_start     = '';
 		$imageURL_end       = '';
-		$image_alt          = $theme_vrije_invoer_xx3_title;
-		$titel              = '<strong><span style="color:#000; font-size:24px; line-height:32px;">' . $theme_vrije_invoer_xx3_title . '</span></strong>';
+		$image_alt          = $theme_vrije_invoer_title;
+		$titel              = '<strong><span style="color:#000; font-size:24px; line-height:32px;">' . $theme_vrije_invoer_title . '</span></strong>';
 		$vrije_invoer_label = '<p class="null"><span style="font-size:14px"><span
-                                            style="color: #696969;font-weight: 600;">' . strtoupper($theme_vrije_invoer_xx3_label ). '</span></span>
+                                            style="color: #696969;font-weight: 600;">' . strtoupper($theme_vrije_invoer_label ). '</span></span>
                             </p>';
 
 		// Do we have a valid URL?
-		if ( filter_var( $theme_vrije_invoer_xx3_url, FILTER_VALIDATE_URL ) === false ) {
+		if ( filter_var( $theme_vrije_invoer_url, FILTER_VALIDATE_URL ) === false ) {
 			// not a valid URL, keep the title as is
 		} else {
 			// append a link to the title
 
-			$titel = '<a href="' . $theme_vrije_invoer_xx3_url . $theme_piwiktrackercode . '"><strong><span style="color:#01689B; font-size:24px; line-height:32px;">' . $theme_vrije_invoer_xx3_title . '</span></strong></a>';
+			$titel = '<a href="' . $theme_vrije_invoer_url . $theme_piwiktrackercode . '"><strong><span style="color:#01689B; font-size:24px; line-height:32px;">' . $theme_vrije_invoer_title . '</span></strong></a>';
 
 			// prepare the link to the image
-			$imageURL_start = '<a href = "' . $theme_vrije_invoer_xx3_url . $theme_piwiktrackercode . '" role = "presentation" tabindex = "-1">';
+			$imageURL_start = '<a href = "' . $theme_vrije_invoer_url . $theme_piwiktrackercode . '" role = "presentation" tabindex = "-1">';
 			$imageURL_end   = '</a>';
 
 		}
 
 
-		if ( is_array( $theme_vrije_invoer_xx3_image ) ) {
+		if ( is_array( $theme_vrije_invoer_image ) ) {
 
-			$image = wp_get_attachment_image_src( $theme_vrije_invoer_xx3_image['id'], $entry_image_size );
+			$image = wp_get_attachment_image_src( $theme_vrije_invoer_image['id'], $entry_image_size );
 
 			if ( $image ) {
 
 				if ( ! $imageURL_start ) {
 					// no link for this image; do not use the title as alt text, but get a different alt text
-					$attachment = get_post( $theme_vrije_invoer_xx3_image['id'] );
-					$image_alt  = get_post_meta( $theme_vrije_invoer_xx3_image['id'], '_wp_attachment_image_alt', true );
+					$attachment = get_post( $theme_vrije_invoer_image['id'] );
+					$image_alt  = get_post_meta( $theme_vrije_invoer_image['id'], '_wp_attachment_image_alt', true );
 					if ( ! $image_alt ) {
 						$image_alt = $attachment->post_title;
 					}
@@ -302,7 +302,7 @@ function get_vrije_invoer( $theme_options = array() ) {
 						$image_alt = $attachment->post_excerpt;
 					}
 					if ( ! $image_alt ) {
-						$image_alt = $theme_vrije_invoer_xx3_title;
+						$image_alt = $theme_vrije_invoer_title;
 					}
 				}
 				$image = '<tr><td class="mcnCaptionBottomImageContent" align="center" valign="top" style="padding:0 9px 9px 9px;">' . $imageURL_start . '<img alt="' . $image_alt . '" src="' . $image[0] . '" width="564" style="max-width:768px;" class="mcnImage">' . $imageURL_end . '</td></tr>';
@@ -327,7 +327,7 @@ function get_vrije_invoer( $theme_options = array() ) {
                         <td class="mcnTextContent" valign="top"
                             style="padding:0 9px 0 9px;" width="564">' . $vrije_invoer_label . '
                             <h2 class="null">' . $titel . '</h2>
-                            <p style="color:#000; font-size: 18px">' . $theme_vrije_invoer_xx3_text . '</p>
+                            <p style="color:#000; font-size: 16px">' . $theme_vrije_invoer_text . '</p>
                         </td>
                     </tr>
                     </tbody>
