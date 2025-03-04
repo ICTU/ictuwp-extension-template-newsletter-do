@@ -916,6 +916,7 @@ include_once( $shared_file );
                                                     </td>
                                                 </tr>
                                             </table>
+
                                         </td>
 
                                         <!-- EIND LINKERKOLOM -->
@@ -923,7 +924,8 @@ include_once( $shared_file );
 
                                         <!-- START RECHTERKOLOM -->
                                         <td valign="top" align="left" class="columnWrapper">
-                                            <table role="presentation" align="cenetr" border="0" cellpadding="0"
+                                            
+                                            <table role="presentation" align="center" border="0" cellpadding="0"
                                                    cellspacing="0" width="100%">
                                                 <tr>
                                                     <td valign="top" class="columnContainer">
