@@ -49,6 +49,7 @@ include_once( $shared_file );
         }
 
         body, #bodyTable, #bodyCell {
+            font-family: helvetica neue,helvetica,arial,sans-serif;
             height: 100%;
             margin: 0;
             padding: 0;
@@ -159,7 +160,7 @@ include_once( $shared_file );
 
         h1 {
             color: #202020;
-            font-family: Helvetica;
+            font-family: helvetica neue,helvetica,arial,sans-serif;
             font-size: 26px;
             font-style: normal;
             font-weight: bold;
@@ -170,7 +171,7 @@ include_once( $shared_file );
 
         h2 {
             color: #202020;
-            font-family: Helvetica;
+            font-family: helvetica neue,helvetica,arial,sans-serif;
             font-size: 22px;
             font-style: normal;
             font-weight: bold;
@@ -181,7 +182,7 @@ include_once( $shared_file );
 
         h3 {
             color: #202020;
-            font-family: Helvetica;
+            font-family: helvetica neue,helvetica,arial,sans-serif;
             font-size: 20px;
             font-style: normal;
             font-weight: bold;
@@ -192,7 +193,7 @@ include_once( $shared_file );
 
         h4 {
             color: #202020;
-            font-family: Helvetica;
+            font-family: helvetica neue,helvetica,arial,sans-serif;
             font-size: 18px;
             font-style: normal;
             font-weight: bold;
@@ -215,7 +216,7 @@ include_once( $shared_file );
 
         #templatePreheader .mcnTextContent, #templatePreheader .mcnTextContent p {
             color: #656565;
-            font-family: Helvetica;
+            font-family: helvetica neue,helvetica,arial,sans-serif;
             font-size: 12px;
             line-height: 150%;
             text-align: left;
@@ -241,7 +242,7 @@ include_once( $shared_file );
 
         #templateHeader .mcnTextContent, #templateHeader .mcnTextContent p {
             color: #202020;
-            font-family: Helvetica;
+            font-family: helvetica neue,helvetica,arial,sans-serif;
             font-size: 16px;
             line-height: 150%;
             text-align: center;
@@ -267,7 +268,7 @@ include_once( $shared_file );
 
         #templateUpperBody .mcnTextContent, #templateUpperBody .mcnTextContent p {
             color: #202020;
-            font-family: Helvetica;
+            font-family: helvetica neue,helvetica,arial,sans-serif;
             font-size: 16px;
             line-height: 150%;
             text-align: left;
@@ -293,7 +294,7 @@ include_once( $shared_file );
 
         #templateColumns .columnContainer .mcnTextContent, #templateColumns .columnContainer .mcnTextContent p {
             color: #202020;
-            font-family: Helvetica;
+            font-family: helvetica neue,helvetica,arial,sans-serif;
             font-size: 16px;
             line-height: 150%;
             text-align: left;
@@ -318,7 +319,7 @@ include_once( $shared_file );
 
         #templateLowerBody .mcnTextContent, #templateLowerBody .mcnTextContent p {
             color: #202020;
-            font-family: Helvetica;
+            font-family: helvetica neue,helvetica,arial,sans-serif;
             font-size: 16px;
             line-height: 150%;
             text-align: left;
@@ -343,7 +344,7 @@ include_once( $shared_file );
 
         #templateFooter .mcnTextContent, #templateFooter .mcnTextContent p {
             color: #656565;
-            font-family: Helvetica;
+            font-family: helvetica neue,helvetica,arial,sans-serif;
             font-size: 12px;
             line-height: 150%;
             text-align: center;
@@ -720,13 +721,13 @@ include_once( $shared_file );
                                                         <tr>
                                                             <td width="66%">
                                                                 <h1 class="query"
-                                                                    style="font-family: Helvetica; font-weight: 700; font-size: 21px; color: #fff; text-align: left; padding-left: 10px !important;">
+                                                                    style="font-family: helvetica neue,helvetica,arial,sans-serif; font-weight: 700; font-size: 21px; color: #fff; text-align: left; padding-left: 10px !important;">
 																	<?php echo $theme_sitetitle ?>
                                                                 </h1>
                                                             </td>
                                                             <td width="34%">
                                                                 <p class="query"
-                                                                   style="font-family: Helvetica;font-weight: 400; font-size: 18px; color: #fff; text-align: right;  padding-right: 10px !important;">
+                                                                   style="font-family: helvetica neue,helvetica,arial,sans-serif;font-weight: 400; font-size: 18px; color: #fff; text-align: right;  padding-right: 10px !important;">
 																	<?php echo $theme_nieuwsbrieftitel_datetext ?>
                                                                 </p>
                                                             </td>
@@ -775,7 +776,7 @@ include_once( $shared_file );
                                                                     <p class="null"><span style="font-size:14px"><span
                                                                                     style="color: #696969;font-weight: 600;"><?php echo $uitgelicht_label ?></span></span>
                                                                     </p>
-                                                                    <h2 class="null"><a
+                                                                    <h2 style="font-family:helvetica neue,helvetica,arial,sans-serif;"><a
                                                                                 href="<?php echo $uitgelicht_url ?>"><strong>
 																				<span
                                                                                         style="color:#01689B; font-size:24px; line-height:32px;"><?php echo $uitgelicht_title ?></span></strong></a>
@@ -853,9 +854,7 @@ include_once( $shared_file );
                                                         <tr>
                                                             <td valign="top" class="mcnTextContent"
                                                                 style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
-                                                                <h2><strong><span
-                                                                                style="font-family:arial,helvetica neue,helvetica,sans-serif; font-size:32px"><?php echo $theme_titel_nieuws ?></span></strong>
-                                                                </h2>
+                                                                <h2 style="font-family:helvetica neue,helvetica,arial,sans-serif; font-size:32px;"><?php echo $theme_titel_nieuws ?></h2>
                                                             </td>
                                                         </tr>
                                                         </tbody>
@@ -1086,9 +1085,7 @@ include_once( $shared_file );
                                                             <tr>
                                                                 <td valign="top" class="mcnTextContent"
                                                                     style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
-                                                                    <h2><strong><span
-                                                                                    style="font-family:arial,helvetica neue,helvetica,sans-serif; font-size:32px"><?php echo $theme_titel_events ?></span></strong>
-                                                                    </h2>
+                                                                    <h2 style="font-family:helvetica neue,helvetica,arial,sans-serif; font-size:32px;"><?php echo $theme_titel_events ?></h2>
                                                                 </td>
                                                             </tr>
                                                             </tbody>
@@ -1196,9 +1193,8 @@ include_once( $shared_file );
                                                             <tr>
                                                                 <td valign="top" class="mcnTextContent"
                                                                     style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
-                                                                    <strong><span
-                                                                                style="font-family:arial,helvetica neue,helvetica,sans-serif"><span
-                                                                                    style="font-size:32px"><?php echo $theme_socials_title ?></span></span></strong>
+
+                                                                    <h2 style="font-family:helvetica neue,helvetica,arial,sans-serif; font-size:32px;"><?php echo $theme_socials_title ?></h2>
 
 
                                                                 </td>
