@@ -265,10 +265,8 @@ function get_vrije_invoer( $theme_options = array() ) {
 		$imageURL_start     = '';
 		$imageURL_end       = '';
 		$image_alt          = $theme_vrije_invoer_title;
-		$titel              = '<strong><span style="color:#000; font-size:24px; line-height:32px;">' . $theme_vrije_invoer_title . '</span></strong>';
-		$vrije_invoer_label = '<p class="null"><span style="font-size:14px"><span
-                                            style="color: #696969;font-weight: 600;">' . strtoupper($theme_vrije_invoer_label ). '</span></span>
-                            </p>';
+		$titel              = '<h2 style="font-family:helvetica neue,helvetica,arial,sans-serif; font-size:24px;">' . $theme_vrije_invoer_title . '</h2>';
+		$vrije_invoer_label = '<p style="font-size:14px;"><span style="color: #696969;font-weight: 600;">' . strtoupper($theme_vrije_invoer_label ). '</span></p>';
 
 		// Do we have a valid URL?
 		if ( filter_var( $theme_vrije_invoer_url, FILTER_VALIDATE_URL ) === false ) {
