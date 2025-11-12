@@ -1324,11 +1324,20 @@ include_once( $shared_file );
                                                                             style="color:#000000"><?php echo $colofon_blok2 ?></span><br>
                                                                 </div>
                                                                 <div style="text-align: left;"><br>
+
+                                                                    <p style="font-weight: 700; font-size: 12px; color: #000000; text-align: left;">
+			                                                            <?php echo $theme_mail_preferences_title ?></p>
                                                                     <span
                                                                             style="color:#000000"><?php echo $theme_mail_unsubscribe_text ?></span>
                                                                     <a href="{unsubscription_url}"
                                                                        style="color: #01689B" target="_blank"><span
                                                                                 style="color:#01689B"><?php echo $theme_mail_unsubscribe_linktext ?></span></a><span
+                                                                            style="color:#01689B">.</span><br>
+                                                                    <span
+                                                                            style="color:#000000"><?php echo $theme_mail_edit_profile_text ?></span>
+                                                                    <a href="{profile_url}"
+                                                                       style="color: #01689B" target="_blank"><span
+                                                                                style="color:#01689B"><?php echo $theme_mail_edit_profile_linktext ?></span></a><span
                                                                             style="color:#01689B">.</span>
                                                                 </div>
                                                             </td>
