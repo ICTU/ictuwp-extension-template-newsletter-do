@@ -743,13 +743,22 @@ include_once( $shared_file );
 										if ( $uitgelicht ) {
 											// START UITGELICHT ARTIKEL
 
-											$uitgelicht_image_size = 'medium_large';
-											$uitgelicht_title      = $uitgelicht->post_title;
-											$uitgelicht_label      = mail_get_label( $uitgelicht->ID );
-											$uitgelicht_date       = get_the_date( get_option( 'date_format' ), $uitgelicht->ID );
-											$uitgelicht_excerpt    = rhswp_newsletter_get_excerpt( $uitgelicht->ID );
-											$uitgelicht_url        = get_permalink( $uitgelicht->ID ) . $theme_piwiktrackercode;
-											$image                 = wp_get_attachment_image_src( get_post_thumbnail_id( $uitgelicht->ID ), $uitgelicht_image_size );
+											$uitgelicht_image_size  = 'medium_large';
+											$uitgelicht_title       = $uitgelicht->post_title;
+											$uitgelicht_label       = mail_get_label( $uitgelicht->ID );
+											$uitgelicht_date        = get_the_date( get_option( 'date_format' ), $uitgelicht->ID );
+											$uitgelicht_excerpt     = rhswp_newsletter_get_excerpt( $uitgelicht->ID );
+											$uitgelicht_url         = get_permalink( $uitgelicht->ID ) . $theme_piwiktrackercode;
+											$uitgelicht_has_alt_img = get_field( 'do_newsletter_extra_featured_image_choice', $uitgelicht->ID );
+											$image_id               = get_post_thumbnail_id( $uitgelicht->ID );
+											$uitgelicht_alt_img_id  = get_field( 'do_newsletter_extra_featured_image', $uitgelicht->ID );
+
+											// if available and consciously added, use alternative image
+											if ( 'do_newsletter_extra_featured_image_choice_yes' === $uitgelicht_has_alt_img && $uitgelicht_alt_img_id ) {
+												$image_id = $uitgelicht_alt_img_id;
+											}
+
+											$image = wp_get_attachment_image_src( $image_id, $uitgelicht_image_size );
 											if ( $image ) {
 												$alt   = 'Lees ' . $uitgelicht_title;
 												$image = '<tr><td class="mcnCaptionBottomImageContent" align="center" valign="top" style="padding:0 9px 9px 9px;"><a href="' . $uitgelicht_url . '" role="presentation" tabindex="-1"><img alt="' . $alt . '" src="' . $image[0] . '" width="564" style="max-width:768px;" class="mcnImage"></a></td></tr>';
@@ -776,7 +785,8 @@ include_once( $shared_file );
                                                                     <p class="null"><span style="font-size:14px"><span
                                                                                     style="color: #696969;font-weight: 600;"><?php echo $uitgelicht_label ?></span></span>
                                                                     </p>
-                                                                    <h2 style="font-family:helvetica neue,helvetica,arial,sans-serif;"><a
+                                                                    <h2 style="font-family:helvetica neue,helvetica,arial,sans-serif;">
+                                                                        <a
                                                                                 href="<?php echo $uitgelicht_url ?>"><strong>
 																				<span
                                                                                         style="color:#01689B; font-size:24px; line-height:32px;"><?php echo $uitgelicht_title ?></span></strong></a>
@@ -923,7 +933,7 @@ include_once( $shared_file );
 
                                         <!-- START RECHTERKOLOM -->
                                         <td valign="top" align="left" class="columnWrapper">
-                                            
+
                                             <table role="presentation" align="center" border="0" cellpadding="0"
                                                    cellspacing="0" width="100%">
                                                 <tr>
@@ -1326,7 +1336,7 @@ include_once( $shared_file );
                                                                 <div style="text-align: left;"><br>
 
                                                                     <p style="font-weight: 700; font-size: 12px; color: #000000; text-align: left;">
-			                                                            <?php echo $theme_mail_preferences_title ?></p>
+																		<?php echo $theme_mail_preferences_title ?></p>
                                                                     <span
                                                                             style="color:#000000"><?php echo $theme_mail_unsubscribe_text ?></span>
                                                                     <a href="{unsubscription_url}"
