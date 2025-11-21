@@ -189,7 +189,16 @@ function write_bericht( $postobject, $theme_options ) {
 		$post_date       = get_the_date( get_option( 'date_format' ), $postobject->ID );
 		$post_excerpt    = rhswp_newsletter_get_excerpt( $postobject->ID );
 		$post_url        = get_permalink( $postobject->ID ) . $theme_piwiktrackercode;
-		$image           = wp_get_attachment_image_src( get_post_thumbnail_id( $postobject->ID ), $post_image_size );
+		$image_id        = get_post_thumbnail_id( $postobject->ID );
+		$has_alt_img     = get_field( 'do_newsletter_extra_featured_image_choice', $postobject->ID );
+		$alt_img_id      = get_field( 'do_newsletter_extra_featured_image', $postobject->ID );
+
+		// if available and consciously added, use alternative image
+		if ( 'do_newsletter_extra_featured_image_choice_yes' === $has_alt_img && $alt_img_id ) {
+			$image_id = $alt_img_id;
+		}
+
+		$image = wp_get_attachment_image_src( $image_id, $post_image_size );
 		if ( $image ) {
 			$alt   = 'Lees ' . $post_title;
 			$image = '<tr><td class="mcnCaptionBottomImageContent" align="center" valign="top" style="padding:0 9px 9px 9px;"><a href="' . $post_url . '" role="presentation" tabindex="-1"><img alt="' . $alt . '" src="' . $image[0] . '" width="264" class="mcnImage"></a></td></tr>';
