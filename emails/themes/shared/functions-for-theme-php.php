@@ -88,27 +88,30 @@ if ( empty( $color ) ) {
 
 //========================================================================================================
 
-$font                            = isset( $theme_options['theme_font'] ) ? $theme_options['theme_font'] : '';
-$font_size                       = isset( $theme_options['theme_font_size'] ) ? $theme_options['theme_font_size'] : '';
-$theme_nieuwsbrieftitel_datetext = isset( $theme_options['theme_nieuwsbrieftitel_datetext'] ) ? $theme_options['theme_nieuwsbrieftitel_datetext'] : date( get_option( 'date_format' ) );
-$colofon_blok1                   = isset( $theme_options['theme_colofon_block_1'] ) ? $theme_options['theme_colofon_block_1'] : 'Dit is een publicatie van de ministeries van Binnenlandse Zaken en Koninkrijksrelaties en van Economische Zaken.';
-$colofon_blok2                   = isset( $theme_options['theme_colofon_block_2'] ) ? $theme_options['theme_colofon_block_2'] : 'Heeft u tips of leuk nieuws voor de nieuwsbrief? Wij horen  graag van u! Stuur een email naar <a href="mailto:redactie@digitaleoverheid.nl">redactie@digitaleoverheid.nl</a>';
-$theme_piwiktrackercode          = isset( $theme_options['theme_piwiktrackercode'] ) ? '?pk_campaign=' . $theme_options['theme_piwiktrackercode'] : '';
-$theme_titel_nieuws              = isset( $theme_options['theme_titel_nieuws'] ) ? $theme_options['theme_titel_nieuws'] : 'Nieuws';
-$theme_titel_events              = isset( $theme_options['theme_titel_events'] ) ? $theme_options['theme_titel_events'] : 'Agenda';
-$theme_socials_title             = isset( $theme_options['theme_socials_title'] ) ? $theme_options['theme_socials_title'] : 'Social media';
-$theme_sitetitle                 = isset( $theme_options['theme_sitetitle'] ) ? $theme_options['theme_sitetitle'] : get_bloginfo( 'name' );
-$theme_sitepayoff                = isset( $theme_options['theme_sitepayoff'] ) ? $theme_options['theme_sitepayoff'] : get_bloginfo( 'description' );
-$theme_socials_xwitter_url       = isset( $theme_options['theme_socials_xwitter_url'] ) ? $theme_options['theme_socials_xwitter_url'] : '';
-$theme_socials_xwitter_linktext  = isset( $theme_options['theme_socials_xwitter_linktext'] ) ? $theme_options['theme_socials_xwitter_linktext'] : '';
-$theme_socials_mastodon_url      = isset( $theme_options['theme_socials_mastodon_url'] ) ? $theme_options['theme_socials_mastodon_url'] : '';
-$theme_socials_mastodon_linktext = isset( $theme_options['theme_socials_mastodon_linktext'] ) ? $theme_options['theme_socials_mastodon_linktext'] : '';
-$theme_socials_linkedin_url      = isset( $theme_options['theme_socials_linkedin_url'] ) ? $theme_options['theme_socials_linkedin_url'] : '';
-$theme_socials_linkedin_linxtext = isset( $theme_options['theme_socials_linkedin_linxtext'] ) ? $theme_options['theme_socials_linkedin_linxtext'] : '';
-$theme_socials_linkedin_linxtext = isset( $theme_options['theme_socials_linkedin_linxtext'] ) ? $theme_options['theme_socials_linkedin_linxtext'] : '';
-$theme_mail_unsubscribe_text     = isset( $theme_options['theme_mail_unsubscribe_text'] ) ? $theme_options['theme_mail_unsubscribe_text'] : 'Wilt u deze nieuwsbrief niet meer ontvangen?';
-$theme_mail_unsubscribe_linktext = isset( $theme_options['theme_mail_unsubscribe_linktext'] ) ? $theme_options['theme_mail_unsubscribe_linktext'] : 'Meld u zich hier af';
-$theme_preview_text_view_online  = isset( $theme_options['theme_preview_text_view_online'] ) ? $theme_options['theme_preview_text_view_online'] : 'Kunt u deze nieuwsbrief niet goed lezen? <a href="{email_url}" style="color: #01689B">Bekijk dan de online versie</a><br>';
+$font                             = isset( $theme_options['theme_font'] ) ? $theme_options['theme_font'] : '';
+$font_size                        = isset( $theme_options['theme_font_size'] ) ? $theme_options['theme_font_size'] : '';
+$theme_nieuwsbrieftitel_datetext  = isset( $theme_options['theme_nieuwsbrieftitel_datetext'] ) ? $theme_options['theme_nieuwsbrieftitel_datetext'] : date( get_option( 'date_format' ) );
+$colofon_blok1                    = isset( $theme_options['theme_colofon_block_1'] ) ? $theme_options['theme_colofon_block_1'] : 'Dit is een publicatie van de ministeries van Binnenlandse Zaken en Koninkrijksrelaties en van Economische Zaken.';
+$colofon_blok2                    = isset( $theme_options['theme_colofon_block_2'] ) ? $theme_options['theme_colofon_block_2'] : 'Heeft u tips of leuk nieuws voor de nieuwsbrief? Wij horen  graag van u! Stuur een email naar <a href="mailto:redactie@digitaleoverheid.nl">redactie@digitaleoverheid.nl</a>';
+$theme_piwiktrackercode           = isset( $theme_options['theme_piwiktrackercode'] ) ? '?pk_campaign=' . $theme_options['theme_piwiktrackercode'] : '';
+$theme_titel_nieuws               = isset( $theme_options['theme_titel_nieuws'] ) ? $theme_options['theme_titel_nieuws'] : 'Nieuws';
+$theme_titel_events               = isset( $theme_options['theme_titel_events'] ) ? $theme_options['theme_titel_events'] : 'Agenda';
+$theme_socials_title              = isset( $theme_options['theme_socials_title'] ) ? $theme_options['theme_socials_title'] : 'Social media';
+$theme_sitetitle                  = isset( $theme_options['theme_sitetitle'] ) ? $theme_options['theme_sitetitle'] : get_bloginfo( 'name' );
+$theme_sitepayoff                 = isset( $theme_options['theme_sitepayoff'] ) ? $theme_options['theme_sitepayoff'] : get_bloginfo( 'description' );
+$theme_socials_xwitter_url        = isset( $theme_options['theme_socials_xwitter_url'] ) ? $theme_options['theme_socials_xwitter_url'] : '';
+$theme_socials_xwitter_linktext   = isset( $theme_options['theme_socials_xwitter_linktext'] ) ? $theme_options['theme_socials_xwitter_linktext'] : '';
+$theme_socials_mastodon_url       = isset( $theme_options['theme_socials_mastodon_url'] ) ? $theme_options['theme_socials_mastodon_url'] : '';
+$theme_socials_mastodon_linktext  = isset( $theme_options['theme_socials_mastodon_linktext'] ) ? $theme_options['theme_socials_mastodon_linktext'] : '';
+$theme_socials_linkedin_url       = isset( $theme_options['theme_socials_linkedin_url'] ) ? $theme_options['theme_socials_linkedin_url'] : '';
+$theme_socials_linkedin_linxtext  = isset( $theme_options['theme_socials_linkedin_linxtext'] ) ? $theme_options['theme_socials_linkedin_linxtext'] : '';
+$theme_socials_linkedin_linxtext  = isset( $theme_options['theme_socials_linkedin_linxtext'] ) ? $theme_options['theme_socials_linkedin_linxtext'] : '';
+$theme_mail_unsubscribe_text      = isset( $theme_options['theme_mail_unsubscribe_text'] ) ? $theme_options['theme_mail_unsubscribe_text'] : 'Wilt u deze nieuwsbrief niet meer ontvangen?';
+$theme_mail_unsubscribe_linktext  = isset( $theme_options['theme_mail_unsubscribe_linktext'] ) ? $theme_options['theme_mail_unsubscribe_linktext'] : 'Meld u zich hier af';
+$theme_mail_preferences_title     = isset( $theme_options['theme_mail_preferences_title'] ) ? $theme_options['theme_mail_preferences_title'] : 'Jouw mailvoorkeuren';
+$theme_mail_edit_profile_text     = isset( $theme_options['theme_mail_edit_profile_text'] ) ? $theme_options['theme_mail_edit_profile_text'] : 'Wilt u deze nieuwsbrief niet meer ontvangen?';
+$theme_mail_edit_profile_linktext = isset( $theme_options['theme_mail_edit_profile_linktext'] ) ? $theme_options['theme_mail_edit_profile_linktext'] : 'Werk je voorkeuren bij';
+$theme_preview_text_view_online   = isset( $theme_options['theme_preview_text_view_online'] ) ? $theme_options['theme_preview_text_view_online'] : 'Kunt u deze nieuwsbrief niet goed lezen? <a href="{email_url}" style="color: #01689B">Bekijk dan de online versie</a><br>';
 
 $theme_vrije_invoer_title = isset( $theme_options['theme_vrije_invoer_title'] ) ? $theme_options['theme_vrije_invoer_title'] : '';
 $theme_vrije_invoer_text  = isset( $theme_options['theme_vrije_invoer_text'] ) ? $theme_options['theme_vrije_invoer_text'] : '';
@@ -186,7 +189,16 @@ function write_bericht( $postobject, $theme_options ) {
 		$post_date       = get_the_date( get_option( 'date_format' ), $postobject->ID );
 		$post_excerpt    = rhswp_newsletter_get_excerpt( $postobject->ID );
 		$post_url        = get_permalink( $postobject->ID ) . $theme_piwiktrackercode;
-		$image           = wp_get_attachment_image_src( get_post_thumbnail_id( $postobject->ID ), $post_image_size );
+		$image_id        = get_post_thumbnail_id( $postobject->ID );
+		$has_alt_img     = get_field( 'do_newsletter_extra_featured_image_choice', $postobject->ID );
+		$alt_img_id      = get_field( 'do_newsletter_extra_featured_image', $postobject->ID );
+
+		// if available and consciously added, use alternative image
+		if ( 'do_newsletter_extra_featured_image_choice_yes' === $has_alt_img && $alt_img_id ) {
+			$image_id = $alt_img_id;
+		}
+
+		$image = wp_get_attachment_image_src( $image_id, $post_image_size );
 		if ( $image ) {
 			$alt   = 'Lees ' . $post_title;
 			$image = '<tr><td class="mcnCaptionBottomImageContent" align="center" valign="top" style="padding:0 9px 9px 9px;"><a href="' . $post_url . '" role="presentation" tabindex="-1"><img alt="' . $alt . '" src="' . $image[0] . '" width="264" class="mcnImage"></a></td></tr>';
@@ -266,7 +278,7 @@ function get_vrije_invoer( $theme_options = array() ) {
 		$imageURL_end       = '';
 		$image_alt          = $theme_vrije_invoer_title;
 		$titel              = '<h2 style="font-family:helvetica neue,helvetica,arial,sans-serif; font-size:24px;">' . $theme_vrije_invoer_title . '</h2>';
-		$vrije_invoer_label = '<p style="font-size:14px;"><span style="color: #696969;font-weight: 600;">' . strtoupper($theme_vrije_invoer_label ). '</span></p>';
+		$vrije_invoer_label = '<p style="font-size:14px;"><span style="color: #696969;font-weight: 600;">' . strtoupper( $theme_vrije_invoer_label ) . '</span></p>';
 
 		// Do we have a valid URL?
 		if ( filter_var( $theme_vrije_invoer_url, FILTER_VALIDATE_URL ) === false ) {

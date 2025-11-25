@@ -232,15 +232,33 @@ include_once( $shared_file );
         </td>
     </tr>
     <tr>
-        <th>inleiding bij uitschrijven nieuwsbrief</th>
+        <th>Titel boven mailvoorkeuren</th>
+        <td>
+			<?php $controls->textarea( 'theme_mail_preferences_title' ); ?>
+        </td>
+    </tr>
+    <tr>
+        <th>Uitschrijven nieuwsbrief: inleiding</th>
         <td>
 			<?php $controls->textarea( 'theme_mail_unsubscribe_text' ); ?>
         </td>
     </tr>
     <tr>
-        <th>linktekst voor uitschrijven nieuwsbrief</th>
+        <th>Uitschrijven nieuwsbrief: linktekst</th>
         <td>
 			<?php $controls->textarea( 'theme_mail_unsubscribe_linktext' ); ?>
+        </td>
+    </tr>
+    <tr>
+        <th>Bijwerken voorkeuren: inleiding</th>
+        <td>
+			<?php $controls->textarea( 'theme_mail_edit_profile_text' ); ?>
+        </td>
+    </tr>
+    <tr>
+        <th>Bijwerken voorkeuren: linktekst</th>
+        <td>
+			<?php $controls->textarea( 'theme_mail_edit_profile_linktext' ); ?>
         </td>
     </tr>
     <tr>
