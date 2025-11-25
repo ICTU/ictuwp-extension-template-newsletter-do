@@ -745,13 +745,23 @@ include_once( $shared_file );
 
 											$uitgelicht_image_size  = 'medium_large';
 											$uitgelicht_title       = $uitgelicht->post_title;
-											$uitgelicht_label       = mail_get_label( $uitgelicht->ID );
-											$uitgelicht_date        = get_the_date( get_option( 'date_format' ), $uitgelicht->ID );
 											$uitgelicht_excerpt     = rhswp_newsletter_get_excerpt( $uitgelicht->ID );
 											$uitgelicht_url         = get_permalink( $uitgelicht->ID ) . $theme_piwiktrackercode;
 											$uitgelicht_has_alt_img = get_field( 'do_newsletter_extra_featured_image_choice', $uitgelicht->ID );
 											$image_id               = get_post_thumbnail_id( $uitgelicht->ID );
 											$uitgelicht_alt_img_id  = get_field( 'do_newsletter_extra_featured_image', $uitgelicht->ID );
+											$show_publicationdate   = isset( $theme_options['theme_show_publicationdate'] ) ? $theme_options['theme_show_publicationdate'] : '1';
+											$show_chapeau           = isset( $theme_options['theme_show_chapeau'] ) ? $theme_options['theme_show_chapeau'] : '1';
+											$uitgelicht_date_html   = '';
+											$uitgelicht_label_html  = '';
+											if ( $show_publicationdate ) {
+												$uitgelicht_date      = get_the_date( get_option( 'date_format' ), $uitgelicht->ID );
+												$uitgelicht_date_html = '<p style="color:#000; font-size: 18px; font-weight: bold; margin: 10px 0">' . $uitgelicht_date . '</p>';
+											}
+											if ( $show_chapeau ) {
+												$uitgelicht_label      = mail_get_label( $uitgelicht->ID );
+												$uitgelicht_label_html = '<p class="null"><span style="font-size:14px"><span style="color: #696969;font-weight: 600;">' . $uitgelicht_label . '</span></span> </p>';
+											}
 
 											// if available and consciously added, use alternative image
 											if ( 'do_newsletter_extra_featured_image_choice_yes' === $uitgelicht_has_alt_img && $uitgelicht_alt_img_id ) {
@@ -781,10 +791,8 @@ include_once( $shared_file );
                                                             <tr>
                                                                 <td class="mcnTextContent" valign="top"
                                                                     style="padding:0 9px 0 9px;" width="564">
-                                                                    <p style="color:#000; font-size: 18px; font-weight: bold; margin: 10px 0"><?php echo $uitgelicht_date ?></p>
-                                                                    <p class="null"><span style="font-size:14px"><span
-                                                                                    style="color: #696969;font-weight: 600;"><?php echo $uitgelicht_label ?></span></span>
-                                                                    </p>
+                                                                    <?php echo $uitgelicht_date_html ?>
+                                                                    <?php echo $uitgelicht_label_html ?>
                                                                     <h2 style="font-family:helvetica neue,helvetica,arial,sans-serif;">
                                                                         <a
                                                                                 href="<?php echo $uitgelicht_url ?>"><strong>
