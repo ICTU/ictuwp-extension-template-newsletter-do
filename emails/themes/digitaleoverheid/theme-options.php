@@ -113,6 +113,7 @@ include_once( $shared_file );
         <th>Titel boven agenda</th>
         <td>
 			<?php $controls->text( 'theme_titel_events', 50 ); ?>
+            <p class="description">Als je geen evenementen wil tonen, dan maak je deze titel leeg en zet je het aantal items in de agenda op 0.</p>
         </td>
     </tr>
     <tr>
@@ -125,10 +126,27 @@ include_once( $shared_file );
         <th>Nieuwsbrief-titel</th>
         <td>
 			<?php $controls->text( 'theme_sitetitle', 50 ); ?>
-            <p class="description">.</p>
         </td>
     </tr>
 
+    <tr>
+        <th>Toon publicatiedatum</th>
+        <td>
+			<?php $controls->yesno('theme_show_publicationdate') ?>
+            <p class="description">
+                Toon de publicatiedatum boven het bericht.
+            </p>
+        </td>
+    </tr>
+    <tr>
+        <th>Toon label boven titel</th>
+        <td>
+			<?php $controls->yesno('theme_show_chapeau') ?>
+            <p class="description">
+                Toon het korte label boven de titel.
+            </p>
+        </td>
+    </tr>
 
     <!-- START TOEGEVOEGD ------>
     <tr style="padding: 1rem; background: #eaeaea;">

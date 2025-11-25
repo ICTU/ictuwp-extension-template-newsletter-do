@@ -1042,17 +1042,21 @@ include_once( $shared_file );
 
 
 										<?php
+										$EM_Events      = null;
 										$linker_events  = '';
 										$rechter_events = '';
-										$args_selection = array(
-											'scope'      => 'future',
-											// alleen toekomstige events tonen
-											'pagination' => '0',
-											// nee, we willen geen pagination
-											'limit'      => $filters['theme_max_agenda'],
-											// het aantal events per pagina
-										);
-										$EM_Events      = EM_Events::get( $args_selection );
+										if ( $theme_titel_events && $filters['theme_max_agenda'] ) {
+
+											$args_selection = array(
+												'scope'      => 'future',
+												// alleen toekomstige events tonen
+												'pagination' => '0',
+												// nee, we willen geen pagination
+												'limit'      => $filters['theme_max_agenda'],
+												// het aantal events per pagina
+											);
+											$EM_Events      = EM_Events::get( $args_selection );
+										}
 
 										if ( $EM_Events ) {
 
@@ -1283,10 +1287,10 @@ include_once( $shared_file );
                                                             <td valign="top" class="mcnTextContent"
                                                                 style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
                                                                 <div
-                                                                        style="background-color: #007BC7; padding: 19px 30px">
+                                                                        style="background-color: #007BC7; padding: 16px 10px">
                                                                     <p style="font-weight: 700; font-size: 26px; color: #fff; text-align: left;">
 																		<?php echo $theme_sitetitle ?></p>
-                                                                    <p style="font-weight: 400; font-size: 24px; color: #fff; font-style: italic;text-align: left">
+                                                                    <p style="font-weight: 400; font-size: 16px; color: #fff; font-style: italic;text-align: left">
 																		<?php echo $theme_sitepayoff ?></p>
                                                                 </div>
                                                             </td>
