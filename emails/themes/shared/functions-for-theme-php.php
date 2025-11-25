@@ -192,7 +192,7 @@ function write_bericht( $postobject, $theme_options ) {
 		$post_image_size = 'image-5x3-small';
 		$post_title      = $postobject->post_title;
 		$post_date_html  = '';
-		$post_label      = '';
+		$post_label_html      = '';
 		if ( $theme_show_publicationdate ) {
 			$post_date      = get_the_date( get_option( 'date_format' ), $postobject->ID );
 			$post_date_html = '<p style="font-size:14px"><strong>' . $post_date . '</strong></p>';
@@ -293,6 +293,7 @@ function get_vrije_invoer( $theme_options = array() ) {
 		$image_alt          = $theme_vrije_invoer_title;
 		$titel              = '<h2 style="font-family:helvetica neue,helvetica,arial,sans-serif; font-size:24px;">' . $theme_vrije_invoer_title . '</h2>';
 		$vrije_invoer_label = '<p style="font-size:14px;"><span style="color: #696969;font-weight: 600;">' . strtoupper( $theme_vrije_invoer_label ) . '</span></p>';
+		$theme_piwiktrackercode = isset( $theme_options['theme_piwiktrackercode'] ) ? '?pk_campaign=' . $theme_options['theme_piwiktrackercode'] : '';
 
 		// Do we have a valid URL?
 		if ( filter_var( $theme_vrije_invoer_url, FILTER_VALIDATE_URL ) === false ) {
