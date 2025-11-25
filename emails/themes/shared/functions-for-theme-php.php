@@ -60,8 +60,9 @@ $filters['theme_max_agenda'] = 5;
 if ( isset( $theme_options['theme_max_agenda'] ) ) {
 	$filters['theme_max_agenda'] = ( int ) $theme_options['theme_max_agenda'];
 }
-if ( $filters['theme_max_agenda'] == 0 ) {
-	$filters['theme_max_agenda'] = 5;
+
+if ( $filters['theme_max_agenda'] == 0 && $filters['theme_titel_events'] !== '' ) {
+	$filters['theme_max_agenda'] = '';
 }
 
 
@@ -92,18 +93,18 @@ $font                             = isset( $theme_options['theme_font'] ) ? $the
 $font_size                        = isset( $theme_options['theme_font_size'] ) ? $theme_options['theme_font_size'] : '';
 $theme_nieuwsbrieftitel_datetext  = isset( $theme_options['theme_nieuwsbrieftitel_datetext'] ) ? $theme_options['theme_nieuwsbrieftitel_datetext'] : date( get_option( 'date_format' ) );
 $colofon_blok1                    = isset( $theme_options['theme_colofon_block_1'] ) ? $theme_options['theme_colofon_block_1'] : 'Dit is een publicatie van de ministeries van Binnenlandse Zaken en Koninkrijksrelaties en van Economische Zaken.';
-$colofon_blok2                    = isset( $theme_options['theme_colofon_block_2'] ) ? $theme_options['theme_colofon_block_2'] : 'Heeft u tips of leuk nieuws voor de nieuwsbrief? Wij horen  graag van u! Stuur een email naar <a href="mailto:redactie@digitaleoverheid.nl">redactie@digitaleoverheid.nl</a>';
+$colofon_blok2                    = isset( $theme_options['theme_colofon_block_2'] ) ? $theme_options['theme_colofon_block_2'] : 'Heb je tips of leuk nieuws voor de nieuwsbrief? Wij horen  graag van je! Stuur een email naar <a href="mailto:redactie@digitaleoverheid.nl">redactie@digitaleoverheid.nl</a>';
 $theme_piwiktrackercode           = isset( $theme_options['theme_piwiktrackercode'] ) ? '?pk_campaign=' . $theme_options['theme_piwiktrackercode'] : '';
 $theme_titel_nieuws               = isset( $theme_options['theme_titel_nieuws'] ) ? $theme_options['theme_titel_nieuws'] : 'Nieuws';
 $theme_titel_events               = isset( $theme_options['theme_titel_events'] ) ? $theme_options['theme_titel_events'] : 'Agenda';
 $theme_socials_title              = isset( $theme_options['theme_socials_title'] ) ? $theme_options['theme_socials_title'] : 'Social media';
 $theme_sitetitle                  = isset( $theme_options['theme_sitetitle'] ) ? $theme_options['theme_sitetitle'] : get_bloginfo( 'name' );
 $theme_sitepayoff                 = isset( $theme_options['theme_sitepayoff'] ) ? $theme_options['theme_sitepayoff'] : get_bloginfo( 'description' );
-$theme_socials_xwitter_url        = isset( $theme_options['theme_socials_xwitter_url'] ) ? $theme_options['theme_socials_xwitter_url'] : '';
+$theme_socials_xwitter_url        = isset( $theme_options['theme_socials_xwitter_url'] ) ? $theme_options['theme_socials_xwitter_url'] . $theme_piwiktrackercode : '';
 $theme_socials_xwitter_linktext   = isset( $theme_options['theme_socials_xwitter_linktext'] ) ? $theme_options['theme_socials_xwitter_linktext'] : '';
-$theme_socials_mastodon_url       = isset( $theme_options['theme_socials_mastodon_url'] ) ? $theme_options['theme_socials_mastodon_url'] : '';
+$theme_socials_mastodon_url       = isset( $theme_options['theme_socials_mastodon_url'] ) ? $theme_options['theme_socials_mastodon_url'] . $theme_piwiktrackercode  : '';
 $theme_socials_mastodon_linktext  = isset( $theme_options['theme_socials_mastodon_linktext'] ) ? $theme_options['theme_socials_mastodon_linktext'] : '';
-$theme_socials_linkedin_url       = isset( $theme_options['theme_socials_linkedin_url'] ) ? $theme_options['theme_socials_linkedin_url'] : '';
+$theme_socials_linkedin_url       = isset( $theme_options['theme_socials_linkedin_url'] ) ? $theme_options['theme_socials_linkedin_url'] . $theme_piwiktrackercode  : '';
 $theme_socials_linkedin_linxtext  = isset( $theme_options['theme_socials_linkedin_linxtext'] ) ? $theme_options['theme_socials_linkedin_linxtext'] : '';
 $theme_socials_linkedin_linxtext  = isset( $theme_options['theme_socials_linkedin_linxtext'] ) ? $theme_options['theme_socials_linkedin_linxtext'] : '';
 $theme_mail_unsubscribe_text      = isset( $theme_options['theme_mail_unsubscribe_text'] ) ? $theme_options['theme_mail_unsubscribe_text'] : 'Wilt u deze nieuwsbrief niet meer ontvangen?';
@@ -118,6 +119,9 @@ $theme_vrije_invoer_text  = isset( $theme_options['theme_vrije_invoer_text'] ) ?
 $theme_vrije_invoer_image = isset( $theme_options['theme_vrije_invoer_image'] ) ? $theme_options['theme_vrije_invoer_image'] : null;
 $theme_vrije_invoer_url   = isset( $theme_options['theme_vrije_invoer_url'] ) ? $theme_options['theme_vrije_invoer_url'] : '';
 $theme_vrije_invoer_label = isset( $theme_options['theme_vrije_invoer_label'] ) ? $theme_options['theme_vrije_invoer_label'] : '';
+
+$theme_show_publicationdate = isset( $theme_options['theme_show_publicationdate'] ) ? $theme_options['theme_show_publicationdate'] : '1';
+$theme_show_chapeau         = isset( $theme_options['theme_show_chapeau'] ) ? $theme_options['theme_show_chapeau'] : '1';
 
 $vrije_invoer = get_vrije_invoer( $theme_options );
 
@@ -178,20 +182,30 @@ function mail_get_label( $postID = 0 ) {
 
 function write_bericht( $postobject, $theme_options ) {
 
-	$return                 = '';
-	$theme_piwiktrackercode = isset( $theme_options['theme_piwiktrackercode'] ) ? '?pk_campaign=' . $theme_options['theme_piwiktrackercode'] : '';
+	$return                     = '';
+	$theme_piwiktrackercode     = isset( $theme_options['theme_piwiktrackercode'] ) ? '?pk_campaign=' . $theme_options['theme_piwiktrackercode'] : '';
+	$theme_show_publicationdate = isset( $theme_options['theme_show_publicationdate'] ) ? $theme_options['theme_show_publicationdate'] : '1';
+	$theme_show_chapeau         = isset( $theme_options['theme_show_chapeau'] ) ? $theme_options['theme_show_chapeau'] : '1';
 
 	if ( $postobject ) {
 
 		$post_image_size = 'image-5x3-small';
 		$post_title      = $postobject->post_title;
-		$post_label      = mail_get_label( $postobject->ID );
-		$post_date       = get_the_date( get_option( 'date_format' ), $postobject->ID );
-		$post_excerpt    = rhswp_newsletter_get_excerpt( $postobject->ID );
-		$post_url        = get_permalink( $postobject->ID ) . $theme_piwiktrackercode;
-		$image_id        = get_post_thumbnail_id( $postobject->ID );
-		$has_alt_img     = get_field( 'do_newsletter_extra_featured_image_choice', $postobject->ID );
-		$alt_img_id      = get_field( 'do_newsletter_extra_featured_image', $postobject->ID );
+		$post_date_html  = '';
+		$post_label_html      = '';
+		if ( $theme_show_publicationdate ) {
+			$post_date      = get_the_date( get_option( 'date_format' ), $postobject->ID );
+			$post_date_html = '<p style="font-size:14px"><strong>' . $post_date . '</strong></p>';
+		}
+		if ( $theme_show_chapeau ) {
+			$post_label      = mail_get_label( $postobject->ID );
+			$post_label_html = '<p style="font-size:14px"><strong><span style="color:#696969; text-transform:uppercase">' . $post_label . '</span></strong></p>';
+		}
+		$post_excerpt = rhswp_newsletter_get_excerpt( $postobject->ID );
+		$post_url     = get_permalink( $postobject->ID ) . $theme_piwiktrackercode;
+		$image_id     = get_post_thumbnail_id( $postobject->ID );
+		$has_alt_img  = get_field( 'do_newsletter_extra_featured_image_choice', $postobject->ID );
+		$alt_img_id   = get_field( 'do_newsletter_extra_featured_image', $postobject->ID );
 
 		// if available and consciously added, use alternative image
 		if ( 'do_newsletter_extra_featured_image_choice_yes' === $has_alt_img && $alt_img_id ) {
@@ -212,8 +226,8 @@ function write_bericht( $postobject, $theme_options ) {
       <tbody>' . $image . '
       <tr>
         <td class="mcnTextContent" valign="top" style="padding:0 9px 0 9px;" width="264">
-          <p style="font-size:14px"><strong>' . $post_date . '</strong></p>
-          <p style="font-size:14px"><strong><span style="color:#696969; text-transform:uppercase">' . $post_label . '</span></strong></p>
+          ' . $post_date_html . '
+          ' . $post_label_html . '
           <h3 class="null"><a href="' . $post_url . '" style="color:#01689B; text-decoration: none"><strong><span style="font-size:18px; line-height:24px; margin: 12px 0px;">' . $post_title . '</span></strong></a></h3>
           <p>' . $post_excerpt . '</p></td>
       </tr>
@@ -279,6 +293,7 @@ function get_vrije_invoer( $theme_options = array() ) {
 		$image_alt          = $theme_vrije_invoer_title;
 		$titel              = '<h2 style="font-family:helvetica neue,helvetica,arial,sans-serif; font-size:24px;">' . $theme_vrije_invoer_title . '</h2>';
 		$vrije_invoer_label = '<p style="font-size:14px;"><span style="color: #696969;font-weight: 600;">' . strtoupper( $theme_vrije_invoer_label ) . '</span></p>';
+		$theme_piwiktrackercode = isset( $theme_options['theme_piwiktrackercode'] ) ? '?pk_campaign=' . $theme_options['theme_piwiktrackercode'] : '';
 
 		// Do we have a valid URL?
 		if ( filter_var( $theme_vrije_invoer_url, FILTER_VALIDATE_URL ) === false ) {
