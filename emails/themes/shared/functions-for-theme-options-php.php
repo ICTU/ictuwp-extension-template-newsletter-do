@@ -11,11 +11,11 @@ $default_description = get_bloginfo( 'description' );
 //========================================================================================================
 
 $theme_defaults = array(
-	'theme_max_posts'                  => 5,
-	'theme_max_agenda'                 => 5,
+	'theme_max_posts'                  => 6,
+	'theme_max_agenda'                 => 10,
 	'theme_nieuwsbrieftitel_datetext'  => date( get_option( 'date_format' ) ),
 	'theme_colofon_block_1'            => 'Dit is een publicatie van de ministeries van Binnenlandse Zaken en Koninkrijksrelaties en van Economische Zaken.',
-	'theme_colofon_block_2'            => 'Heeft u tips of leuk nieuws voor de nieuwsbrief? Wij horen  graag van u! Stuur een email naar <a href="mailto:redactie@digitaleoverheid.nl">redactie@digitaleoverheid.nl</a>',
+	'theme_colofon_block_2'            => 'Heb je tips of leuk nieuws voor de nieuwsbrief? Wij horen  graag van je! Stuur een email naar <a href="mailto:redactie@digitaleoverheid.nl">redactie@digitaleoverheid.nl</a>',
 	'theme_sitetitle'                  => $default_name,
 	'theme_sitepayoff'                 => $default_description,
 	'theme_categories'                 => array(),
@@ -29,18 +29,20 @@ $theme_defaults = array(
 	'theme_socials_linkedin_url'       => 'https://www.linkedin.com/company/digitaleoverheidnl/',
 	'theme_socials_linkedin_linxtext'  => 'Volg ons op LinkedIn',
 	'theme_mail_preferences_title'     => 'Jouw voorkeuren',
-	'theme_mail_unsubscribe_text'      => 'Wilt u deze nieuwsbrief niet meer ontvangen?',
-	'theme_mail_unsubscribe_linktext'  => 'Meld u zich hier af',
+	'theme_mail_unsubscribe_text'      => 'Wil je deze nieuwsbrief niet meer ontvangen?',
+	'theme_mail_unsubscribe_linktext'  => 'Meld je hier af',
 	'theme_mail_edit_profile_text'     => 'Wil je aanpassen welke nieuwsbrieven je van ons ontvangt?',
 	'theme_mail_edit_profile_linktext' => 'Werk je mailvoorkeuren bij',
-	'theme_preview_text_view_online'   => 'Kunt u deze nieuwsbrief niet goed lezen? <a href="{email_url}" style="color: #01689B">Bekijk dan de online versie</a><br>',
+	'theme_preview_text_view_online'   => 'Kun je deze nieuwsbrief niet goed lezen? <a href="{email_url}" style="color: #01689B">Bekijk dan de online versie</a><br>',
 
-	'theme_vrije_invoer_title' => '',
-	'theme_vrije_invoer_text'  => '',
-	'theme_vrije_invoer_url'   => '',
-	'theme_vrije_invoer_image' => '',
-	'theme_vrije_invoer_label' => '',
+	'theme_vrije_invoer_title'         => '',
+	'theme_vrije_invoer_text'          => '',
+	'theme_vrije_invoer_url'           => '',
+	'theme_vrije_invoer_image'         => '',
+	'theme_vrije_invoer_label'         => '',
 
+	'theme_show_publicationdate'       => '1',
+	'theme_show_chapeau'               => '1',
 
 );
 
@@ -54,7 +56,7 @@ $laatsteberichten = array(
 	'0' => __( '-selecteer bericht-', 'newsletter' ),
 );
 
-$maxberichten = 50;
+$maxberichten = 100;
 
 $arguments = array(
 	'numberposts' => $maxberichten,
