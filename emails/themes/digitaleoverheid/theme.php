@@ -1042,15 +1042,11 @@ include_once( $shared_file );
 
 
 										<?php
+										$EM_Events      = null;
 										$linker_events  = '';
 										$rechter_events = '';
-										);
-										$EM_Events      = EM_Events::get( $args_selection );
-										$EM_Events = null;
 										if ( $theme_titel_events && $filters['theme_max_agenda'] ) {
 
-											$linker_events  = '';
-											$rechter_events = '';
 											$args_selection = array(
 												'scope'      => 'future',
 												// alleen toekomstige events tonen
