@@ -49,7 +49,7 @@ include_once( $shared_file );
         }
 
         body, #bodyTable, #bodyCell {
-            font-family: helvetica neue,helvetica,arial,sans-serif;
+            font-family: helvetica neue, helvetica, arial, sans-serif;
             height: 100%;
             margin: 0;
             padding: 0;
@@ -160,7 +160,7 @@ include_once( $shared_file );
 
         h1 {
             color: #202020;
-            font-family: helvetica neue,helvetica,arial,sans-serif;
+            font-family: helvetica neue, helvetica, arial, sans-serif;
             font-size: 26px;
             font-style: normal;
             font-weight: bold;
@@ -171,7 +171,7 @@ include_once( $shared_file );
 
         h2 {
             color: #202020;
-            font-family: helvetica neue,helvetica,arial,sans-serif;
+            font-family: helvetica neue, helvetica, arial, sans-serif;
             font-size: 22px;
             font-style: normal;
             font-weight: bold;
@@ -182,7 +182,7 @@ include_once( $shared_file );
 
         h3 {
             color: #202020;
-            font-family: helvetica neue,helvetica,arial,sans-serif;
+            font-family: helvetica neue, helvetica, arial, sans-serif;
             font-size: 20px;
             font-style: normal;
             font-weight: bold;
@@ -193,7 +193,7 @@ include_once( $shared_file );
 
         h4 {
             color: #202020;
-            font-family: helvetica neue,helvetica,arial,sans-serif;
+            font-family: helvetica neue, helvetica, arial, sans-serif;
             font-size: 18px;
             font-style: normal;
             font-weight: bold;
@@ -216,7 +216,7 @@ include_once( $shared_file );
 
         #templatePreheader .mcnTextContent, #templatePreheader .mcnTextContent p {
             color: #656565;
-            font-family: helvetica neue,helvetica,arial,sans-serif;
+            font-family: helvetica neue, helvetica, arial, sans-serif;
             font-size: 12px;
             line-height: 150%;
             text-align: left;
@@ -242,7 +242,7 @@ include_once( $shared_file );
 
         #templateHeader .mcnTextContent, #templateHeader .mcnTextContent p {
             color: #202020;
-            font-family: helvetica neue,helvetica,arial,sans-serif;
+            font-family: helvetica neue, helvetica, arial, sans-serif;
             font-size: 16px;
             line-height: 150%;
             text-align: center;
@@ -268,7 +268,7 @@ include_once( $shared_file );
 
         #templateUpperBody .mcnTextContent, #templateUpperBody .mcnTextContent p {
             color: #202020;
-            font-family: helvetica neue,helvetica,arial,sans-serif;
+            font-family: helvetica neue, helvetica, arial, sans-serif;
             font-size: 16px;
             line-height: 150%;
             text-align: left;
@@ -294,7 +294,7 @@ include_once( $shared_file );
 
         #templateColumns .columnContainer .mcnTextContent, #templateColumns .columnContainer .mcnTextContent p {
             color: #202020;
-            font-family: helvetica neue,helvetica,arial,sans-serif;
+            font-family: helvetica neue, helvetica, arial, sans-serif;
             font-size: 16px;
             line-height: 150%;
             text-align: left;
@@ -319,7 +319,7 @@ include_once( $shared_file );
 
         #templateLowerBody .mcnTextContent, #templateLowerBody .mcnTextContent p {
             color: #202020;
-            font-family: helvetica neue,helvetica,arial,sans-serif;
+            font-family: helvetica neue, helvetica, arial, sans-serif;
             font-size: 16px;
             line-height: 150%;
             text-align: left;
@@ -344,7 +344,7 @@ include_once( $shared_file );
 
         #templateFooter .mcnTextContent, #templateFooter .mcnTextContent p {
             color: #656565;
-            font-family: helvetica neue,helvetica,arial,sans-serif;
+            font-family: helvetica neue, helvetica, arial, sans-serif;
             font-size: 12px;
             line-height: 150%;
             text-align: center;
@@ -791,8 +791,8 @@ include_once( $shared_file );
                                                             <tr>
                                                                 <td class="mcnTextContent" valign="top"
                                                                     style="padding:0 9px 0 9px;" width="564">
-                                                                    <?php echo $uitgelicht_date_html ?>
-                                                                    <?php echo $uitgelicht_label_html ?>
+																	<?php echo $uitgelicht_date_html ?>
+																	<?php echo $uitgelicht_label_html ?>
                                                                     <h2 style="font-family:helvetica neue,helvetica,arial,sans-serif;">
                                                                         <a
                                                                                 href="<?php echo $uitgelicht_url ?>"><strong>
@@ -1050,20 +1050,44 @@ include_once( $shared_file );
 
 
 										<?php
-										$EM_Events      = null;
-										$linker_events  = '';
-										$rechter_events = '';
+										$EM_Events       = null;
+										$linker_events   = '';
+										$rechter_events  = '';
+
 										if ( $theme_titel_events && $filters['theme_max_agenda'] ) {
 
 											$args_selection = array(
-												'scope'      => 'future',
-												// alleen toekomstige events tonen
-												'pagination' => '0',
+
 												// nee, we willen geen pagination
-												'limit'      => $filters['theme_max_agenda'],
+												'pagination' => '0',
+
 												// het aantal events per pagina
+												'limit'      => $filters['theme_max_agenda'],
 											);
-											$EM_Events      = EM_Events::get( $args_selection );
+
+											// selection by specific dates
+											// expected format: yyyy-mm-dd,yyyy-mm-dd Searches between these two dates. yyyy-mm-dd, Searches from the start date onwards.
+											// https://wp-events-plugin.com/documentation/event-search-attributes/
+											// Preset Ranges:
+											// future past today, tomorrow, week, this-week, month, this-month, next-month, 1-months, 2-months, 3-months, 6-months, 12-months, all
+											//
+											// Date Ranges:
+											// yyyy-mm-dd,yyyy-mm-dd Searches between these two dates. yyyy-mm-dd, Searches from the start date onwards.
+											//
+											// Single Dates
+											// yyyy-mm-dd Searches a specific date.
+											if ( $theme_eventdate_start ) {
+												if ( $theme_eventdate_end ) {
+													$args_selection['scope'] = $theme_eventdate_start . ',' . $theme_eventdate_end;
+												} else {
+													$args_selection['scope'] = $theme_eventdate_start . ',';
+												}
+											} else {
+												// show any future events
+												$args_selection['scope'] = 'future';
+											}
+
+											$EM_Events = EM_Events::get( $args_selection );
 										}
 
 										if ( $EM_Events ) {

@@ -113,7 +113,8 @@ include_once( $shared_file );
         <th>Titel boven agenda</th>
         <td>
 			<?php $controls->text( 'theme_titel_events', 50 ); ?>
-            <p class="description">Als je geen evenementen wil tonen, dan maak je deze titel leeg en zet je het aantal items in de agenda op 0.</p>
+            <p class="description">Als je geen evenementen wil tonen, dan maak je deze titel leeg en zet je het aantal
+                items in de agenda op 0.</p>
         </td>
     </tr>
     <tr>
@@ -121,6 +122,14 @@ include_once( $shared_file );
         <td>Selecteer <?php $controls->text( 'theme_max_agenda', 5 ); ?> items voor de agenda</td>
     </tr>
 
+    <tr>
+        <th>Evenementen vanaf</th>
+        <td>
+			<?php $controls->text( 'theme_eventdate_start', 10 ) ?> (format: YYYY-MM-DD)
+            <p class="description">Als je hier iets invoert, dan wordt deze datum gebruikt om events te selecteren.
+                Voorbeeld: <code>2025-12-11</code> geeft alle events vanaf 11 december 2025 en later.</p>
+        </td>
+    </tr>
 
     <tr>
         <th>Nieuwsbrief-titel</th>
@@ -132,7 +141,7 @@ include_once( $shared_file );
     <tr>
         <th>Toon publicatiedatum</th>
         <td>
-			<?php $controls->yesno('theme_show_publicationdate') ?>
+			<?php $controls->yesno( 'theme_show_publicationdate' ) ?>
             <p class="description">
                 Toon de publicatiedatum boven het bericht.
             </p>
@@ -141,7 +150,7 @@ include_once( $shared_file );
     <tr>
         <th>Toon label boven titel</th>
         <td>
-			<?php $controls->yesno('theme_show_chapeau') ?>
+			<?php $controls->yesno( 'theme_show_chapeau' ) ?>
             <p class="description">
                 Toon het korte label boven de titel.
             </p>

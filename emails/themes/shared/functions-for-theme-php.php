@@ -125,6 +125,12 @@ $theme_show_chapeau         = isset( $theme_options['theme_show_chapeau'] ) ? $t
 
 $vrije_invoer = get_vrije_invoer( $theme_options );
 
+$theme_eventdate_start = isset( $theme_options['theme_eventdate_start'] ) ? $theme_options['theme_eventdate_start'] : '';
+// TODO implement end date field
+// $theme_eventdate_end   = '2026-03-01';
+// $theme_eventdate_end = '';
+
+
 //========================================================================================================
 
 function get_asset_url() {
