@@ -1026,6 +1026,41 @@ include_once( $shared_file );
 										}
 										?>
 
+	                                    <?php
+	                                    if ( $tweede_vrije_invoer ) {
+
+		                                    ?>
+                                            <table role="presentation" border="0" cellpadding="0" cellspacing="0"
+                                                   width="100%"
+                                                   class="mcnDividerBlock" style="min-width:100%;">
+                                                <tbody class="mcnDividerBlockOuter">
+                                                <tr>
+                                                    <td class="mcnDividerBlockInner"
+                                                        style="min-width:100%; padding:18px;">
+                                                        <table role="presentation" class="mcnDividerContent" border="0"
+                                                               cellpadding="0"
+                                                               cellspacing="0" width="100%"
+                                                               style="min-width: 100%;border-top: 1px solid #EAEAEA;">
+                                                            <tbody>
+                                                            <tr>
+                                                                <td><span></span></td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+
+		                                    <?php
+
+		                                    echo $tweede_vrije_invoer;
+
+
+	                                    }
+	                                    ?>
+
                                         <table role="presentation" border="0" cellpadding="0" cellspacing="0"
                                                width="100%"
                                                class="mcnDividerBlock" style="min-width:100%;">
