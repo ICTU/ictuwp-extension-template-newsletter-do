@@ -193,6 +193,7 @@ function write_bericht( $postobject, $theme_options ) {
 	$theme_piwiktrackercode     = isset( $theme_options['theme_piwiktrackercode'] ) ? '?pk_campaign=' . $theme_options['theme_piwiktrackercode'] : '';
 	$theme_show_publicationdate = isset( $theme_options['theme_show_publicationdate'] ) ? $theme_options['theme_show_publicationdate'] : '1';
 	$theme_show_chapeau         = isset( $theme_options['theme_show_chapeau'] ) ? $theme_options['theme_show_chapeau'] : '1';
+	$label_color                = isset( $theme_options['label_color'] ) ? $theme_options['label_color'] : '696969';
 
 	if ( $postobject ) {
 
@@ -206,7 +207,7 @@ function write_bericht( $postobject, $theme_options ) {
 		}
 		if ( $theme_show_chapeau ) {
 			$post_label      = mail_get_label( $postobject->ID );
-			$post_label_html = '<p style="font-size:14px"><strong><span style="color:#696969; text-transform:uppercase">' . $post_label . '</span></strong></p>';
+			$post_label_html = '<p style="font-size:14px"><strong><span style="color:#' . $label_color . '; text-transform:uppercase">' . $post_label . '</span></strong></p>';
 		}
 		$post_excerpt = rhswp_newsletter_get_excerpt( $postobject->ID );
 		$post_url     = get_permalink( $postobject->ID ) . $theme_piwiktrackercode;
@@ -282,7 +283,8 @@ function maak_event( $eventobject, $asseturl, $theme_options ) {
 
 function get_vrije_invoer( $theme_options = array(), $use_secundary_field = false ) {
 
-	$return = '';
+	$return      = '';
+	$label_color = isset( $theme_options['label_color'] ) ? $theme_options['label_color'] : '696969';
 
 	if ( $use_secundary_field ) {
 		$theme_vrije_invoer_title = isset( $theme_options['theme_vrije_invoer2_title'] ) ? $theme_options['theme_vrije_invoer2_title'] : '';
@@ -302,13 +304,14 @@ function get_vrije_invoer( $theme_options = array(), $use_secundary_field = fals
 	if ( $theme_vrije_invoer_title && $theme_vrije_invoer_text ) {
 
 		// START UITGELICHT ARTIKEL
-		$entry_image_size       = 'medium_large';
-		$image                  = '';
-		$imageURL_start         = '';
-		$imageURL_end           = '';
-		$image_alt              = $theme_vrije_invoer_title;
+		$entry_image_size = 'medium_large';
+		$image            = '';
+		$imageURL_start   = '';
+		$imageURL_end     = '';
+		$image_alt        = $theme_vrije_invoer_title;
+
 		$titel                  = '<h2 style="font-family:helvetica neue,helvetica,arial,sans-serif; font-size:24px;">' . $theme_vrije_invoer_title . '</h2>';
-		$vrije_invoer_label     = '<p style="font-size:14px;"><span style="color: #696969;font-weight: 600;">' . strtoupper( $theme_vrije_invoer_label ) . '</span></p>';
+		$vrije_invoer_label     = '<p style="font-size:14px;"><span style="color: #' . $label_color . ';font-weight: 600;">' . strtoupper( $theme_vrije_invoer_label ) . '</span></p>';
 		$theme_piwiktrackercode = isset( $theme_options['theme_piwiktrackercode'] ) ? '?pk_campaign=' . $theme_options['theme_piwiktrackercode'] : '';
 
 		// Do we have a valid URL?

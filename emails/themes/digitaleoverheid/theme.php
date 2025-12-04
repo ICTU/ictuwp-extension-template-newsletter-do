@@ -12,6 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 $shared_folder = dirname( __FILE__, 2 );
 $shared_file   = $shared_folder . '/shared/functions-for-theme-php.php';
 include_once( $shared_file );
+$theme_options['label_color'] = '696969';
 
 //========================================================================================================
 
@@ -752,6 +753,7 @@ include_once( $shared_file );
 											$uitgelicht_alt_img_id  = get_field( 'do_newsletter_extra_featured_image', $uitgelicht->ID );
 											$show_publicationdate   = isset( $theme_options['theme_show_publicationdate'] ) ? $theme_options['theme_show_publicationdate'] : '1';
 											$show_chapeau           = isset( $theme_options['theme_show_chapeau'] ) ? $theme_options['theme_show_chapeau'] : '1';
+											$label_color            = isset( $theme_options['label_color'] ) ? $theme_options['label_color'] : '696969';
 											$uitgelicht_date_html   = '';
 											$uitgelicht_label_html  = '';
 											if ( $show_publicationdate ) {
@@ -760,7 +762,7 @@ include_once( $shared_file );
 											}
 											if ( $show_chapeau ) {
 												$uitgelicht_label      = mail_get_label( $uitgelicht->ID );
-												$uitgelicht_label_html = '<p class="null"><span style="font-size:14px"><span style="color: #696969;font-weight: 600;">' . $uitgelicht_label . '</span></span> </p>';
+												$uitgelicht_label_html = '<p class="null"><span style="font-size:14px"><span style="color: #' . $label_color . ';font-weight: 600;">' . $uitgelicht_label . '</span></span> </p>';
 											}
 
 											// if available and consciously added, use alternative image

@@ -12,6 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 $shared_folder = dirname( __FILE__, 2 );
 $shared_file   = $shared_folder . '/shared/functions-for-theme-php.php';
 include_once( $shared_file );
+$theme_options['label_color'] = '777B00';
 
 //========================================================================================================
 
@@ -49,7 +50,7 @@ include_once( $shared_file );
         }
 
         body, #bodyTable, #bodyCell {
-            font-family: helvetica neue,helvetica,arial,sans-serif;
+            font-family: helvetica neue, helvetica, arial, sans-serif;
             height: 100%;
             margin: 0;
             padding: 0;
@@ -160,7 +161,7 @@ include_once( $shared_file );
 
         h1 {
             color: #202020;
-            font-family: helvetica neue,helvetica,arial,sans-serif;
+            font-family: helvetica neue, helvetica, arial, sans-serif;
             font-size: 26px;
             font-style: normal;
             font-weight: bold;
@@ -171,7 +172,7 @@ include_once( $shared_file );
 
         h2 {
             color: #202020;
-            font-family: helvetica neue,helvetica,arial,sans-serif;
+            font-family: helvetica neue, helvetica, arial, sans-serif;
             font-size: 22px;
             font-style: normal;
             font-weight: bold;
@@ -182,7 +183,7 @@ include_once( $shared_file );
 
         h3 {
             color: #202020;
-            font-family: helvetica neue,helvetica,arial,sans-serif;
+            font-family: helvetica neue, helvetica, arial, sans-serif;
             font-size: 20px;
             font-style: normal;
             font-weight: bold;
@@ -193,7 +194,7 @@ include_once( $shared_file );
 
         h4 {
             color: #202020;
-            font-family: helvetica neue,helvetica,arial,sans-serif;
+            font-family: helvetica neue, helvetica, arial, sans-serif;
             font-size: 18px;
             font-style: normal;
             font-weight: bold;
@@ -216,7 +217,7 @@ include_once( $shared_file );
 
         #templatePreheader .mcnTextContent, #templatePreheader .mcnTextContent p {
             color: #656565;
-            font-family: helvetica neue,helvetica,arial,sans-serif;
+            font-family: helvetica neue, helvetica, arial, sans-serif;
             font-size: 12px;
             line-height: 150%;
             text-align: left;
@@ -242,7 +243,7 @@ include_once( $shared_file );
 
         #templateHeader .mcnTextContent, #templateHeader .mcnTextContent p {
             color: #202020;
-            font-family: helvetica neue,helvetica,arial,sans-serif;
+            font-family: helvetica neue, helvetica, arial, sans-serif;
             font-size: 16px;
             line-height: 150%;
             text-align: center;
@@ -268,7 +269,7 @@ include_once( $shared_file );
 
         #templateUpperBody .mcnTextContent, #templateUpperBody .mcnTextContent p {
             color: #202020;
-            font-family: helvetica neue,helvetica,arial,sans-serif;
+            font-family: helvetica neue, helvetica, arial, sans-serif;
             font-size: 16px;
             line-height: 150%;
             text-align: left;
@@ -294,7 +295,7 @@ include_once( $shared_file );
 
         #templateColumns .columnContainer .mcnTextContent, #templateColumns .columnContainer .mcnTextContent p {
             color: #202020;
-            font-family: helvetica neue,helvetica,arial,sans-serif;
+            font-family: helvetica neue, helvetica, arial, sans-serif;
             font-size: 16px;
             line-height: 150%;
             text-align: left;
@@ -319,7 +320,7 @@ include_once( $shared_file );
 
         #templateLowerBody .mcnTextContent, #templateLowerBody .mcnTextContent p {
             color: #202020;
-            font-family: helvetica neue,helvetica,arial,sans-serif;
+            font-family: helvetica neue, helvetica, arial, sans-serif;
             font-size: 16px;
             line-height: 150%;
             text-align: left;
@@ -344,7 +345,7 @@ include_once( $shared_file );
 
         #templateFooter .mcnTextContent, #templateFooter .mcnTextContent p {
             color: #656565;
-            font-family: helvetica neue,helvetica,arial,sans-serif;
+            font-family: helvetica neue, helvetica, arial, sans-serif;
             font-size: 12px;
             line-height: 150%;
             text-align: center;
@@ -721,13 +722,13 @@ include_once( $shared_file );
                                                         <tr>
                                                             <td width="66%">
                                                                 <h1 class="query"
-                                                                    style="font-family: helvetica neue,helvetica,arial,sans-serif; font-weight: 700; font-size: 21px; color: #fff; text-align: left; padding-left: 10px !important;">
+                                                                    style="font-family: helvetica neue,helvetica,arial,sans-serif; font-weight: 700; font-size: 16px; color: #fff; text-align: left; padding-left: 10px !important;">
 																	<?php echo $theme_sitetitle ?>
                                                                 </h1>
                                                             </td>
                                                             <td width="34%">
                                                                 <p class="query"
-                                                                   style="font-family: helvetica neue,helvetica,arial,sans-serif;font-weight: 400; font-size: 18px; color: #fff; text-align: right;  padding-right: 10px !important;">
+                                                                   style="font-family: helvetica neue,helvetica,arial,sans-serif;font-weight: 400; font-size: 16px; color: #fff; text-align: right;  padding-right: 10px !important;">
 																	<?php echo $theme_nieuwsbrieftitel_datetext ?>
                                                                 </p>
                                                             </td>
@@ -752,6 +753,7 @@ include_once( $shared_file );
 											$uitgelicht_alt_img_id  = get_field( 'do_newsletter_extra_featured_image', $uitgelicht->ID );
 											$show_publicationdate   = isset( $theme_options['theme_show_publicationdate'] ) ? $theme_options['theme_show_publicationdate'] : '1';
 											$show_chapeau           = isset( $theme_options['theme_show_chapeau'] ) ? $theme_options['theme_show_chapeau'] : '1';
+											$label_color            = isset( $theme_options['label_color'] ) ? $theme_options['label_color'] : '696969';
 											$uitgelicht_date_html   = '';
 											$uitgelicht_label_html  = '';
 											if ( $show_publicationdate ) {
@@ -760,7 +762,7 @@ include_once( $shared_file );
 											}
 											if ( $show_chapeau ) {
 												$uitgelicht_label      = mail_get_label( $uitgelicht->ID );
-												$uitgelicht_label_html = '<p class="null"><span style="font-size:14px"><span style="color: #696969;font-weight: 600;">' . $uitgelicht_label . '</span></span> </p>';
+												$uitgelicht_label_html = '<p class="null"><span style="font-size:14px"><span style="color: #' . $label_color . ';font-weight: 600;">' . $uitgelicht_label . '</span></span> </p>';
 											}
 
 											// if available and consciously added, use alternative image
@@ -791,8 +793,8 @@ include_once( $shared_file );
                                                             <tr>
                                                                 <td class="mcnTextContent" valign="top"
                                                                     style="padding:0 9px 0 9px;" width="564">
-                                                                    <?php echo $uitgelicht_date_html ?>
-                                                                    <?php echo $uitgelicht_label_html ?>
+																	<?php echo $uitgelicht_date_html ?>
+																	<?php echo $uitgelicht_label_html ?>
                                                                     <h2 style="font-family:helvetica neue,helvetica,arial,sans-serif;">
                                                                         <a
                                                                                 href="<?php echo $uitgelicht_url ?>"><strong>
@@ -1026,6 +1028,41 @@ include_once( $shared_file );
 										}
 										?>
 
+										<?php
+										if ( $tweede_vrije_invoer ) {
+
+											?>
+                                            <table role="presentation" border="0" cellpadding="0" cellspacing="0"
+                                                   width="100%"
+                                                   class="mcnDividerBlock" style="min-width:100%;">
+                                                <tbody class="mcnDividerBlockOuter">
+                                                <tr>
+                                                    <td class="mcnDividerBlockInner"
+                                                        style="min-width:100%; padding:18px;">
+                                                        <table role="presentation" class="mcnDividerContent" border="0"
+                                                               cellpadding="0"
+                                                               cellspacing="0" width="100%"
+                                                               style="min-width: 100%;border-top: 1px solid #EAEAEA;">
+                                                            <tbody>
+                                                            <tr>
+                                                                <td><span></span></td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+
+											<?php
+
+											echo $tweede_vrije_invoer;
+
+
+										}
+										?>
+
                                         <table role="presentation" border="0" cellpadding="0" cellspacing="0"
                                                width="100%"
                                                class="mcnDividerBlock" style="min-width:100%;">
@@ -1053,17 +1090,41 @@ include_once( $shared_file );
 										$EM_Events      = null;
 										$linker_events  = '';
 										$rechter_events = '';
+
 										if ( $theme_titel_events && $filters['theme_max_agenda'] ) {
 
 											$args_selection = array(
-												'scope'      => 'future',
-												// alleen toekomstige events tonen
-												'pagination' => '0',
+
 												// nee, we willen geen pagination
-												'limit'      => $filters['theme_max_agenda'],
+												'pagination' => '0',
+
 												// het aantal events per pagina
+												'limit'      => $filters['theme_max_agenda'],
 											);
-											$EM_Events      = EM_Events::get( $args_selection );
+
+											// selection by specific dates
+											// expected format: yyyy-mm-dd,yyyy-mm-dd Searches between these two dates. yyyy-mm-dd, Searches from the start date onwards.
+											// https://wp-events-plugin.com/documentation/event-search-attributes/
+											// Preset Ranges:
+											// future past today, tomorrow, week, this-week, month, this-month, next-month, 1-months, 2-months, 3-months, 6-months, 12-months, all
+											//
+											// Date Ranges:
+											// yyyy-mm-dd,yyyy-mm-dd Searches between these two dates. yyyy-mm-dd, Searches from the start date onwards.
+											//
+											// Single Dates
+											// yyyy-mm-dd Searches a specific date.
+											if ( $theme_eventdate_start ) {
+												if ( $theme_eventdate_end ) {
+													$args_selection['scope'] = $theme_eventdate_start . ',' . $theme_eventdate_end;
+												} else {
+													$args_selection['scope'] = $theme_eventdate_start . ',';
+												}
+											} else {
+												// show any future events
+												$args_selection['scope'] = 'future';
+											}
+
+											$EM_Events = EM_Events::get( $args_selection );
 										}
 
 										if ( $EM_Events ) {
@@ -1296,7 +1357,7 @@ include_once( $shared_file );
                                                                 style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
                                                                 <div
                                                                         style="background-color: #007BC7; padding: 16px 10px">
-                                                                    <p style="font-weight: 700; font-size: 26px; color: #fff; text-align: left;">
+                                                                    <p style="font-weight: 700; font-size: 16px; color: #fff; text-align: left;">
 																		<?php echo $theme_sitetitle ?></p>
                                                                     <p style="font-weight: 400; font-size: 16px; color: #fff; font-style: italic;text-align: left">
 																		<?php echo $theme_sitepayoff ?></p>
