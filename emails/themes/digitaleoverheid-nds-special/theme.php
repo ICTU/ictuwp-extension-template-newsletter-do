@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 $shared_folder = dirname( __FILE__, 2 );
 $shared_file   = $shared_folder . '/shared/functions-for-theme-php.php';
 include_once( $shared_file );
-$theme_options['label_color'] = '696969';
+$theme_options['label_color'] = '777B00';
 
 //========================================================================================================
 
@@ -722,13 +722,13 @@ $theme_options['label_color'] = '696969';
                                                         <tr>
                                                             <td width="66%">
                                                                 <h1 class="query"
-                                                                    style="font-family: helvetica neue,helvetica,arial,sans-serif; font-weight: 700; font-size: 21px; color: #fff; text-align: left; padding-left: 10px !important;">
+                                                                    style="font-family: helvetica neue,helvetica,arial,sans-serif; font-weight: 700; font-size: 16px; color: #fff; text-align: left; padding-left: 10px !important;">
 																	<?php echo $theme_sitetitle ?>
                                                                 </h1>
                                                             </td>
                                                             <td width="34%">
                                                                 <p class="query"
-                                                                   style="font-family: helvetica neue,helvetica,arial,sans-serif;font-weight: 400; font-size: 18px; color: #fff; text-align: right;  padding-right: 10px !important;">
+                                                                   style="font-family: helvetica neue,helvetica,arial,sans-serif;font-weight: 400; font-size: 16px; color: #fff; text-align: right;  padding-right: 10px !important;">
 																	<?php echo $theme_nieuwsbrieftitel_datetext ?>
                                                                 </p>
                                                             </td>
@@ -1028,10 +1028,10 @@ $theme_options['label_color'] = '696969';
 										}
 										?>
 
-	                                    <?php
-	                                    if ( $tweede_vrije_invoer ) {
+										<?php
+										if ( $tweede_vrije_invoer ) {
 
-		                                    ?>
+											?>
                                             <table role="presentation" border="0" cellpadding="0" cellspacing="0"
                                                    width="100%"
                                                    class="mcnDividerBlock" style="min-width:100%;">
@@ -1055,13 +1055,13 @@ $theme_options['label_color'] = '696969';
                                                 </tbody>
                                             </table>
 
-		                                    <?php
+											<?php
 
-		                                    echo $tweede_vrije_invoer;
+											echo $tweede_vrije_invoer;
 
 
-	                                    }
-	                                    ?>
+										}
+										?>
 
                                         <table role="presentation" border="0" cellpadding="0" cellspacing="0"
                                                width="100%"
@@ -1087,9 +1087,9 @@ $theme_options['label_color'] = '696969';
 
 
 										<?php
-										$EM_Events       = null;
-										$linker_events   = '';
-										$rechter_events  = '';
+										$EM_Events      = null;
+										$linker_events  = '';
+										$rechter_events = '';
 
 										if ( $theme_titel_events && $filters['theme_max_agenda'] ) {
 
@@ -1357,7 +1357,7 @@ $theme_options['label_color'] = '696969';
                                                                 style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
                                                                 <div
                                                                         style="background-color: #007BC7; padding: 16px 10px">
-                                                                    <p style="font-weight: 700; font-size: 26px; color: #fff; text-align: left;">
+                                                                    <p style="font-weight: 700; font-size: 16px; color: #fff; text-align: left;">
 																		<?php echo $theme_sitetitle ?></p>
                                                                     <p style="font-weight: 400; font-size: 16px; color: #fff; font-style: italic;text-align: left">
 																		<?php echo $theme_sitepayoff ?></p>
