@@ -596,6 +596,21 @@ $theme_options['label_color'] = '777B00';
                 line-height: 150% !important;
             }
         }
+        img.alignright.size-medium,
+        img.alignleft.size-medium {
+            margin-bottom: 1rem;
+            max-width: 100%;
+        }
+        img.alignright.size-medium, {
+            margin-bottom: 1rem;
+            margin-left: 1rem;
+            float: right;
+        }
+        img.alignleft.size-medium {
+            margin-bottom: 1rem;
+            margin-right: 1rem;
+            float: left;
+        }
     </style>
 </head>
 <body>
