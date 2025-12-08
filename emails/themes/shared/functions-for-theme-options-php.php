@@ -41,8 +41,15 @@ $theme_defaults = array(
 	'theme_vrije_invoer_image'         => '',
 	'theme_vrije_invoer_label'         => '',
 
-	'theme_show_publicationdate'       => '1',
-	'theme_show_chapeau'               => '1',
+	'theme_vrije_invoer2_title'         => '',
+	'theme_vrije_invoer2_text'          => '',
+	'theme_vrije_invoer2_url'           => '',
+	'theme_vrije_invoer2_image'         => '',
+	'theme_vrije_invoer2_label'         => '',
+
+	'theme_show_publicationdate' => '1',
+	'theme_show_chapeau'         => '1',
+	'theme_eventdate_start'      => '',
 
 );
 

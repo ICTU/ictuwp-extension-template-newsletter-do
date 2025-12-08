@@ -26,6 +26,7 @@ $shared_folder = dirname( __FILE__, 2 );
 $shared_file   = $shared_folder . '/shared/functions-for-theme-options-php.php';
 include_once( $shared_file );
 
+$theme_options['label_color'] = '00F';
 //========================================================================================================
 
 

@@ -102,9 +102,9 @@ $theme_sitetitle                  = isset( $theme_options['theme_sitetitle'] ) ?
 $theme_sitepayoff                 = isset( $theme_options['theme_sitepayoff'] ) ? $theme_options['theme_sitepayoff'] : get_bloginfo( 'description' );
 $theme_socials_xwitter_url        = isset( $theme_options['theme_socials_xwitter_url'] ) ? $theme_options['theme_socials_xwitter_url'] . $theme_piwiktrackercode : '';
 $theme_socials_xwitter_linktext   = isset( $theme_options['theme_socials_xwitter_linktext'] ) ? $theme_options['theme_socials_xwitter_linktext'] : '';
-$theme_socials_mastodon_url       = isset( $theme_options['theme_socials_mastodon_url'] ) ? $theme_options['theme_socials_mastodon_url'] . $theme_piwiktrackercode  : '';
+$theme_socials_mastodon_url       = isset( $theme_options['theme_socials_mastodon_url'] ) ? $theme_options['theme_socials_mastodon_url'] . $theme_piwiktrackercode : '';
 $theme_socials_mastodon_linktext  = isset( $theme_options['theme_socials_mastodon_linktext'] ) ? $theme_options['theme_socials_mastodon_linktext'] : '';
-$theme_socials_linkedin_url       = isset( $theme_options['theme_socials_linkedin_url'] ) ? $theme_options['theme_socials_linkedin_url'] . $theme_piwiktrackercode  : '';
+$theme_socials_linkedin_url       = isset( $theme_options['theme_socials_linkedin_url'] ) ? $theme_options['theme_socials_linkedin_url'] . $theme_piwiktrackercode : '';
 $theme_socials_linkedin_linxtext  = isset( $theme_options['theme_socials_linkedin_linxtext'] ) ? $theme_options['theme_socials_linkedin_linxtext'] : '';
 $theme_socials_linkedin_linxtext  = isset( $theme_options['theme_socials_linkedin_linxtext'] ) ? $theme_options['theme_socials_linkedin_linxtext'] : '';
 $theme_mail_unsubscribe_text      = isset( $theme_options['theme_mail_unsubscribe_text'] ) ? $theme_options['theme_mail_unsubscribe_text'] : 'Wilt u deze nieuwsbrief niet meer ontvangen?';
@@ -123,7 +123,14 @@ $theme_vrije_invoer_label = isset( $theme_options['theme_vrije_invoer_label'] ) 
 $theme_show_publicationdate = isset( $theme_options['theme_show_publicationdate'] ) ? $theme_options['theme_show_publicationdate'] : '1';
 $theme_show_chapeau         = isset( $theme_options['theme_show_chapeau'] ) ? $theme_options['theme_show_chapeau'] : '1';
 
-$vrije_invoer = get_vrije_invoer( $theme_options );
+$vrije_invoer        = get_vrije_invoer( $theme_options );
+$tweede_vrije_invoer = get_vrije_invoer( $theme_options, '2' );
+
+$theme_eventdate_start = isset( $theme_options['theme_eventdate_start'] ) ? $theme_options['theme_eventdate_start'] : '';
+// TODO implement end date field
+// $theme_eventdate_end   = '2026-03-01';
+// $theme_eventdate_end = '';
+
 
 //========================================================================================================
 
@@ -186,20 +193,21 @@ function write_bericht( $postobject, $theme_options ) {
 	$theme_piwiktrackercode     = isset( $theme_options['theme_piwiktrackercode'] ) ? '?pk_campaign=' . $theme_options['theme_piwiktrackercode'] : '';
 	$theme_show_publicationdate = isset( $theme_options['theme_show_publicationdate'] ) ? $theme_options['theme_show_publicationdate'] : '1';
 	$theme_show_chapeau         = isset( $theme_options['theme_show_chapeau'] ) ? $theme_options['theme_show_chapeau'] : '1';
+	$label_color                = isset( $theme_options['label_color'] ) ? $theme_options['label_color'] : '696969';
 
 	if ( $postobject ) {
 
 		$post_image_size = 'image-5x3-small';
 		$post_title      = $postobject->post_title;
 		$post_date_html  = '';
-		$post_label_html      = '';
+		$post_label_html = '';
 		if ( $theme_show_publicationdate ) {
 			$post_date      = get_the_date( get_option( 'date_format' ), $postobject->ID );
 			$post_date_html = '<p style="font-size:14px"><strong>' . $post_date . '</strong></p>';
 		}
 		if ( $theme_show_chapeau ) {
 			$post_label      = mail_get_label( $postobject->ID );
-			$post_label_html = '<p style="font-size:14px"><strong><span style="color:#696969; text-transform:uppercase">' . $post_label . '</span></strong></p>';
+			$post_label_html = '<p style="font-size:14px"><strong><span style="color:#' . $label_color . '; text-transform:uppercase">' . $post_label . '</span></strong></p>';
 		}
 		$post_excerpt = rhswp_newsletter_get_excerpt( $postobject->ID );
 		$post_url     = get_permalink( $postobject->ID ) . $theme_piwiktrackercode;
@@ -273,26 +281,37 @@ function maak_event( $eventobject, $asseturl, $theme_options ) {
 
 //========================================================================================================
 
-function get_vrije_invoer( $theme_options = array() ) {
+function get_vrije_invoer( $theme_options = array(), $use_secundary_field = false ) {
 
-	$return = '';
+	$return      = '';
+	$label_color = isset( $theme_options['label_color'] ) ? $theme_options['label_color'] : '696969';
 
-	$theme_vrije_invoer_title = isset( $theme_options['theme_vrije_invoer_title'] ) ? $theme_options['theme_vrije_invoer_title'] : '';
-	$theme_vrije_invoer_text  = isset( $theme_options['theme_vrije_invoer_text'] ) ? $theme_options['theme_vrije_invoer_text'] : '';
-	$theme_vrije_invoer_image = isset( $theme_options['theme_vrije_invoer_image'] ) ? $theme_options['theme_vrije_invoer_image'] : null;
-	$theme_vrije_invoer_url   = isset( $theme_options['theme_vrije_invoer_url'] ) ? $theme_options['theme_vrije_invoer_url'] : '';
-	$theme_vrije_invoer_label = isset( $theme_options['theme_vrije_invoer_label'] ) ? $theme_options['theme_vrije_invoer_label'] : '';
+	if ( $use_secundary_field ) {
+		$theme_vrije_invoer_title = isset( $theme_options['theme_vrije_invoer2_title'] ) ? $theme_options['theme_vrije_invoer2_title'] : '';
+		$theme_vrije_invoer_text  = isset( $theme_options['theme_vrije_invoer2_text'] ) ? $theme_options['theme_vrije_invoer2_text'] : '';
+		$theme_vrije_invoer_image = isset( $theme_options['theme_vrije_invoer2_image'] ) ? $theme_options['theme_vrije_invoer2_image'] : null;
+		$theme_vrije_invoer_url   = isset( $theme_options['theme_vrije_invoer2_url'] ) ? $theme_options['theme_vrije_invoer2_url'] : '';
+		$theme_vrije_invoer_label = isset( $theme_options['theme_vrije_invoer2_label'] ) ? $theme_options['theme_vrije_invoer2_label'] : '';
+	} else {
+
+		$theme_vrije_invoer_title = isset( $theme_options['theme_vrije_invoer_title'] ) ? $theme_options['theme_vrije_invoer_title'] : '';
+		$theme_vrije_invoer_text  = isset( $theme_options['theme_vrije_invoer_text'] ) ? $theme_options['theme_vrije_invoer_text'] : '';
+		$theme_vrije_invoer_image = isset( $theme_options['theme_vrije_invoer_image'] ) ? $theme_options['theme_vrije_invoer_image'] : null;
+		$theme_vrije_invoer_url   = isset( $theme_options['theme_vrije_invoer_url'] ) ? $theme_options['theme_vrije_invoer_url'] : '';
+		$theme_vrije_invoer_label = isset( $theme_options['theme_vrije_invoer_label'] ) ? $theme_options['theme_vrije_invoer_label'] : '';
+	}
 
 	if ( $theme_vrije_invoer_title && $theme_vrije_invoer_text ) {
 
 		// START UITGELICHT ARTIKEL
-		$entry_image_size   = 'medium_large';
-		$image              = '';
-		$imageURL_start     = '';
-		$imageURL_end       = '';
-		$image_alt          = $theme_vrije_invoer_title;
-		$titel              = '<h2 style="font-family:helvetica neue,helvetica,arial,sans-serif; font-size:24px;">' . $theme_vrije_invoer_title . '</h2>';
-		$vrije_invoer_label = '<p style="font-size:14px;"><span style="color: #696969;font-weight: 600;">' . strtoupper( $theme_vrije_invoer_label ) . '</span></p>';
+		$entry_image_size = 'medium_large';
+		$image            = '';
+		$imageURL_start   = '';
+		$imageURL_end     = '';
+		$image_alt        = $theme_vrije_invoer_title;
+
+		$titel                  = '<h2 style="font-family:helvetica neue,helvetica,arial,sans-serif; font-size:24px;">' . $theme_vrije_invoer_title . '</h2>';
+		$vrije_invoer_label     = '<p style="font-size:14px;"><span style="color: #' . $label_color . ';font-weight: 600;">' . strtoupper( $theme_vrije_invoer_label ) . '</span></p>';
 		$theme_piwiktrackercode = isset( $theme_options['theme_piwiktrackercode'] ) ? '?pk_campaign=' . $theme_options['theme_piwiktrackercode'] : '';
 
 		// Do we have a valid URL?
