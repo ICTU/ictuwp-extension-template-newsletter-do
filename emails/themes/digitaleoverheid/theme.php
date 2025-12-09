@@ -601,7 +601,7 @@ $theme_options['label_color'] = '696969';
             margin-bottom: 1rem;
             max-width: 100%;
         }
-        img.alignright.size-medium, {
+        img.alignright.size-medium {
             margin-bottom: 1rem;
             margin-left: 1rem;
             float: right;
