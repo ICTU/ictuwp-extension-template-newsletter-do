@@ -31,3 +31,4 @@ node_modules/
 *.zip
 /emails/themes/digitaleoverheid/newsletter_template/*
 
+.DS_Store
