@@ -89,10 +89,10 @@ include_once( $shared_file );
         </td>
     </tr>
     <tr>
-        <th>Preview text</th>
+        <th>Preheader / preview text</th>
         <td>
-			<?php $controls->textarea( 'theme_preview_text_view_online' ); ?>
-            <p class="description">Max. 2 regels tekst met een samenvatting van de inhoud van de nieuwbrief.</p>
+            <?php $controls->textarea( 'theme_preheader_previewtext' ); ?>
+            <p class="description">Korte samenvatting die aanspoort om de nieuwbrief te lezen.</p>
         </td>
     </tr>
 
@@ -261,6 +261,13 @@ include_once( $shared_file );
     </tr>
     <!-- EIND EXTRA FIELDS 2 ------>
 
+    <tr>
+        <th>'Bekijk online' tekst</th>
+        <td>
+            <?php $controls->textarea( 'theme_preview_text_view_online' ); ?>
+            <p class="description">Tekst en link om de nieuwsbrief online te bekijken.</p>
+        </td>
+    </tr>
     <tr>
         <th>Payoff</th>
         <td>

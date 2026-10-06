@@ -615,7 +615,7 @@ $theme_options['label_color'] = '777B00';
 </head>
 <body>
 <span class="mcnPreviewText"
-      style="display:none; font-size:0px; line-height:0px; max-height:0px; max-width:0px; opacity:0; overflow:hidden; visibility:hidden; mso-hide:all;"><?php echo $theme_preview_text_view_online ?></span>
+      style="display:none; font-size:0px; line-height:0px; max-height:0px; max-width:0px; opacity:0; overflow:hidden; visibility:hidden; mso-hide:all;"><?php echo $theme_preheader_previewtext ?></span>
 
 <center>
     <table role="presentation" align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%"

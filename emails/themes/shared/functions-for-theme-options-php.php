@@ -34,6 +34,7 @@ $theme_defaults = array(
 	'theme_mail_edit_profile_text'     => 'Wil je aanpassen welke nieuwsbrieven je van ons ontvangt?',
 	'theme_mail_edit_profile_linktext' => 'Werk je mailvoorkeuren bij',
 	'theme_preview_text_view_online'   => 'Kun je deze nieuwsbrief niet goed lezen? <a href="{email_url}" style="color: #01689B">Bekijk dan de online versie</a><br>',
+	'theme_preheader_previewtext'   => 'Lees de nieuwsbrief van Digitale Overheid',
 
 	'theme_vrije_invoer_title'         => '',
 	'theme_vrije_invoer_text'          => '',

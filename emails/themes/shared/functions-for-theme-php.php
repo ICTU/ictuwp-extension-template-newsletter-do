@@ -113,6 +113,7 @@ $theme_mail_preferences_title     = isset( $theme_options['theme_mail_preference
 $theme_mail_edit_profile_text     = isset( $theme_options['theme_mail_edit_profile_text'] ) ? $theme_options['theme_mail_edit_profile_text'] : 'Wilt u deze nieuwsbrief niet meer ontvangen?';
 $theme_mail_edit_profile_linktext = isset( $theme_options['theme_mail_edit_profile_linktext'] ) ? $theme_options['theme_mail_edit_profile_linktext'] : 'Werk je voorkeuren bij';
 $theme_preview_text_view_online   = isset( $theme_options['theme_preview_text_view_online'] ) ? $theme_options['theme_preview_text_view_online'] : 'Kunt u deze nieuwsbrief niet goed lezen? <a href="{email_url}" style="color: #01689B">Bekijk dan de online versie</a><br>';
+$theme_preheader_previewtext   = isset( $theme_options['theme_preheader_previewtext'] ) ? $theme_options['theme_preheader_previewtext'] : 'Nieuwsbrief van Digitale Overheid';
 
 $theme_vrije_invoer_title = isset( $theme_options['theme_vrije_invoer_title'] ) ? $theme_options['theme_vrije_invoer_title'] : '';
 $theme_vrije_invoer_text  = isset( $theme_options['theme_vrije_invoer_text'] ) ? $theme_options['theme_vrije_invoer_text'] : '';
